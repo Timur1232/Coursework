@@ -1,0 +1,7 @@
+[ 16.8.2024, 23:53:20 ]
+ERROR in where: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=5
+1 1 Vladimir Egor 150,000000 0,000000
+
