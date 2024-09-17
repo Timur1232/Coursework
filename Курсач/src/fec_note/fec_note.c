@@ -30,21 +30,21 @@ FECNote input_note(int num)
 	FECNote note = init_note();
 	note.serialNumber = num;
 
-	printf("Çàïèñêà #%d\n"
-		"Íîìåð çàâîäà >> ", num);
+	printf("Ð—Ð°Ð¿Ð¸ÑÐºÐ° #%d\n"
+		"ÐÐ¾Ð¼ÐµÑ€ Ð·Ð°Ð²Ð¾Ð´Ð° >> ", num);
 	scanf("%d", &note.factoryNumber);
-	printf("ÔÈÎ äèðåêòîðà çàâîäà >> ");
+	printf("Ð¤Ð˜Ðž Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð° Ð·Ð°Ð²Ð¾Ð´Ð° >> ");
 	getchar();
 	fgets(note.directorFullName, 16, stdin);
 	fflush(stdin);
 	note.directorFullName[strlen(note.directorFullName) - 1] = '\0';
-	printf("ÔÈÎ ãëàâíîãî èíæèíåðà >> ");
+	printf("Ð¤Ð˜Ðž Ð³Ð»Ð°Ð²Ð½Ð¾Ð³Ð¾ Ð¸Ð½Ð¶Ð¸Ð½ÐµÑ€Ð° >> ");
 	fgets(note.engineerFullName, 16, stdin);
 	fflush(stdin);
 	note.engineerFullName[strlen(note.engineerFullName) - 1] = '\0';
-	printf("Ðàñõîä ýíåðãèè ïî ïëàíó >> ");
+	printf("Ð Ð°ÑÑ…Ð¾Ð´ ÑÐ½ÐµÑ€Ð³Ð¸Ð¸ Ð¿Ð¾ Ð¿Ð»Ð°Ð½Ñƒ >> ");
 	scanf("%f", &note.energyConsPlan);
-	printf("Èçðàñõîäîâàíî ýíåðãèè ôàêòè÷åñêè >> ");
+	printf("Ð˜Ð·Ñ€Ð°ÑÑ…Ð¾Ð´Ð¾Ð²Ð°Ð½Ð¾ ÑÐ½ÐµÑ€Ð³Ð¸Ð¸ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐºÐ¸ >> ");
 	scanf("%f", &note.energyConsReal);
 
 	getchar();

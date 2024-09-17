@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <conio.h>
-#include <locale.h>
 #include <string.h>
 
 #include "fec_note/fec_note.h"
@@ -93,7 +92,7 @@ void notes_renumber(ListPtr fecNotes);
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	system("chcp 65001");
 
 	List fecNotes = init_list();
 	int shouldClose = 0;

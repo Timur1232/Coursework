@@ -7,7 +7,7 @@
 
 RefArray find_entries(ListPtr fecNotes, FECNote* required, int(*compare)(ConstValuePtr val1, ConstValuePtr val2))
 {
-	RefArray entries = init_ref_array(100);
+	RefArray entries = init_ref_array(128);
 
 	for (FOR_RANGE(iter, *fecNotes))
 	{
@@ -25,12 +25,12 @@ void print_entries(RefArrayPtr entries)
 {
 	if (!entries->size)
 	{
-		puts("Âõîæäåíèé íå íàéäåíî");
+		puts("Ğ’Ñ…Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ğ¹ Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½Ğ¾");
 		return;
 	}
 
 	puts("-----------------------------------------------------------------------");
-	puts("| #   | #Çâ | ÔÈÎ äèğåêòîğà   | ÔÈÎ èíæåíåğà    | Ïëàí     | Ğàñõîä   |");
+	puts("| #   | #Ğ—Ğ² | Ğ¤Ğ˜Ğ Ğ´Ğ¸Ñ€ĞµĞºÑ‚Ğ¾Ñ€Ğ°   | Ğ¤Ğ˜Ğ Ğ¸Ğ½Ğ¶ĞµĞ½ĞµÑ€Ğ°    | ĞŸĞ»Ğ°Ğ½     | Ğ Ğ°ÑÑ…Ğ¾Ğ´   |");
 	puts("-----------------------------------------------------------------------");
 
 	FECNote** iter = (FECNote**)entries->data;

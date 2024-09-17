@@ -4,7 +4,7 @@
 #include "..\fec_note\fec_note.h"
 #include "..\macros.h"
 
-//_____________________________[Предопределения типов]_____________________________//
+//_____________________________[РџСЂРµРґРѕРїСЂРµРґРµР»РµРЅРёСЏ С‚РёРїРѕРІ]_____________________________//
 
 #ifdef _LIST_DEBUG
 	typedef int value_t;
@@ -26,7 +26,7 @@ typedef List* ListPtr;
 
 typedef ListNodePtr Iterator;
 
-//__________________________________[Прототипы]__________________________________//
+//__________________________________[РџСЂРѕС‚РѕС‚РёРїС‹]__________________________________//
 
 ListNodePtr new_node(ConstValuePtr data);
 
@@ -48,11 +48,11 @@ ValuePtr get_at(ListPtr list, int pos);
 void sort(ListPtr list, int (*compare)(ConstValuePtr val1, ConstValuePtr val2));
 void swap(ListPtr list, int pos1, int pos2);
 
-// Временные функции
+// Р’СЂРµРјРµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
 void print_list(ListPtr list);
 void print_list_backward(ListPtr list);
 
-//__________________________________[Структуры]__________________________________//
+//__________________________________[РЎС‚СЂСѓРєС‚СѓСЂС‹]__________________________________//
 
 struct ListNode
 {

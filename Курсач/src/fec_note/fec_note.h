@@ -1,4 +1,4 @@
-﻿#ifndef FEC_NOTE_H
+#ifndef FEC_NOTE_H
 #define FEC_NOTE_H
 
 #define MAX_STRING_SIZE 16
