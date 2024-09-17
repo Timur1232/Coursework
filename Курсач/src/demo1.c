@@ -12,7 +12,7 @@
 #include "ref_array/ref_array.h"
 #include "find/find_entries.h"
 
-// Массив функций сравнения
+// РњР°СЃСЃРёРІ С„СѓРЅРєС†РёР№ СЃСЂР°РІРЅРµРЅРёСЏ
 int (* const COMPARE_FUNC_ARR[6]) (ConstValuePtr val1, ConstValuePtr val2) = {
 	ser_num, fac_num, dir_name, eng_name, cons_plan, cons_real
 };
@@ -27,42 +27,42 @@ enum Compare
 	CONS_REAL
 };
 
-// Массив интерфейсов
+// РњР°СЃСЃРёРІ РёРЅС‚РµСЂС„РµР№СЃРѕРІ
 const char* const INTERFACE_ARR[] = {
-	"Меню:\n"
-	" 1) Организация списка\n"
-	" 2) Вывод списка\n"
-	" 3) Добавление записи\n"
-	" 4) Удаление записи\n"
-	" 5) Изменить запись\n"
-	" 6) Найти вхождения\n"
-	" 7) Загрузить список\n"
-	" 0) Выход\n"
-	"\nВыберете действие\n",
+	"РњРµРЅСЋ:\n"
+	" 1) РћСЂРіР°РЅРёР·Р°С†РёСЏ СЃРїРёСЃРєР°\n"
+	" 2) Р’С‹РІРѕРґ СЃРїРёСЃРєР°\n"
+	" 3) Р”РѕР±Р°РІР»РµРЅРёРµ Р·Р°РїРёСЃРё\n"
+	" 4) РЈРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё\n"
+	" 5) РР·РјРµРЅРёС‚СЊ Р·Р°РїРёСЃСЊ\n"
+	" 6) РќР°Р№С‚Рё РІС…РѕР¶РґРµРЅРёСЏ\n"
+	" 7) Р—Р°РіСЂСѓР·РёС‚СЊ СЃРїРёСЃРѕРє\n"
+	" 0) Р’С‹С…РѕРґ\n"
+	"\nР’С‹Р±РµСЂРµС‚Рµ РґРµР№СЃС‚РІРёРµ\n",
 
-	"0) Вернуться\n"
-	"1) Сортировка\n",
+	"0) Р’РµСЂРЅСѓС‚СЊСЃСЏ\n"
+	"1) РЎРѕСЂС‚РёСЂРѕРІРєР°\n",
 
-	"Сортировка:\n"
-	" 1) Номер записи\n"
-	" 2) Номер завода\n"
-	" 3) Имя директора\n"
-	" 4) Имя инженера\n"
-	" 5) План расхода\n"
-	" 6) Реальный расход\n",
+	"РЎРѕСЂС‚РёСЂРѕРІРєР°:\n"
+	" 1) РќРѕРјРµСЂ Р·Р°РїРёСЃРё\n"
+	" 2) РќРѕРјРµСЂ Р·Р°РІРѕРґР°\n"
+	" 3) РРјСЏ РґРёСЂРµРєС‚РѕСЂР°\n"
+	" 4) РРјСЏ РёРЅР¶РµРЅРµСЂР°\n"
+	" 5) РџР»Р°РЅ СЂР°СЃС…РѕРґР°\n"
+	" 6) Р РµР°Р»СЊРЅС‹Р№ СЂР°СЃС…РѕРґ\n",
 
-	"0) Добавить к списку\n"
-	"1) Новый список (это удалит старый список!)\n"
-	"Выбор >> ",
+	"0) Р”РѕР±Р°РІРёС‚СЊ Рє СЃРїРёСЃРєСѓ\n"
+	"1) РќРѕРІС‹Р№ СЃРїРёСЃРѕРє (СЌС‚Рѕ СѓРґР°Р»РёС‚ СЃС‚Р°СЂС‹Р№ СЃРїРёСЃРѕРє!)\n"
+	"Р’С‹Р±РѕСЂ >> ",
 
-	"Поиск:\n"
-	" 1) По номеру записки\n"
-	" 2) По номеру завода\n"
-	" 3) По имени директора\n"
-	" 4) По имени главного инжинера\n"
-	" 5) По плану расхода\n"
-	" 6) По фактическому расходу\n"
-	"Выберите поле поиска >> "
+	"РџРѕРёСЃРє:\n"
+	" 1) РџРѕ РЅРѕРјРµСЂСѓ Р·Р°РїРёСЃРєРё\n"
+	" 2) РџРѕ РЅРѕРјРµСЂСѓ Р·Р°РІРѕРґР°\n"
+	" 3) РџРѕ РёРјРµРЅРё РґРёСЂРµРєС‚РѕСЂР°\n"
+	" 4) РџРѕ РёРјРµРЅРё РіР»Р°РІРЅРѕРіРѕ РёРЅР¶РёРЅРµСЂР°\n"
+	" 5) РџРѕ РїР»Р°РЅСѓ СЂР°СЃС…РѕРґР°\n"
+	" 6) РџРѕ С„Р°РєС‚РёС‡РµСЃРєРѕРјСѓ СЂР°СЃС…РѕРґСѓ\n"
+	"Р’С‹Р±РµСЂРёС‚Рµ РїРѕР»Рµ РїРѕРёСЃРєР° >> "
 };
 
 enum Interfaces
@@ -74,19 +74,19 @@ enum Interfaces
 	FIND = 4
 };
 
-/*-----------------------------[Прототипы]-----------------------------*/
+/*-----------------------------[РџСЂРѕС‚РѕС‚РёРїС‹]-----------------------------*/
 
-void print_interface(enum Interfaces interface_num);	// Печать интерфейса
+void print_interface(enum Interfaces interface_num);	// РџРµС‡Р°С‚СЊ РёРЅС‚РµСЂС„РµР№СЃР°
 
-void organization(ListPtr fecNotes);					// Организация списка
-void print_notes(ListPtr fecNotes);						// Печать списка
-void add_note(ListPtr fecNotes);						// Добавление записки
-void delete_note(ListPtr fecNotes);						// Удаление записки
-void change_note(ListPtr fecNotes);						// Изменение записки
-void find(ListPtr fecNotes);							// Поиск вхождений
-void load_notes(ListPtr fecNotes);						// Загрузка тестового примера
+void organization(ListPtr fecNotes);					// РћСЂРіР°РЅРёР·Р°С†РёСЏ СЃРїРёСЃРєР°
+void print_notes(ListPtr fecNotes);						// РџРµС‡Р°С‚СЊ СЃРїРёСЃРєР°
+void add_note(ListPtr fecNotes);						// Р”РѕР±Р°РІР»РµРЅРёРµ Р·Р°РїРёСЃРєРё
+void delete_note(ListPtr fecNotes);						// РЈРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРєРё
+void change_note(ListPtr fecNotes);						// РР·РјРµРЅРµРЅРёРµ Р·Р°РїРёСЃРєРё
+void find(ListPtr fecNotes);							// РџРѕРёСЃРє РІС…РѕР¶РґРµРЅРёР№
+void load_notes(ListPtr fecNotes);						// Р—Р°РіСЂСѓР·РєР° С‚РµСЃС‚РѕРІРѕРіРѕ РїСЂРёРјРµСЂР°
 
-void wait_input();										// Ожидание ввода пользователя
+void wait_input();										// РћР¶РёРґР°РЅРёРµ РІРІРѕРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 void notes_renumber(ListPtr fecNotes);
 
 /*-----------------------------[main]-----------------------------*/
@@ -151,7 +151,7 @@ int main()
 	return 0;
 }
 
-/*-----------------------------[Определения функций]-----------------------------*/
+/*-----------------------------[РћРїСЂРµРґРµР»РµРЅРёСЏ С„СѓРЅРєС†РёР№]-----------------------------*/
 
 void print_interface(enum Interfaces interface_num)
 {
@@ -165,7 +165,7 @@ void organization(ListPtr fecNotes)
 	int count = 1;
 
 	print_interface(ORG);
-	// Добавление к существующему списку или создание нового списка
+	// Р”РѕР±Р°РІР»РµРЅРёРµ Рє СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРјСѓ СЃРїРёСЃРєСѓ РёР»Рё СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР°
 	if (!(getchar() - '0'))
 	{
 		count = fecNotes->size;
@@ -175,17 +175,17 @@ void organization(ListPtr fecNotes)
 		clear(fecNotes);
 	}
 
-	// Ввод пока пользователь не введет 0
+	// Р’РІРѕРґ РїРѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РІРІРµРґРµС‚ 0
 	while (userInput)
 	{
 		system("cls");
 		FECNote note = input_note(count++);
 		push_back(fecNotes, &note);
 
-		printf("\nПродолжить ввод? (1 - да, 0 - нет) >> ");
+		printf("\nРџСЂРѕРґРѕР»Р¶РёС‚СЊ РІРІРѕРґ? (1 - РґР°, 0 - РЅРµС‚) >> ");
 		userInput = (getchar() - '0');
 	}
-	// Сортировка по порядковому номеру
+	// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ
 	sort(fecNotes, COMPARE_FUNC_ARR[SER_NUM]);
 }
 
@@ -195,8 +195,8 @@ void print_notes(ListPtr fecNotes)
 	while (1)
 	{
 		print_interface(PRINT);
-		printf("Текущий режим: %d\n", sortMode);
-		// Направление печати списка ((+) с начала, (-) с конца)
+		printf("РўРµРєСѓС‰РёР№ СЂРµР¶РёРј: %d\n", sortMode);
+		// РќР°РїСЂР°РІР»РµРЅРёРµ РїРµС‡Р°С‚Рё СЃРїРёСЃРєР° ((+) СЃ РЅР°С‡Р°Р»Р°, (-) СЃ РєРѕРЅС†Р°)
 		if (sortMode > 0)
 		{
 			print_list(fecNotes);
@@ -209,8 +209,8 @@ void print_notes(ListPtr fecNotes)
 		if (_getch() - '0')
 		{
 			print_interface(SORT);
-			printf(	"Текущий режим: %d\n"
-					"Выбор >> ", sortMode);
+			printf(	"РўРµРєСѓС‰РёР№ СЂРµР¶РёРј: %d\n"
+					"Р’С‹Р±РѕСЂ >> ", sortMode);
 			int userInput = getchar() - '0';
 			if (userInput >= 1 && userInput <= 6)
 			{
@@ -218,7 +218,7 @@ void print_notes(ListPtr fecNotes)
 				else
 				{
 					sortMode = userInput;
-					// Сортировка по выбранному полю
+					// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РїРѕР»СЋ
 					sort(fecNotes, COMPARE_FUNC_ARR[sortMode - 1]);
 				}
 			}
@@ -238,30 +238,30 @@ void delete_note(ListPtr fecNotes)
 {
 	int userInput = -1;
 	system("cls");
-	printf("Введите номер записки для удаления >> ");
+	printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРєРё РґР»СЏ СѓРґР°Р»РµРЅРёСЏ >> ");
 	scanf("%d", &userInput);
 
-	// Удаление по индексу
+	// РЈРґР°Р»РµРЅРёРµ РїРѕ РёРЅРґРµРєСЃСѓ
 	if (pop(fecNotes, userInput - 1))
 	{
-		puts("\nЗаписки не существует\n");
+		puts("\nР—Р°РїРёСЃРєРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚\n");
 		wait_input();
 	}
-	else notes_renumber(fecNotes); // Пересчет порядковых нмеров записей
+	else notes_renumber(fecNotes); // РџРµСЂРµСЃС‡РµС‚ РїРѕСЂСЏРґРєРѕРІС‹С… РЅРјРµСЂРѕРІ Р·Р°РїРёСЃРµР№
 }
 
 void change_note(ListPtr fecNotes)
 {
 	int userInput = -1;
 	system("cls");
-	printf("Введите номер записки для изменения >> ");
+	printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РїРёСЃРєРё РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ >> ");
 	scanf("%d", &userInput);
 
-	// Поиск и изменение по индексу
+	// РџРѕРёСЃРє Рё РёР·РјРµРЅРµРЅРёРµ РїРѕ РёРЅРґРµРєСЃСѓ
 	FECNote* note = get_at(fecNotes, userInput - 1);
 	if (!note)
 	{
-		puts("\nЗаписки не существует\n");
+		puts("\nР—Р°РїРёСЃРєРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚\n");
 		wait_input();
 	}
 	else
@@ -280,10 +280,10 @@ void find(ListPtr fecNotes)
 		float floatInput;
 	} userInput = {""};
 
-	// Пользовательский ввод:
+	// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ:
 
 	system("cls");
-	// Выбор поля поиска
+	// Р’С‹Р±РѕСЂ РїРѕР»СЏ РїРѕРёСЃРєР°
 	do
 	{
 		print_interface(FIND);
@@ -292,21 +292,21 @@ void find(ListPtr fecNotes)
 	while (findMode <= 0 && findMode > 6);
 
 	int correct = 0;
-	// Ввод искомого значения
+	// Р’РІРѕРґ РёСЃРєРѕРјРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
 	do
 	{
 		system("cls");
-		printf("Введите искомое значение >> ");
+		printf("Р’РІРµРґРёС‚Рµ РёСЃРєРѕРјРѕРµ Р·РЅР°С‡РµРЅРёРµ >> ");
 		switch (findMode)
 		{
-		// Ввод типа int
+		// Р’РІРѕРґ С‚РёРїР° int
 		case 1: case 2:
 		{
 			if (scanf("%d", &userInput.intInput) == 1) correct = 1;
-			else puts("Ошибка ввода...");
+			else puts("РћС€РёР±РєР° РІРІРѕРґР°...");
 			break;
 		}
-		// Ввод типа char* (строка)
+		// Р’РІРѕРґ С‚РёРїР° char* (СЃС‚СЂРѕРєР°)
 		case 3: case 4:
 		{
 			getchar();
@@ -315,15 +315,15 @@ void find(ListPtr fecNotes)
 				correct = 1;
 				userInput.stringInput[strlen(userInput.stringInput) - 1] = '\0';
 			}
-			else puts("Ошибка ввода...");
+			else puts("РћС€РёР±РєР° РІРІРѕРґР°...");
 			fflush(stdin);
 			break;
 		}
-		// Ввод типа float
+		// Р’РІРѕРґ С‚РёРїР° float
 		case 5: case 6:
 		{
 			if (scanf("%f", &userInput.floatInput) == 1) correct = 1;
-			else puts("Ошибка ввода...");
+			else puts("РћС€РёР±РєР° РІРІРѕРґР°...");
 			break;
 		}
 		default:
@@ -331,7 +331,7 @@ void find(ListPtr fecNotes)
 		}
 	} while (!correct);
 
-	// Создание структуры для поиска с нужным полем
+	// РЎРѕР·РґР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ РїРѕРёСЃРєР° СЃ РЅСѓР¶РЅС‹Рј РїРѕР»РµРј
 	FECNote required = init_note();
 	switch (findMode)
 	{
@@ -343,7 +343,7 @@ void find(ListPtr fecNotes)
 	case 6: required.energyConsReal = userInput.floatInput; break;
 	}
 
-	// Сам поиск вхождений
+	// РЎР°Рј РїРѕРёСЃРє РІС…РѕР¶РґРµРЅРёР№
 	RefArray entries = find_entries(fecNotes, &required, COMPARE_FUNC_ARR[findMode - 1]);
 
 	print_entries(&entries);
@@ -360,7 +360,7 @@ void load_notes(ListPtr fecNotes)
 
 void wait_input()
 {
-	puts("\nНажмите любую кнопку...");
+	puts("\nРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєРЅРѕРїРєСѓ...");
 	_getch();
 }
 
