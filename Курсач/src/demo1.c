@@ -353,7 +353,7 @@ void find(ListPtr fecNotes)
 
 void load_notes(ListPtr fecNotes)
 {
-	scan_note_list("input\\in.txt", fecNotes);
+	scan_note_list("input\\in_test.txt", fecNotes);
 	notes_renumber(fecNotes);
 }
 
