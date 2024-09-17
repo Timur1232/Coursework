@@ -45,6 +45,7 @@ int pop(ListPtr list, int pos);
 Iterator get_iter(ListPtr list, int pos);
 ValuePtr get_at(ListPtr list, int pos);
 
+void sort(ListPtr list, int (*compare)(ConstValuePtr val1, ConstValuePtr val2));
 void swap(ListPtr list, int pos1, int pos2);
 
 // Временные функции

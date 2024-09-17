@@ -209,6 +209,21 @@ int pop(ListPtr list, int pos)
 	return 0;
 }
 
+void sort(ListPtr list, int (*compare)(ConstValuePtr val1, ConstValuePtr val2))
+{
+	if (!list) { return; }
+	for (FOR_RANGE(i, *list))
+	{
+		for (Iterator j = list->end; j != i; DECREMENT(j))
+		{
+			if (compare(&j->data, &j->prev->data) < 0)
+			{
+				SWAP(j->prev, j);
+			}
+		}
+	}
+}
+
 void swap(ListPtr list, int pos1, int pos2)
 {
 	if (!list) { return; }

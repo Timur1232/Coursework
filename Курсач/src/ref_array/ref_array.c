@@ -4,9 +4,11 @@
 
 #include "..\macros.h"
 #include "..\log\log.h"
+#include "..\list\list.h"
 
 RefArray init_ref_array(int reserve)
 {
+	reserve = abs(reserve);
 	RefArray array;
 	array.size = 0;
 	array.capacity = reserve;
@@ -30,7 +32,11 @@ void add_ref(RefArrayPtr array, void* ref)
 		if (array->capacity <= 1) array->capacity = 2;
 		else array->capacity += array->capacity / 2;	// +50%
 
-		array->data = (void**)realloc(array->data, sizeof(void*) * array->capacity);
+		if (array->data)
+			array->data = (void**)realloc(array->data, sizeof(void*) * array->capacity);
+		else
+			array->data = NEW(void*, array->capacity);
+
 		if (!array->data)
 		{
 			LOG(ERR, "ref_array.c", "add_ref()", "realloc() returned NULL", LOG_FILE)

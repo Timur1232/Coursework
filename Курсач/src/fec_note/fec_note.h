@@ -1,6 +1,8 @@
 ﻿#ifndef FEC_NOTE_H
 #define FEC_NOTE_H
 
+#define MAX_STRING_SIZE 16
+
 /**
  * порядковый номер
  * номер завода
@@ -9,14 +11,13 @@
  * расход энергии по плану (в тыс. КВт∙ч)
  * израсходовано фактически (в тыс. КВт∙ч)
  */
-
  // Factory Electricity Consumption Note struct
 typedef struct FECNote
 {
     int serialNumber;
     int factoryNumber;
-    char directorFullName[16];
-    char engineerFullName[16];
+    char directorFullName[MAX_STRING_SIZE];
+    char engineerFullName[MAX_STRING_SIZE];
     float energyConsPlan;
     float energyConsReal;
 } FECNote;
