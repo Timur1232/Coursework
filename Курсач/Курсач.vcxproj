@@ -281,6 +281,7 @@
   <ItemGroup>
     <ClCompile Include="src\demo1.c" />
     <ClCompile Include="src\file_work\file_work.c" />
+    <ClCompile Include="src\file_work\parser\parser.c" />
     <ClCompile Include="src\find\find_entries.c" />
     <ClCompile Include="src\list\list.c" />
     <ClCompile Include="src\fec_note\fec_note.c" />
@@ -292,6 +293,7 @@
     <ClCompile Include="src\test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\file_work\parser\parser.h" />
     <ClInclude Include="src\find\find_entries.h" />
     <ClInclude Include="src\file_work\file_work.h" />
     <ClInclude Include="src\list\list.h" />

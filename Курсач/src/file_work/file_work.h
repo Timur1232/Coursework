@@ -4,7 +4,11 @@
 #include "../fec_note/fec_note.h"
 #include "../list/list.h"
 
-void scan_note(const char* fileName, FECNote* note);
+#include <stdio.h>
+
+int scan_note(FILE* file, FECNote* note);
 void scan_note_list(const char* fileName, ListPtr fecNotes);
+
+void ignore_line(FILE* file);
 
 #endif

@@ -1,2 +1,29 @@
-﻿  test.c
-  Курсач.vcxproj -> D:\source\repos\Курсач\x64\Test\Курсач.exe
+﻿  demo1.c
+  file_work.c
+  find_entries.c
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.h(7,19): error C2143: синтаксическая ошибка: отсутствие ")" перед "*"
+  (компиляция исходного файла "src/file_work/file_work.c")
+  
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.h(7,19): error C2143: синтаксическая ошибка: отсутствие "{" перед "*"
+  (компиляция исходного файла "src/file_work/file_work.c")
+  
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.h(7,27): error C2371: FECNote: переопределение; различные базовые типы
+  (компиляция исходного файла "src/file_work/file_work.c")
+      D:\source\repos\Курсач\Курсач\src\fec_note\fec_note.h(23,3):
+       см. объявление "FECNote"
+  
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.h(7,34): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+  (компиляция исходного файла "src/file_work/file_work.c")
+  
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.h(7,40): error C2059: синтаксическая ошибка: )
+  (компиляция исходного файла "src/file_work/file_work.c")
+  
+  list.c
+  fec_note.c
+  interface.c
+  compare.c
+  log.c
+  note_table.c
+  ref_array.c
+  test.c
+  Создание кода...

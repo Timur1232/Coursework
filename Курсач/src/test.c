@@ -7,10 +7,15 @@
 
 int main()
 {
-	FECNote note = init_note();
+	FILE* file = fopen("input/test.txt", "r");
+	char str[5];
 
-	scan_note("input/in.txt", &note, 1);
-	print_note(&note);
+	fgets(str, 5, file);
+	puts(str);
+	fgets(str, 5, file);
+	puts(str);
+
+	fclose(file);
 
 	return 0;
 }
