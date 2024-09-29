@@ -3,12 +3,15 @@
 
 #include "../fec_note/fec_note.h"
 #include "../list/list.h"
+#include "parser/parser.h"
 
 #include <stdio.h>
 
-int scan_note(FILE* file, FECNote* note);
-void scan_note_list(const char* fileName, ListPtr fecNotes);
+ParserErrors scan_note(FILE* file, FECNote* note);
+ParserErrors scan_note_list(const char* fileName, ListPtr fecNotes);
+ParserErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes);
 
-void ignore_line(FILE* file);
+ParserErrors save_note_list(const char* fileName, ListPtr fecNotes);
+ParserErrors save_bin_note_list(const char* fileName, ListPtr fecNotes);
 
 #endif

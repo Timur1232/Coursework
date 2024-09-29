@@ -17,8 +17,9 @@ typedef enum Token
 	OPEN_BRACKET = '{',
 	CLOSE_BRAKET = '}',
 	EQUAL_SIGN = '=',
-	COMMENT = '#',
 	QUOTE_MARK = '\"',
+	COMMENT = '#',
+	EMPTY_LINE,
 
 	INT_TYPE = 6,
 	FLOAT_TYPE = 7,
@@ -40,7 +41,8 @@ typedef enum TokenType
 
 typedef enum ParserErrors
 {
-	ALL_GOOD,
+	ALL_GOOD = 0,
+	FILE_ENDS,
 
 	FILE_OPEN_ERR,
 
@@ -56,7 +58,10 @@ typedef enum ParserErrors
 	MULTIPLE_VARS,
 
 	EXPECT_ASSIGN,
-	EXPECT_VALUE
+	EXPECT_VALUE,
+	EXPECT_INT,
+	EXPECT_FLOAT,
+	EXPECT_STR
 } ParserErrors;
 
 typedef struct InputObserver

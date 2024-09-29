@@ -1,18 +1,20 @@
+# Comment
+
+
 {
-SerialNumber = 123
-FactoryNumber = 321
-DirectorName = "dfgsdf dsfgsdfg"
-EngineerName = "fsghfgh adfge"
-EnergyConsPlan = 123.432
-EnergyConsReal = 432.123
+	SerialNumber = 123		#Comment
+	
+	FactoryNumber = 321
+	DirectorName = "dfgsdf dsfgsdfg"
+	
+	EnergyConsReal = 432.12
 }
 {
-SerialNumber = 2345
-FactoryNumber = 53
-DirectorName = "Timur Bai"
-EngineerName = "Kirill Kv"
-EnergyConsPlan = 43.432
-EnergyConsReal = 69.420
+	SerialNumber = 234
+	EngineerName = "Kirill Kv"
+	EnergyConsPlan = 43.432
+	DirectorName = "Timur Bai"
+	EnergyConsReal = 69.420
 }
 {
 SerialNumber = 123

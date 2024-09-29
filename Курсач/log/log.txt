@@ -11,3 +11,59 @@ FUNCTION: scan_note()
 MESSAGE:
 file = nullptr
 
+[ 29.8.2024, 12:40:23 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=2
+123 321 dfgsdf dsfgsdfg fsghfgh adfgefg 123.431999 432.122986
+
+[ 29.8.2024, 12:57:21 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=12
+123 321 dfgsdf dsfgsdfg  0.000000 0.000000
+
+[ 29.8.2024, 12:57:33 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=13
+123 321   0.000000 0.000000
+
+[ 29.8.2024, 17:10:34 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=1
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 17:12:19 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=1
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 17:12:58 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=1
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 17:15:18 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=1
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 17:25:20 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=12
+0 0   0.000000 0.000000
+

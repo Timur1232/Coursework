@@ -23,6 +23,9 @@ void procces_error(ParserErrors err)
 	case NO_OPEN_BRACKET:
 		printf("expected open bracket\n");
 		break;
+	case NO_CLOSE_BRACKET:
+		printf("expected close bracket\n");
+		break;
 	case SCAN_INT_ERR:
 		printf("int scan error\n");
 		break;
@@ -41,24 +44,30 @@ void procces_error(ParserErrors err)
 	case EXPECT_VALUE:
 		printf("expected value token\n");
 		break;
+	case EXPECT_INT:
+		printf("expected int type\n");
+		break;
+	case EXPECT_FLOAT:
+		printf("expected float type\n");
+		break;
+	case EXPECT_STR:
+		printf("expected string type\n");
+		break;
+	default:
+		printf("Unexpected code: %d\n", err);
 	}
 }
 
 int main()
 {
-	FILE* file = fopen("input/syntax.txt", "r");
-	FECNote note = init_note(),
-		note2 = init_note();
+	system("chcp 65001");
 
-	ParserErrors err = scan_note(file, &note);
+	List list = init_list();
 
-	procces_error(err);
-	err = scan_note(file, &note2);
-	procces_error(err);
+	puts("scan list input/test.txt");
+	procces_error(scan_note_list("input/test.txt", &list));
 
-	print_note(&note);
-	print_note(&note2);
-
+	print_list(&list);
 
 	return 0;
 }

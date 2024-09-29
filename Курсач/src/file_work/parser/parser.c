@@ -88,6 +88,10 @@ Token get_token(char* buff)
 		shift = 1;
 		returnValue = QUOTE_MARK;
 	}
+	else if (buff[0] == '\0')
+	{
+		return EMPTY_LINE;
+	}
 	else if (is_digit(buff[0]))
 	{
 		if (contain(buff, '.'))
@@ -161,6 +165,7 @@ TokenType token_type(Token token)
 		return VALUE_TYPE;
 
 	case COMMENT:
+	case EMPTY_LINE:
 		return SPEC;
 
 	}
