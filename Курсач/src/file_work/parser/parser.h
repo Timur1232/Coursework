@@ -5,8 +5,10 @@
 
 #include "../../fec_note/fec_note.h"
 
+// Токены
 typedef enum Token
 {
+	// Переменные (поля структуры)
 	SERIAL_NUM = 0,
 	FACTORY_NUM = 1,
 	DIR_NAME = 2,
@@ -14,15 +16,17 @@ typedef enum Token
 	CONS_PLAN = 4,
 	CONS_REAL = 5,
 
+	// Специальные символы
 	OPEN_BRACKET = '{',
 	CLOSE_BRAKET = '}',
 	EQUAL_SIGN = '=',
 	QUOTE_MARK = '\"',
 	COMMENT = '#',
-	EMPTY_LINE,
 	COMMA = ',',
 	SEMICOLON = ';',
+	EMPTY_LINE,
 
+	// Типы данных
 	INT_TYPE = 6,
 	FLOAT_TYPE = 7,
 	STRING_TYPE = 8,
@@ -30,6 +34,7 @@ typedef enum Token
 	NONE = -1
 } Token;
 
+// Типы токенов
 typedef enum TokenType
 {
 	VAR,
@@ -42,26 +47,35 @@ typedef enum TokenType
 	NONE_TYPE = -1
 } TokenType;
 
+// Возможные ошибки парсера
 typedef enum ParserErrors
 {
+	// Нет ошибки
 	ALL_GOOD = 0,
 	FILE_ENDS,
 
+	// Неправильный токен
 	UNRECOGNOZABLE_TOKEN,
 
+	// Ошибка в открытии файла
 	FILE_OPEN_ERR,
 
+	// Переполнение буфера
 	BUFF_SIZE_EXCEEDED,
 
+	// Ошибки в расставлении границ
 	NO_OPEN_BRACKET,
 	NO_CLOSE_BRACKET,
 
+	// Ошибки типов данных
 	SCAN_INT_ERR,
 	SCAN_FLOAT_ERR,
 	SCAN_STR_ERR,
 
+	// Многоразовая запись в одну и ту же переменную
 	MULTIPLE_VARS,
 
+	// Ожидаемые токены
 	EXPECT_ASSIGN,
 	EXPECT_VALUE,
 	EXPECT_INT,
@@ -69,6 +83,7 @@ typedef enum ParserErrors
 	EXPECT_STR
 } ParserErrors;
 
+// Наблюдатель за повторами переменных
 typedef struct InputObserver
 {
 	char serialNumber : 1;
@@ -79,6 +94,7 @@ typedef struct InputObserver
 	char energyConsReal : 1;
 } InputObserver;
 
+// Все необходимые данные для парсинга
 typedef struct ParserHandler
 {
 	int shouldClose;
@@ -96,21 +112,26 @@ typedef struct ParserHandler
 	} scanValue;
 } ParserHandler;
 
+// Обработчик ошибок
 typedef struct ParserErrorHandler
 {
 	int line;
 	ParserErrors err;
 } ParserErrorHandler;
 
+// Инициализация
 ParserHandler init_parser();
 InputObserver init_input();
 
+// Редактирование буфера
 void shift_buff(char* buff, int n);
 void ignore_white_space(char* buff);
 
+// Обработка токенов
 Token get_token(char* buff);
 TokenType token_type(Token token);
 
+// Вспомогательные логические функции
 int eob(char* buff);
 int white_space(char ch);
 int divider(char ch);

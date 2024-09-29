@@ -63,37 +63,37 @@ Token get_token(char* buff)
 	int shift = 0;
 	Token returnValue = NONE;
 
-	if (buff[0] == '{')
+	if (buff[0] == OPEN_BRACKET)
 	{
 		shift = 1;
 		returnValue = OPEN_BRACKET;
 	}
-	else if (buff[0] == '}')
+	else if (buff[0] == CLOSE_BRAKET)
 	{
 		shift = 1;
 		returnValue = CLOSE_BRAKET;
 	}
-	else if (buff[0] == '=')
+	else if (buff[0] == EQUAL_SIGN)
 	{
 		shift = 1;
 		returnValue = EQUAL_SIGN;
 	}
-	else if (buff[0] == '#')
-	{
-		shift = 1;
-		returnValue = COMMENT;
-	}
-	else if (buff[0] == '\"')
+	else if (buff[0] == QUOTE_MARK)
 	{
 		shift = 1;
 		returnValue = QUOTE_MARK;
 	}
-	else if (buff[0] == ',')
+	else if (buff[0] == COMMENT)
+	{
+		shift = 1;
+		returnValue = COMMENT;
+	}
+	else if (buff[0] == COMMA)
 	{
 		shift = 1;
 		returnValue = COMMA;
 	}
-	else if (buff[0] == ';')
+	else if (buff[0] == SEMICOLON)
 	{
 		shift = 1;
 		returnValue = SEMICOLON;

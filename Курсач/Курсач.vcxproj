@@ -305,6 +305,9 @@
     <ClInclude Include="src\note_table\note_table.h" />
     <ClInclude Include="src\ref_array\ref_array.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input\example.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

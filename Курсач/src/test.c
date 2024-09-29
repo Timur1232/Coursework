@@ -67,8 +67,8 @@ int main()
 
 	List list = init_list();
 
-	puts("scan list input/test.txt");
-	procces_error(scan_note_list("input/test.txt", &list));
+	puts("scan list input/example.txt");
+	procces_error(scan_note_list("input/example.txt", &list));
 
 	print_list(&list);
 

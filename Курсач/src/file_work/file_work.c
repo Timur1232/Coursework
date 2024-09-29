@@ -8,15 +8,18 @@
 #include "../fec_note/fec_note.h"
 #include "parser/parser.h"
 
+/*=====================================[Прототипы]=====================================*/
 
-static void ignore_line(FILE* file);
-static int get_int(char* buff, int* data);
-static int get_float(char* buff, float* data);
-static int get_str(char* buff, char* data);
-static ParserErrors get_value(Token valueToken, ParserHandler* parser);
-static ParserErrors load_var(ParserHandler* parser, FECNote* note, Token valueType);
-static ParserErrors proccess_var_token(FILE* file, ParserHandler* parser, FECNote* note);
+static void ignore_line(FILE* file);														// Игнорирует строку в файле до '\n'
 
+static int get_int(char* buff, int* data);													// Считывание int значения из буфера
+static int get_float(char* buff, float* data);												// Считывание float значения из буфера
+static int get_str(char* buff, char* data);													// Считывание char* значения из буфера
+static ParserErrors get_value(Token valueToken, ParserHandler* parser);						// Общее считывание значения из буфера
+static ParserErrors load_var(ParserHandler* parser, FECNote* note, Token valueType);		// Загрузка считанного значения в соответствующее поле структуры
+static ParserErrors proccess_var_token(ParserHandler* parser, FECNote* note);				// Обработка токена переменной и считывание значения
+
+/*=====================================[Функции]=====================================*/
 
 ParserErrorHandler scan_note(FILE* file, FECNote* note)
 {
@@ -30,6 +33,7 @@ ParserErrorHandler scan_note(FILE* file, FECNote* note)
 
 	ParserHandler parser = init_parser();
 
+	// Поиск открывающей скобки
 	do
 	{
 		if (fgets(parser.buff, BUFFER_SIZE, file) == NULL)
@@ -41,53 +45,70 @@ ParserErrorHandler scan_note(FILE* file, FECNote* note)
 		parser.token = get_token(parser.buff);
 	} while (token_type(parser.token) == SPEC);
 
+	// Если открывающая скобка не найдена
 	if (parser.token != OPEN_BRACKET)
 	{
 		error.err = NO_OPEN_BRACKET;
 		return error;
 	}
 
+	// Основной цикл
 	while (!feof(file) && !parser.shouldClose)
 	{
+		// Скан одной строки (до '\n')
 		fgets(parser.buff, BUFFER_SIZE, file);
+
 		error.line++;
 		int num = strlen(parser.buff);
+
+		// Если размер строки превышает размер буфера
+		// Остальная строка будет проигнорирована
+		// Обработка не прерывается на случай, если переполнение вызвано длинным комментарием
 		if (parser.buff[num - 1] != '\n' && num == BUFFER_SIZE)
 		{
 			ignore_line(file);
 			parser.buffSizeExceeded = 1;
 		}
 
+		// Обработка считанной строки
 		while (!eob(parser.buff))
 		{
+			// Получение одного токена
 			parser.token = get_token(parser.buff);
 
+			// Если комментарий или пустая строка, то пропуск всей строки
 			if (token_type(parser.token) == SPEC)
 			{
 				break;
 			}
+			// Если ',' или ';', то пропуск токена
 			else if (token_type(parser.token) == DIVIDER)
 			{
 				continue;
 			}
+			// Если переменная (полу структуры)
 			else if (token_type(parser.token) == VAR)
 			{
-				ParserErrors err = proccess_var_token(file, &parser, note);
+				// Обработка переменной, считывание значения
+				ParserErrors err = proccess_var_token(&parser, note);
 				if (err != ALL_GOOD)
 				{
 					error.err = err;
 					return error;
 				}
 			}
+			// Если закрывающая скобка, то - конец обработки
 			else if (parser.token == CLOSE_BRAKET)
 			{
 				parser.shouldClose = 1;
 			}
+			// Если открывающая скобка, то ошибка
 			else if (parser.token == OPEN_BRACKET)
 			{
 				error.err = NO_CLOSE_BRACKET;
 				return error;
 			}
+			// Неправильный токен
 			else
 			{
 				error.err = UNRECOGNOZABLE_TOKEN;
@@ -95,6 +116,7 @@ ParserErrorHandler scan_note(FILE* file, FECNote* note)
 			}
 		}
 	}
+	// Вывод ошибки переполнения буфера
 	if (parser.buffSizeExceeded)
 	{
 		error.err = BUFF_SIZE_EXCEEDED;
@@ -119,16 +141,17 @@ ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 	while (!feof(file))
 	{
 		FECNote note = init_note();
+		// Считывание структуры из файла
 		ParserErrorHandler returnErr = scan_note(file, &note);
+
+		// Обработка ошибок
 		error.line += returnErr.line;
 		error.err = returnErr.err;
-
 		if (error.err == BUFF_SIZE_EXCEEDED)
 		{
 			buffExceedErr = BUFF_SIZE_EXCEEDED;
 		}
-
-		if (error.err == FILE_ENDS)
+		else if (error.err == FILE_ENDS)
 		{
 			error.err = ALL_GOOD;
 			break;
@@ -142,6 +165,7 @@ ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 			LOG(ERR, "fec_note.c", "scan_note_list()", str, LOG_FILE);
 			return error;
 		}
+		// Добавление структуры в список
 		push_back(fecNotes, &note);
 	}
 	fclose(file);
@@ -188,12 +212,12 @@ ParserErrors save_note_list(const char* fileName, ListPtr fecNotes)
 	{
 		fprintf(file,
 			"{\n"
-			"\tSerialNumber = %d\n"
-			"\tFactoryNumber = %d\n"
-			"\tDirectorName = \"%s\"\n"
-			"\tEngineerName = \"%s\"\n"
-			"\tEnergyConsPlan = %f\n"
-			"\tEnergyConsReal = %f\n"
+			"\tSerialNumber = %d;\n"
+			"\tFactoryNumber = %d;\n"
+			"\tDirectorName = \"%s;\"\n"
+			"\tEngineerName = \"%s;\"\n"
+			"\tEnergyConsPlan = %f;\n"
+			"\tEnergyConsReal = %f;\n"
 			"}\n",
 			iter->data.serialNumber, iter->data.factoryNumber,
 			iter->data.directorFullName, iter->data.engineerFullName,
@@ -262,9 +286,13 @@ static int get_str(char* buff, char* data)
 	}
 	if (i >= MAX_STRING_SIZE && buff[i - 1] != '\"')
 	{
-		return 0;
+		data[MAX_STRING_SIZE - 1] = '\0';
+		while (buff[i] != '\"') i++;
 	}
-	data[i] = '\0';
+	else
+	{
+		data[i] = '\0';
+	}
 	return i + 1;
 }
 
@@ -272,6 +300,8 @@ static ParserErrors get_value(Token valueToken, ParserHandler* parser)
 {
 	int count = 0;
 	ParserErrors err = ALL_GOOD;
+
+	// Считывание значения соответствующего типу токена
 	switch (valueToken)
 	{
 	case INT_TYPE:
@@ -357,7 +387,7 @@ static ParserErrors load_var(ParserHandler* parser, FECNote* note, Token valueTy
 	return ALL_GOOD;
 }
 
-static ParserErrors proccess_var_token(FILE* file, ParserHandler* parser, FECNote* note)
+static ParserErrors proccess_var_token(ParserHandler* parser, FECNote* note)
 {
 	if (get_token(parser->buff) != EQUAL_SIGN)
 	{
