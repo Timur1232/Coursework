@@ -7,9 +7,9 @@
 
 #ifdef _TEST
 
-void procces_error(ParserErrors err)
+void procces_error(ParserErrorHandler error)
 {
-	switch (err)
+	switch (error.err)
 	{
 	case ALL_GOOD:
 		printf("all good\n");
@@ -18,43 +18,46 @@ void procces_error(ParserErrors err)
 		printf("file open erron\n");
 		break;
 	case BUFF_SIZE_EXCEEDED:
-		printf("buffer size exceeded\n");
+		printf("buffer size exceeded; line: %d\n", error.line);
 		break;
 	case NO_OPEN_BRACKET:
-		printf("expected open bracket\n");
+		printf("expected open bracket; line: %d\n", error.line);
 		break;
 	case NO_CLOSE_BRACKET:
-		printf("expected close bracket\n");
+		printf("expected close bracket; line: %d\n", error.line);
 		break;
 	case SCAN_INT_ERR:
-		printf("int scan error\n");
+		printf("int scan error; line: %d\n", error.line);
 		break;
 	case SCAN_FLOAT_ERR:
-		printf("float scan error\n");
+		printf("float scan error; line: %d\n", error.line);
 		break;
 	case SCAN_STR_ERR:
-		printf("string scan error\n");
+		printf("string scan error; line: %d\n", error.line);
 		break;
 	case MULTIPLE_VARS:
-		printf("multiple variables declared\n");
+		printf("multiple variables declared; line: %d\n", error.line);
 		break;
 	case EXPECT_ASSIGN:
-		printf("expected assign token\n");
+		printf("expected assign token; line: %d\n", error.line);
 		break;
 	case EXPECT_VALUE:
-		printf("expected value token\n");
+		printf("expected value token; line: %d\n", error.line);
 		break;
 	case EXPECT_INT:
-		printf("expected int type\n");
+		printf("expected int type; line: %d\n", error.line);
 		break;
 	case EXPECT_FLOAT:
-		printf("expected float type\n");
+		printf("expected float type; line: %d\n", error.line);
 		break;
 	case EXPECT_STR:
-		printf("expected string type\n");
+		printf("expected string type; line: %d\n", error.line);
+		break;
+	case UNRECOGNOZABLE_TOKEN:
+		printf("unrecognizable token; line: %d\n", error.line);
 		break;
 	default:
-		printf("Unexpected code: %d\n", err);
+		printf("Unexpected code: %d; line: %d\n", error.err, error.line);
 	}
 }
 

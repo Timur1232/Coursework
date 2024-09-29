@@ -10,20 +10,22 @@
 
 
 static void ignore_line(FILE* file);
-static ParserErrors get_int(char* buff, int* data);
-static ParserErrors get_float(char* buff, float* data);
-static ParserErrors get_str(char* buff, char* data);
+static int get_int(char* buff, int* data);
+static int get_float(char* buff, float* data);
+static int get_str(char* buff, char* data);
 static ParserErrors get_value(Token valueToken, ParserHandler* parser);
 static ParserErrors load_var(ParserHandler* parser, FECNote* note, Token valueType);
 static ParserErrors proccess_var_token(FILE* file, ParserHandler* parser, FECNote* note);
 
 
-ParserErrors scan_note(FILE* file, FECNote* note)
+ParserErrorHandler scan_note(FILE* file, FECNote* note)
 {
+	ParserErrorHandler error = { 0, ALL_GOOD };
 	if (!file)
 	{
 		LOG(ERR, "fec_note.c", "scan_note()", "file = nullptr", LOG_FILE);
-		return FILE_OPEN_ERR;
+		error.err = FILE_OPEN_ERR;
+		return error;
 	}
 
 	ParserHandler parser = init_parser();
@@ -32,19 +34,23 @@ ParserErrors scan_note(FILE* file, FECNote* note)
 	{
 		if (fgets(parser.buff, BUFFER_SIZE, file) == NULL)
 		{
-			return FILE_ENDS;
+			error.err = FILE_ENDS;
+			return error;
 		}
+		error.line++;
 		parser.token = get_token(parser.buff);
 	} while (token_type(parser.token) == SPEC);
 
 	if (parser.token != OPEN_BRACKET)
 	{
-		return NO_OPEN_BRACKET;
+		error.err = NO_OPEN_BRACKET;
+		return error;
 	}
 
 	while (!feof(file) && !parser.shouldClose)
 	{
 		fgets(parser.buff, BUFFER_SIZE, file);
+		error.line++;
 		int num = strlen(parser.buff);
 		if (parser.buff[num - 1] != '\n' && num == BUFFER_SIZE)
 		{
@@ -60,12 +66,17 @@ ParserErrors scan_note(FILE* file, FECNote* note)
 			{
 				break;
 			}
+			else if (token_type(parser.token) == DIVIDER)
+			{
+				continue;
+			}
 			else if (token_type(parser.token) == VAR)
 			{
 				ParserErrors err = proccess_var_token(file, &parser, note);
 				if (err != ALL_GOOD)
 				{
-					return err;
+					error.err = err;
+					return error;
 				}
 			}
 			else if (parser.token == CLOSE_BRAKET)
@@ -74,49 +85,71 @@ ParserErrors scan_note(FILE* file, FECNote* note)
 			}
 			else if (parser.token == OPEN_BRACKET)
 			{
-				return NO_CLOSE_BRACKET;
+				error.err = NO_CLOSE_BRACKET;
+				return error;
+			}
+			else
+			{
+				error.err = UNRECOGNOZABLE_TOKEN;
+				return error;
 			}
 		}
 	}
 	if (parser.buffSizeExceeded)
 	{
-		return BUFF_SIZE_EXCEEDED;
+		error.err = BUFF_SIZE_EXCEEDED;
 	}
-	return ALL_GOOD;
+	return error;
 }
 
-ParserErrors scan_note_list(const char* fileName, ListPtr fecNotes)
+ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 {
 	FILE* file = fopen(fileName, "r");
+	ParserErrorHandler error = { 0, ALL_GOOD };
+	ParserErrors buffExceedErr = ALL_GOOD;
+
 	if (!file)
 	{
 		LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
-		return FILE_OPEN_ERR;
+		error.err = FILE_OPEN_ERR;
+		return error;
 	}
 	clear(fecNotes);
 
 	while (!feof(file))
 	{
 		FECNote note = init_note();
-		ParserErrors err = scan_note(file, &note);
+		ParserErrorHandler returnErr = scan_note(file, &note);
+		error.line += returnErr.line;
+		error.err = returnErr.err;
 
-		if (err == FILE_ENDS)
+		if (error.err == BUFF_SIZE_EXCEEDED)
 		{
+			buffExceedErr = BUFF_SIZE_EXCEEDED;
+		}
+
+		if (error.err == FILE_ENDS)
+		{
+			error.err = ALL_GOOD;
 			break;
 		}
-		else if (err != ALL_GOOD)
+		else if (error.err != ALL_GOOD)
 		{
 			fclose(file);
 			char str[150];
 			sprintf(str, "Unable to read formatter text, count=%d\n"
-						 "%d %d %s %s %f %f", err, note.serialNumber, note.factoryNumber, note.directorFullName, note.engineerFullName, note.energyConsPlan, note.energyConsReal);
+						 "%d %d %s %s %f %f", error.err, note.serialNumber, note.factoryNumber, note.directorFullName, note.engineerFullName, note.energyConsPlan, note.energyConsReal);
 			LOG(ERR, "fec_note.c", "scan_note_list()", str, LOG_FILE);
-			return err;
+			return error;
 		}
 		push_back(fecNotes, &note);
 	}
 	fclose(file);
-	return ALL_GOOD;
+	if (buffExceedErr == BUFF_SIZE_EXCEEDED)
+	{
+		error.err = buffExceedErr;
+	}
+	return error;
 }
 
 ParserErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
@@ -199,21 +232,28 @@ static void ignore_line(FILE* file)
 	}
 }
 
-static ParserErrors get_int(char* buff, int* data)
+static int get_int(char* buff, int* data)
 {
+	int count = 0;
+	for (int i = 0; i < BUFFER_SIZE && !white_space(buff[i]) && !divider(buff[i]); i++, count++);
+
 	if (sscanf(buff, "%d", data) == 1)
-		return ALL_GOOD;
-	return SCAN_INT_ERR;
+		return count;
+
+	return 0;
 }
 
-static ParserErrors get_float(char* buff, float* data)
+static int get_float(char* buff, float* data)
 {
+	int count = 0;
+	for (int i = 0; i < BUFFER_SIZE && !white_space(buff[i]) && !divider(buff[i]); i++, count++);
+
 	if (sscanf(buff, "%f", data) == 1)
-		return ALL_GOOD;
-	return SCAN_FLOAT_ERR;
+		return count;
+	return 0;
 }
 
-static ParserErrors get_str(char* buff, char* data)
+static int get_str(char* buff, char* data)
 {
 	int i = 0;
 	for (; buff[i] != '\"' && i < MAX_STRING_SIZE; i++)
@@ -222,29 +262,38 @@ static ParserErrors get_str(char* buff, char* data)
 	}
 	if (i >= MAX_STRING_SIZE && buff[i - 1] != '\"')
 	{
-		return SCAN_STR_ERR;
+		return 0;
 	}
 	data[i] = '\0';
-	return ALL_GOOD;
+	return i + 1;
 }
 
 static ParserErrors get_value(Token valueToken, ParserHandler* parser)
 {
+	int count = 0;
 	ParserErrors err = ALL_GOOD;
 	switch (valueToken)
 	{
 	case INT_TYPE:
-		err = get_int(parser->buff, &parser->scanValue.intValue);
+		count = get_int(parser->buff, &parser->scanValue.intValue);
+		err = SCAN_INT_ERR;
 		break;
 	case FLOAT_TYPE:
-		err = get_float(parser->buff, &parser->scanValue.floatValue);
+		count = get_float(parser->buff, &parser->scanValue.floatValue);
+		err = SCAN_FLOAT_ERR;
 		break;
 	case STRING_TYPE:
-		err = get_str(parser->buff, parser->scanValue.stringValue);
+		count = get_str(parser->buff, parser->scanValue.stringValue);
+		err = SCAN_STR_ERR;
 		break;
 	}
-	parser->buff[0] = '\0';
-	return err;
+	if (!count)
+	{
+		return err;
+	}
+
+	shift_buff(parser->buff, count);
+	return ALL_GOOD;
 }
 
 static ParserErrors load_var(ParserHandler* parser, FECNote* note, Token valueType)

@@ -7,8 +7,8 @@
 
 #include <stdio.h>
 
-ParserErrors scan_note(FILE* file, FECNote* note);
-ParserErrors scan_note_list(const char* fileName, ListPtr fecNotes);
+ParserErrorHandler scan_note(FILE* file, FECNote* note);
+ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes);
 ParserErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes);
 
 ParserErrors save_note_list(const char* fileName, ListPtr fecNotes);

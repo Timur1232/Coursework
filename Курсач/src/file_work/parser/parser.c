@@ -88,13 +88,23 @@ Token get_token(char* buff)
 		shift = 1;
 		returnValue = QUOTE_MARK;
 	}
+	else if (buff[0] == ',')
+	{
+		shift = 1;
+		returnValue = COMMA;
+	}
+	else if (buff[0] == ';')
+	{
+		shift = 1;
+		returnValue = SEMICOLON;
+	}
 	else if (buff[0] == '\0')
 	{
 		return EMPTY_LINE;
 	}
 	else if (is_digit(buff[0]))
 	{
-		if (contain(buff, '.'))
+		if (contain_period(buff))
 		{
 			return FLOAT_TYPE;
 		}
@@ -168,6 +178,10 @@ TokenType token_type(Token token)
 	case EMPTY_LINE:
 		return SPEC;
 
+	case COMMA:
+	case SEMICOLON:
+		return DIVIDER;
+
 	}
 	return NONE_TYPE;
 }
@@ -183,16 +197,21 @@ int white_space(char ch)
 	return ch == ' ' || ch == '\n' || ch == '\t';
 }
 
+int divider(char ch)
+{
+	return ch == ',' || ch == ';';
+}
+
 int is_digit(char ch)
 {
 	return ch >= '0' && ch <= '9';
 }
 
-int contain(char* str, char ch)
+int contain_period(char* str)
 {
-	while (*str != '\0')
+	while (*str != '\0' && !divider(*str) && !white_space(*str))
 	{
-		if (*(str++) == ch)
+		if (*(str++) == '.')
 		{
 			return 1;
 		}

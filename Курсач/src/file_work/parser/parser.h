@@ -1,7 +1,7 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#define BUFFER_SIZE 128
+#define BUFFER_SIZE 512
 
 #include "../../fec_note/fec_note.h"
 
@@ -20,6 +20,8 @@ typedef enum Token
 	QUOTE_MARK = '\"',
 	COMMENT = '#',
 	EMPTY_LINE,
+	COMMA = ',',
+	SEMICOLON = ';',
 
 	INT_TYPE = 6,
 	FLOAT_TYPE = 7,
@@ -35,6 +37,7 @@ typedef enum TokenType
 	SCOPE,
 	VALUE_TYPE,
 	SPEC,
+	DIVIDER,
 
 	NONE_TYPE = -1
 } TokenType;
@@ -43,6 +46,8 @@ typedef enum ParserErrors
 {
 	ALL_GOOD = 0,
 	FILE_ENDS,
+
+	UNRECOGNOZABLE_TOKEN,
 
 	FILE_OPEN_ERR,
 
@@ -91,6 +96,12 @@ typedef struct ParserHandler
 	} scanValue;
 } ParserHandler;
 
+typedef struct ParserErrorHandler
+{
+	int line;
+	ParserErrors err;
+} ParserErrorHandler;
+
 ParserHandler init_parser();
 InputObserver init_input();
 
@@ -102,8 +113,9 @@ TokenType token_type(Token token);
 
 int eob(char* buff);
 int white_space(char ch);
+int divider(char ch);
 int is_digit(char ch);
-int contain(char* str, char ch);
+int contain_period(char* str);
 int my_strcmp(const char* str1, const char* str2);
 
 #endif
