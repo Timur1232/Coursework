@@ -1,2 +1,3 @@
-﻿  test.c
+﻿  file_work.c
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.c(64,14): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   Курсач.vcxproj -> D:\source\repos\Курсач\x64\Test\Курсач.exe

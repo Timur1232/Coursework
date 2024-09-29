@@ -22,6 +22,8 @@ ParserHandler init_parser()
 	parser.token = NONE;
 	parser.input = init_input();
 	parser.scanValue.intValue = 0;
+	parser.error.err = ALL_GOOD;
+	parser.error.line = 0;
 
 	return parser;
 }

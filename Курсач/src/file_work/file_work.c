@@ -21,120 +21,121 @@ static ParserErrors proccess_var_token(ParserHandler* parser, FECNote* note);			
 
 /*=====================================[Функции]=====================================*/
 
-ParserErrorHandler scan_note(FILE* file, FECNote* note)
+void scan_note(FILE* file, ParserHandler* parser, FECNote* note)
 {
-	ParserErrorHandler error = { 0, ALL_GOOD };
 	if (!file)
 	{
 		LOG(ERR, "fec_note.c", "scan_note()", "file = nullptr", LOG_FILE);
-		error.err = FILE_OPEN_ERR;
-		return error;
+		parser->error.err = FILE_OPEN_ERR;
+		return;
 	}
-
-	ParserHandler parser = init_parser();
 
 	// Поиск открывающей скобки
 	do
 	{
-		if (fgets(parser.buff, BUFFER_SIZE, file) == NULL)
+		if (fgets(parser->buff, BUFFER_SIZE, file) == NULL)
 		{
-			error.err = FILE_ENDS;
-			return error;
+			parser->error.err = FILE_ENDS;
+			return;
 		}
-		error.line++;
-		parser.token = get_token(parser.buff);
-	} while (token_type(parser.token) == SPEC);
+		parser->error.line++;
+		parser->token = get_token(parser->buff);
+	} while (token_type(parser->token) == SPEC);
 
 	// Если открывающая скобка не найдена
-	if (parser.token != OPEN_BRACKET)
+	if (parser->token != OPEN_BRACKET)
 	{
-		error.err = NO_OPEN_BRACKET;
-		return error;
+		parser->error.err = NO_OPEN_BRACKET;
+		return;
 	}
 
 	// Основной цикл
-	while (!feof(file) && !parser.shouldClose)
+	while (!feof(file) && !parser->shouldClose)
 	{
 		// Скан одной строки (до '\n')
-		fgets(parser.buff, BUFFER_SIZE, file);
+		fgets(parser->buff, BUFFER_SIZE, file);
 
-		error.line++;
-		int num = strlen(parser.buff);
+		parser->error.line++;
 
 		// Если размер строки превышает размер буфера
 		// Остальная строка будет проигнорирована
 		// Обработка не прерывается на случай, если переполнение вызвано длинным комментарием
-		if (parser.buff[num - 1] != '\n' && num == BUFFER_SIZE)
 		{
-			ignore_line(file);
-			parser.buffSizeExceeded = 1;
+			int num = strlen(parser->buff);
+			if (parser->buff[num - 1] != '\n' && num == BUFFER_SIZE)
+			{
+				ignore_line(file);
+				parser->buffSizeExceeded = 1;
+			}
 		}
 
 		// Обработка считанной строки
-		while (!eob(parser.buff))
+		while (!eob(parser->buff))
 		{
 			// Получение одного токена
-			parser.token = get_token(parser.buff);
+			parser->token = get_token(parser->buff);
 
 			// Если комментарий или пустая строка, то пропуск всей строки
-			if (token_type(parser.token) == SPEC)
+			if (token_type(parser->token) == SPEC)
 			{
 				break;
 			}
 			// Если ',' или ';', то пропуск токена
-			else if (token_type(parser.token) == DIVIDER)
+			else if (token_type(parser->token) == DIVIDER)
 			{
 				continue;
 			}
 			// Если переменная (полу структуры)
-			else if (token_type(parser.token) == VAR)
+			else if (token_type(parser->token) == VAR)
 			{
 				// Обработка переменной, считывание значения
-				ParserErrors err = proccess_var_token(&parser, note);
+				ParserErrors err = proccess_var_token(parser, note);
 				if (err != ALL_GOOD)
 				{
-					error.err = err;
-					return error;
+					parser->error.err = err;
+					return;
 				}
 			}
 			// Если закрывающая скобка, то - конец обработки
-			else if (parser.token == CLOSE_BRAKET)
+			else if (parser->token == CLOSE_BRAKET)
 			{
-				parser.shouldClose = 1;
+				parser->shouldClose = 1;
 			}
 			// Если открывающая скобка, то ошибка
-			else if (parser.token == OPEN_BRACKET)
+			else if (parser->token == OPEN_BRACKET)
 			{
-				error.err = NO_CLOSE_BRACKET;
-				return error;
+				parser->error.err = NO_CLOSE_BRACKET;
+				return;
 			}
 			// Неправильный токен
 			else
 			{
-				error.err = UNRECOGNOZABLE_TOKEN;
-				return error;
+				parser->error.err = UNRECOGNOZABLE_TOKEN;
+				return;
 			}
 		}
 	}
+	// Обнуление парсера для следующей итерации
+	parser->shouldClose = 0;
+	parser->input = init_input();
 	// Вывод ошибки переполнения буфера
-	if (parser.buffSizeExceeded)
+	if (parser->buffSizeExceeded)
 	{
-		error.err = BUFF_SIZE_EXCEEDED;
+		parser->error.err = BUFF_SIZE_EXCEEDED;
 	}
-	return error;
 }
 
 ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 {
 	FILE* file = fopen(fileName, "r");
-	ParserErrorHandler error = { 0, ALL_GOOD };
+	ParserHandler parser = init_parser();
 	ParserErrors buffExceedErr = ALL_GOOD;
 
 	if (!file)
 	{
 		LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
-		error.err = FILE_OPEN_ERR;
-		return error;
+		parser.error.err = FILE_OPEN_ERR;
+		return parser.error;
 	}
 	clear(fecNotes);
 
@@ -142,28 +143,26 @@ ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 	{
 		FECNote note = init_note();
 		// Считывание структуры из файла
-		ParserErrorHandler returnErr = scan_note(file, &note);
+		scan_note(file, &parser, &note);
 
 		// Обработка ошибок
-		error.line += returnErr.line;
-		error.err = returnErr.err;
-		if (error.err == BUFF_SIZE_EXCEEDED)
+		if (parser.error.err == BUFF_SIZE_EXCEEDED)
 		{
 			buffExceedErr = BUFF_SIZE_EXCEEDED;
 		}
-		else if (error.err == FILE_ENDS)
+		else if (parser.error.err == FILE_ENDS)
 		{
-			error.err = ALL_GOOD;
+			parser.error.err = ALL_GOOD;
 			break;
 		}
-		else if (error.err != ALL_GOOD)
+		else if (parser.error.err != ALL_GOOD)
 		{
 			fclose(file);
 			char str[150];
 			sprintf(str, "Unable to read formatter text, count=%d\n"
-						 "%d %d %s %s %f %f", error.err, note.serialNumber, note.factoryNumber, note.directorFullName, note.engineerFullName, note.energyConsPlan, note.energyConsReal);
+						 "%d %d %s %s %f %f", parser.error.err, note.serialNumber, note.factoryNumber, note.directorFullName, note.engineerFullName, note.energyConsPlan, note.energyConsReal);
 			LOG(ERR, "fec_note.c", "scan_note_list()", str, LOG_FILE);
-			return error;
+			return parser.error;
 		}
 		// Добавление структуры в список
 		push_back(fecNotes, &note);
@@ -171,9 +170,9 @@ ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 	fclose(file);
 	if (buffExceedErr == BUFF_SIZE_EXCEEDED)
 	{
-		error.err = buffExceedErr;
+		parser.error.err = buffExceedErr;
 	}
-	return error;
+	return parser.error;
 }
 
 ParserErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)

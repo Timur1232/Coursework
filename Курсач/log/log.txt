@@ -221,3 +221,80 @@ MESSAGE:
 Unable to read formatter text, count=2
 0 0   0.000000 0.000000
 
+[ 29.8.2024, 21:26:22 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=5
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 21:28:50 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=5
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 21:31:1 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=10
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 21:31:17 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=10
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 21:33:57 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=6
+234 321 Timur Bai Kirill Kv 43.431999 69.419998
+
+[ 29.8.2024, 21:34:11 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=11
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 21:34:26 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=12
+87 567   0.000000 0.000000
+
+[ 29.8.2024, 21:34:42 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=14
+87 567 Someone Noname 0.000000 0.000000
+
+[ 29.8.2024, 21:34:51 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=13
+0 0   0.000000 0.000000
+
+[ 29.8.2024, 21:35:6 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=10
+23 0   0.000000 0.000000
+
+[ 29.8.2024, 21:35:22 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to read formatter text, count=10
+23 54 Danil Bl Dima K 0.000000 0.000000
+

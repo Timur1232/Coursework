@@ -94,6 +94,13 @@ typedef struct InputObserver
 	char energyConsReal : 1;
 } InputObserver;
 
+// Обработчик ошибок
+typedef struct ParserErrorHandler
+{
+	int line;
+	ParserErrors err;
+} ParserErrorHandler;
+
 // Все необходимые данные для парсинга
 typedef struct ParserHandler
 {
@@ -110,14 +117,8 @@ typedef struct ParserHandler
 		float floatValue;
 		char stringValue[MAX_STRING_SIZE];
 	} scanValue;
+	ParserErrorHandler error;
 } ParserHandler;
-
-// Обработчик ошибок
-typedef struct ParserErrorHandler
-{
-	int line;
-	ParserErrors err;
-} ParserErrorHandler;
 
 // Инициализация
 ParserHandler init_parser();

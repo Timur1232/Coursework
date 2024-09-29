@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 // Загрузка из файла
-ParserErrorHandler scan_note(FILE* file, FECNote* note);
+void scan_note(FILE* file, ParserHandler* parser, FECNote* note);
 ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes);
 ParserErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes);
 
