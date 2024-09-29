@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\input\\syntax.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\input\\syntax.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -30,50 +38,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "syntax.txt",
+              "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\input\\syntax.txt",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\input\\syntax.txt",
+              "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\input\\syntax.txt",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\input\\syntax.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-09-29T08:41:02.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "test.c",
+              "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c",
+              "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-29T08:29:53.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "parser.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
               "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAABUAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAUwK0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-28T17:33:12.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "parser.h",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.h",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.h",
               "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.h",
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.h",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEoAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAGUAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-28T17:32:32.044Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "file_work.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c",
               "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c",
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAADcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAUwJgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-09-28T07:46:49.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "file_work.h",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h",
@@ -81,12 +115,11 @@
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-28T07:46:03.936Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T07:46:03.936Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "demo1.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\demo1.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\demo1.c",
@@ -94,8 +127,7 @@
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\demo1.c",
               "ViewState": "AgIAABIBAAAAAAAAAAAAAF4AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-09-16T17:54:39.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-16T17:54:39.406Z"
             }
           ]
         }

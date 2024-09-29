@@ -1,0 +1,32 @@
+{
+SerialNumber = 123
+FactoryNumber = 321
+DirectorName = "dfgsdf dsfgsdfg"
+EngineerName = "fsghfgh adfge"
+EnergyConsPlan = 123.432
+EnergyConsReal = 432.123
+}
+{
+SerialNumber = 2345
+FactoryNumber = 53
+DirectorName = "Timur Bai"
+EngineerName = "Kirill Kv"
+EnergyConsPlan = 43.432
+EnergyConsReal = 69.420
+}
+{
+SerialNumber = 123
+FactoryNumber = 321
+DirectorName = "dfgsdf dsfgsdfg"
+EngineerName = "fsghfgh adfge"
+EnergyConsPlan = 123.432
+EnergyConsReal = 432.123
+}
+{
+SerialNumber = 123
+FactoryNumber = 321
+DirectorName = "dfgsdf dsfgsdfg"
+EngineerName = "fsghfgh adfge"
+EnergyConsPlan = 123.432
+EnergyConsReal = 432.123
+}

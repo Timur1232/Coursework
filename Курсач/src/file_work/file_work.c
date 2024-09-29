@@ -13,52 +13,54 @@
   *		  Улучшить форматированный ввод
 */
 
-static ParserErrors get_int(FILE* file, int* data)
+static ParserErrors get_int(char* buff, int* data)
 {
-	if (fscanf(file, "%d", data) == 1)
+	if (sscanf(buff, "%d", data) == 1)
 		return ALL_GOOD;
 	return SCAN_INT_ERR;
 }
 
-static ParserErrors get_float(FILE* file, float* data)
+static ParserErrors get_float(char* buff, float* data)
 {
-	if (fscanf(file, "%f", data) == 1)
+	if (sscanf(buff, "%f", data) == 1)
 		return ALL_GOOD;
 	return SCAN_FLOAT_ERR;
 }
 
-static ParserErrors get_str(FILE* file, char* data)
+static ParserErrors get_str(char* buff, char* data)
 {
-	char ch = fgetc(file);
-	for (int i = 0; ch != '\"' && i < MAX_STRING_SIZE; i++)
+	int i = 0;
+	for (; buff[i] != '\"' && i < MAX_STRING_SIZE; i++)
 	{
-		data[i] = ch;
-		ch = fgetc(file);
+		data[i] = buff[i];
 	}
-	if (ch != '\"')
+	if (i >= MAX_STRING_SIZE && buff[i - 1] != '\"')
 	{
 		return SCAN_STR_ERR;
 	}
 	return ALL_GOOD;
 }
 
-static ParserErrors get_value(FILE* file, Token valueToken, ParserHandler* parser)
+static ParserErrors get_value(Token valueToken, ParserHandler* parser)
 {
 	ParserErrors err = ALL_GOOD;
 	switch (valueToken)
 	{
 	case INT_TYPE:
-		return get_int(file, &parser->scanValue.intValue);
+		err = get_int(parser->buff, &parser->scanValue.intValue);
+		break;
 	case FLOAT_TYPE:
-		return get_float(file, &parser->scanValue.floatValue);
+		err = get_float(parser->buff, &parser->scanValue.floatValue);
+		break;
 	case STRING_TYPE:
-		err = get_str(file, parser->scanValue.stringValue);
-		ignore_line(file);
-		return err;
+		err = get_str(parser->buff, parser->scanValue.stringValue);
+		break;
 	}
+	parser->buff[0] = '\0';
+	return err;
 }
 
-static ParserErrors load_var(FILE* file, ParserHandler* parser, FECNote* note)
+static ParserErrors load_var(ParserHandler* parser, FECNote* note)
 {
 	switch (parser->token)
 	{
@@ -123,17 +125,18 @@ static ParserErrors proccess_var_token(FILE* file, ParserHandler* parser, FECNot
 		return EXPECT_VALUE;
 	}
 
-	ParserErrors err = get_value(file, valueToken, parser);
+	ParserErrors err = get_value(valueToken, parser);
 	if (err != ALL_GOOD)
 	{
 		return err;
 	}
 
-	err = load_var(file, parser, note);
+	err = load_var(parser, note);
 	if (err != ALL_GOOD)
 	{
 		return err;
 	}
+	return ALL_GOOD;
 }
 
 ParserErrors scan_note(FILE* file, FECNote* note)
@@ -147,6 +150,7 @@ ParserErrors scan_note(FILE* file, FECNote* note)
 	ParserHandler parser = init_parser();
 
 	fgets(parser.buff, BUFFER_SIZE, file);
+	//printf(parser.buff);
 	parser.token = get_token(parser.buff);
 
 	if (parser.token != OPEN_BRACKET)
@@ -157,6 +161,7 @@ ParserErrors scan_note(FILE* file, FECNote* note)
 	while (!feof(file) && !parser.shouldClose)
 	{
 		fgets(parser.buff, BUFFER_SIZE, file);
+		//printf(parser.buff);
 		if (parser.buff[strlen(parser.buff) - 1] != '\n')
 		{
 			ignore_line(file);
@@ -178,6 +183,10 @@ ParserErrors scan_note(FILE* file, FECNote* note)
 				{
 					return err;
 				}
+			}
+			else if (parser.token == CLOSE_BRAKET)
+			{
+				parser.shouldClose = 1;
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-static const char const* VarTokens[] = {
+static const char* const VarTokens[] = {
 	"SerialNumber",
 	"FactoryNumber",
 	"DirectorName",
@@ -35,6 +35,7 @@ InputObserver init_input()
 
 void shift_buff(char* buff, int n)
 {
+	if (!n) return;
 	int size = 0;
 	for (int i = n, j = 0; i < BUFFER_SIZE && buff[i]; i++, j++)
 	{
@@ -95,32 +96,32 @@ Token get_token(char* buff)
 		}
 		return INT_TYPE;
 	}
-	else if (strcmp(VarTokens[SERIAL_NUM], buff) == 0)
+	else if (my_strcmp(VarTokens[SERIAL_NUM], buff) == 0)
 	{
 		shift = strlen(VarTokens[SERIAL_NUM]);
 		returnValue = SERIAL_NUM;
 	}
-	else if (strcmp(VarTokens[FACTORY_NUM], buff) == 0)
+	else if (my_strcmp(VarTokens[FACTORY_NUM], buff) == 0)
 	{
 		shift = strlen(VarTokens[FACTORY_NUM]);
 		returnValue = FACTORY_NUM;
 	}
-	else if (strcmp(VarTokens[DIR_NAME], buff) == 0)
+	else if (my_strcmp(VarTokens[DIR_NAME], buff) == 0)
 	{
 		shift = strlen(VarTokens[DIR_NAME]);
 		returnValue = DIR_NAME;
 	}
-	else if (strcmp(VarTokens[ENG_NAME], buff) == 0)
+	else if (my_strcmp(VarTokens[ENG_NAME], buff) == 0)
 	{
 		shift = strlen(VarTokens[ENG_NAME]);
 		returnValue = ENG_NAME;
 	}
-	else if (strcmp(VarTokens[CONS_PLAN], buff) == 0)
+	else if (my_strcmp(VarTokens[CONS_PLAN], buff) == 0)
 	{
 		shift = strlen(VarTokens[CONS_PLAN]);
 		returnValue = CONS_PLAN;
 	}
-	else if (strcmp(VarTokens[CONS_REAL], buff) == 0)
+	else if (my_strcmp(VarTokens[CONS_REAL], buff) == 0)
 	{
 		shift = strlen(VarTokens[CONS_REAL]);
 		returnValue = CONS_REAL;
@@ -163,7 +164,7 @@ TokenType token_type(Token token)
 		return SPEC;
 
 	}
-	return NONE;
+	return NONE_TYPE;
 }
 
 
@@ -192,4 +193,15 @@ int contain(char* str, char ch)
 		}
 	}
 	return 0;
+}
+
+int my_strcmp(const char* str1, const char* str2)
+{
+	while (*str1 == *str2)
+	{
+		str1++;
+		str2++;
+	}
+	if (*str1 == '\0') return 0;
+	return *str1 - *str2;
 }

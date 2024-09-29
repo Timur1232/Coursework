@@ -5,3 +5,9 @@ MESSAGE:
 Unable to read formatter text, count=5
 1 1 Vladimir Egor 150,000000 0,000000
 
+[ 29.8.2024, 11:37:27 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note()
+MESSAGE:
+file = nullptr
+

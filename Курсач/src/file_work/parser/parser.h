@@ -35,7 +35,7 @@ typedef enum TokenType
 	VALUE_TYPE,
 	SPEC,
 
-	NONE = -1
+	NONE_TYPE = -1
 } TokenType;
 
 typedef enum ParserErrors
@@ -99,5 +99,6 @@ int eob(char* buff);
 int white_space(char ch);
 int is_digit(char ch);
 int contain(char* str, char ch);
+int my_strcmp(const char* str1, const char* str2);
 
 #endif
