@@ -44,7 +44,7 @@ TokenizerErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
 	FILE* file = fopen(fileName, "rb");
 	if (!file)
 	{
-		LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
+		LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
 		return -1;
 	}
 	clear(fecNotes);
@@ -52,13 +52,13 @@ TokenizerErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
 	FECNote note = init_note();
 	while (fread(&note, sizeof(FECNote), 1, file) == 1)
 	{
-		note = init_note();
 		if (ferror(file))
 		{
 			fclose(file);
 			return -1;
 		}
 		push_back(fecNotes, &note);
+		note = init_note();
 	}
 	fclose(file);
 	return 0;

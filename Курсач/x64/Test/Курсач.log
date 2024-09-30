@@ -1,5 +1,14 @@
 ﻿  file_work.c
   parser.c
+  tokenizer.c
 D:\source\repos\Курсач\Курсач\src\file_work\parser\parser.c(63,3): warning C4013: strcpy: нет определения; предполагается "extern" с возвратом типа "int"
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(267,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(272,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(277,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(282,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(287,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(292,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  test.c
   Создание кода...
+  LINK : не найден или не выполнена сборка D:\source\repos\Курсач\x64\Test\Курсач.exe при последней инкрементной компоновке; выполняется полная компоновка
   Курсач.vcxproj -> D:\source\repos\Курсач\x64\Test\Курсач.exe
