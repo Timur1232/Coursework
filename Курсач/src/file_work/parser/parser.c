@@ -1,4 +1,4 @@
-#include "parser.h"
+п»ї#include "parser.h"
 
 #include "../../fec_note/fec_note.h"
 #include "../../list/list.h"
@@ -45,7 +45,7 @@ ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes)
 	return error;
 }
 
-/*=================================[Вспомогательные функции]=================================*/
+/*=================================[Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё]=================================*/
 
 TokenizerErrors load_var(TokenVar* token, FECNote* note)
 {

@@ -1,4 +1,4 @@
-#ifndef FILE_WORK_H
+п»ї#ifndef FILE_WORK_H
 #define FILE_WORK_H
 
 #include "../fec_note/fec_note.h"
@@ -7,11 +7,11 @@
 
 #include <stdio.h>
 
-// Загрузка из файла
+// Р—Р°РіСЂСѓР·РєР° РёР· С„Р°Р№Р»Р°
 ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes);
 int scan_bin_note_list(const char* fileName, ListPtr fecNotes);
 
-// Сохранение в файл
+// РЎРѕС…СЂР°РЅРµРЅРёРµ РІ С„Р°Р№Р»
 int save_note_list(const char* fileName, ListPtr fecNotes);
 int save_bin_note_list(const char* fileName, ListPtr fecNotes);
 

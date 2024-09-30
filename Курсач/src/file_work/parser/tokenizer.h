@@ -1,4 +1,4 @@
-#ifndef TOKENIZER_H
+п»ї#ifndef TOKENIZER_H
 #define TOKENIZER_H
 
 #include <stdio.h>
@@ -6,10 +6,10 @@
 
 #define BUFFER_SIZE 512
 
-// Тип токена
+// РўРёРї С‚РѕРєРµРЅР°
 typedef enum Token
 {
-	// Переменные (поля структуры)
+	// РџРµСЂРµРјРµРЅРЅС‹Рµ (РїРѕР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹)
 	SERIAL_NUM = 0,
 	FACTORY_NUM = 1,
 	DIR_NAME = 2,
@@ -17,7 +17,7 @@ typedef enum Token
 	CONS_PLAN = 4,
 	CONS_REAL = 5,
 
-	// Специальные символы
+	// РЎРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹
 	OPEN_BRACKET = '{',
 	CLOSE_BRAKET = '}',
 	EQUAL_SIGN = '=',
@@ -27,7 +27,7 @@ typedef enum Token
 	SEMICOLON = ';',
 	EMPTY_LINE,
 
-	// Типы данных
+	// РўРёРїС‹ РґР°РЅРЅС‹С…
 	INT_TYPE = 6,
 	FLOAT_TYPE = 7,
 	STRING_TYPE = 8,
@@ -35,7 +35,7 @@ typedef enum Token
 	NONE = -1
 } Token;
 
-// Тип типа токена
+// РўРёРї С‚РёРїР° С‚РѕРєРµРЅР°
 typedef enum TokenType
 {
 	VAR,
@@ -48,35 +48,35 @@ typedef enum TokenType
 	NONE_TYPE = -1
 } TokenType;
 
-// Возможные ошибки токенизации
+// Р’РѕР·РјРѕР¶РЅС‹Рµ РѕС€РёР±РєРё С‚РѕРєРµРЅРёР·Р°С†РёРё
 typedef enum TokenizerErrors
 {
-	// Нет ошибки
+	// РќРµС‚ РѕС€РёР±РєРё
 	ALL_GOOD = 0,
 
-	// Неправильный токен
+	// РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РѕРєРµРЅ
 	UNRECOGNOZABLE_TOKEN,
 
-	// Ошибки с файлами
+	// РћС€РёР±РєРё СЃ С„Р°Р№Р»Р°РјРё
 	FILE_OPEN_ERR,
 	FILE_ERROR,
 
-	// Переполнение буфера
+	// РџРµСЂРµРїРѕР»РЅРµРЅРёРµ Р±СѓС„РµСЂР°
 	BUFF_SIZE_EXCEEDED,
 
-	// Ошибки в расставлении скобок
+	// РћС€РёР±РєРё РІ СЂР°СЃСЃС‚Р°РІР»РµРЅРёРё СЃРєРѕР±РѕРє
 	NO_OPEN_BRACKET,
 	NO_CLOSE_BRACKET,
 
-	// Ошибки типов данных
+	// РћС€РёР±РєРё С‚РёРїРѕРІ РґР°РЅРЅС‹С…
 	SCAN_INT_ERR,
 	SCAN_FLOAT_ERR,
 	SCAN_STR_ERR,
 
-	// Многоразовая запись в одну и ту же переменную
+	// РњРЅРѕРіРѕСЂР°Р·РѕРІР°СЏ Р·Р°РїРёСЃСЊ РІ РѕРґРЅСѓ Рё С‚Сѓ Р¶Рµ РїРµСЂРµРјРµРЅРЅСѓСЋ
 	MULTIPLE_VARS,
 
-	// Ожидаемые токены
+	// РћР¶РёРґР°РµРјС‹Рµ С‚РѕРєРµРЅС‹
 	EXPECT_ASSIGN,
 	EXPECT_VALUE,
 	EXPECT_INT,
@@ -86,7 +86,7 @@ typedef enum TokenizerErrors
 	UNEXPECTED_ERROR
 } TokenizerErrors;
 
-// Токен
+// РўРѕРєРµРЅ
 typedef struct TokenVar
 {
 	Token type;
@@ -98,7 +98,7 @@ typedef struct TokenVar
 	} value;
 } TokenVar;
 
-// Список типа очередь
+// РЎРїРёСЃРѕРє С‚РёРїР° РѕС‡РµСЂРµРґСЊ
 typedef struct TokenNode
 {
 	TokenVar token;
@@ -112,7 +112,7 @@ typedef struct TokenQueue
 	TokenNode* end;
 } TokenQueue;
 
-// Наблюдатель за повторами
+// РќР°Р±Р»СЋРґР°С‚РµР»СЊ Р·Р° РїРѕРІС‚РѕСЂР°РјРё
 typedef struct RepeatObserver
 {
 	char serialNumber : 1;
@@ -123,54 +123,54 @@ typedef struct RepeatObserver
 	char energyConsReal : 1;
 } RepeatObserver;
 
-// Обработчик ошибок
+// РћР±СЂР°Р±РѕС‚С‡РёРє РѕС€РёР±РѕРє
 typedef struct ErrorHandler
 {
 	int line;
 	TokenizerErrors err;
 } ErrorHandler;
 
-// Инициализаторы
+// РРЅРёС†РёР°Р»РёР·Р°С‚РѕСЂС‹
 TokenQueue init_token_queue();
 TokenVar init_token();
 RepeatObserver init_observer();
 
-// Функция считывания и обработки токенов из текстового файла
+// Р¤СѓРЅРєС†РёСЏ СЃС‡РёС‚С‹РІР°РЅРёСЏ Рё РѕР±СЂР°Р±РѕС‚РєРё С‚РѕРєРµРЅРѕРІ РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°
 ErrorHandler tokenize(TokenQueue* tokens, FILE* file);
 
-// Список (очередь)
+// РЎРїРёСЃРѕРє (РѕС‡РµСЂРµРґСЊ)
 void clear_tokens(TokenQueue* tokens);
 void push_token(TokenQueue* tokens, TokenVar* token);
 void pop_token(TokenQueue* tokens);
 TokenVar* get_token(TokenQueue* tokens);
 int empty_tokens(TokenQueue* tokens);
 
-// Токены
+// РўРѕРєРµРЅС‹
 Token scan_token(char* buff);
 TokenType token_type(Token token);
 Token var_type(Token token);
 
-// Редактирование буфера
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±СѓС„РµСЂР°
 void shift_buff(char* buff, int n);
 void ignore_white_space(char* buff);
 
-// Вспомогательные логические функции
-int exceded_buff(char* buff);								// Проверка на переполнение буфера
-int eob(char* buff);										// Проверка на конец буфера
-int white_space(char ch);									// Проверка символа на ' ', '\t' или '\n'
-int divider(char ch);										// Проверка символа на ';' и ','
-int is_digit(char ch);										// Проверка если символ - цифра
-int contain_period(char* str);								// Проверка на наличие в строке '.'
-int my_strcmp(const char* str1, const char* str2);			// Собственная функция strcmp
-int check_repeat(RepeatObserver* observer, Token token);	// Проверка на повторения полей
+// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ Р»РѕРіРёС‡РµСЃРєРёРµ С„СѓРЅРєС†РёРё
+int exceded_buff(char* buff);								// РџСЂРѕРІРµСЂРєР° РЅР° РїРµСЂРµРїРѕР»РЅРµРЅРёРµ Р±СѓС„РµСЂР°
+int eob(char* buff);										// РџСЂРѕРІРµСЂРєР° РЅР° РєРѕРЅРµС† Р±СѓС„РµСЂР°
+int white_space(char ch);									// РџСЂРѕРІРµСЂРєР° СЃРёРјРІРѕР»Р° РЅР° ' ', '\t' РёР»Рё '\n'
+int divider(char ch);										// РџСЂРѕРІРµСЂРєР° СЃРёРјРІРѕР»Р° РЅР° ';' Рё ','
+int is_digit(char ch);										// РџСЂРѕРІРµСЂРєР° РµСЃР»Рё СЃРёРјРІРѕР» - С†РёС„СЂР°
+int contain_period(char* str);								// РџСЂРѕРІРµСЂРєР° РЅР° РЅР°Р»РёС‡РёРµ РІ СЃС‚СЂРѕРєРµ '.'
+int my_strcmp(const char* str1, const char* str2);			// РЎРѕР±СЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ strcmp
+int check_repeat(RepeatObserver* observer, Token token);	// РџСЂРѕРІРµСЂРєР° РЅР° РїРѕРІС‚РѕСЂРµРЅРёСЏ РїРѕР»РµР№
 
-// Считывание значений
-int get_int(char* buff, int* data);							// Считывание int значения из буфера
-int get_float(char* buff, float* data);						// Считывание float значения из буфера
-int get_str(char* buff, char* data);						// Считывание char* значения из буфера
-int get_value(char* buff, TokenVar* token);					// Общее считывание значения из буфера
+// РЎС‡РёС‚С‹РІР°РЅРёРµ Р·РЅР°С‡РµРЅРёР№
+int get_int(char* buff, int* data);							// РЎС‡РёС‚С‹РІР°РЅРёРµ int Р·РЅР°С‡РµРЅРёСЏ РёР· Р±СѓС„РµСЂР°
+int get_float(char* buff, float* data);						// РЎС‡РёС‚С‹РІР°РЅРёРµ float Р·РЅР°С‡РµРЅРёСЏ РёР· Р±СѓС„РµСЂР°
+int get_str(char* buff, char* data);						// РЎС‡РёС‚С‹РІР°РЅРёРµ char* Р·РЅР°С‡РµРЅРёСЏ РёР· Р±СѓС„РµСЂР°
+int get_value(char* buff, TokenVar* token);					// РћР±С‰РµРµ СЃС‡РёС‚С‹РІР°РЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РёР· Р±СѓС„РµСЂР°
 
-// Обработка ошибок
+// РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
 char* proccess_error(char* buff, ErrorHandler error);
 char* print_token(char* buff, TokenVar* token);
 

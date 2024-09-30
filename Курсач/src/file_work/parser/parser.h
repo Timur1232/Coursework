@@ -1,10 +1,10 @@
-#ifndef PARSER_H
+п»ї#ifndef PARSER_H
 #define PARSER_H
 
 #include "tokenizer.h"
 #include "../../list/list.h"
 
 ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes);
-TokenizerErrors load_var(TokenVar* token, FECNote* note);		// Загрузка считанного значения в соответствующее поле структуры
+TokenizerErrors load_var(TokenVar* token, FECNote* note);		// Р—Р°РіСЂСѓР·РєР° СЃС‡РёС‚Р°РЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРµ РїРѕР»Рµ СЃС‚СЂСѓРєС‚СѓСЂС‹
 
 #endif

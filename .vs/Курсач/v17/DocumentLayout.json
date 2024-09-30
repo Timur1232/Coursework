@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "parser.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
@@ -63,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "parser.h",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.h",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.h",
@@ -76,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "file_work.h",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.h",
@@ -89,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "file_work.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\file_work.c",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "tokenizer.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
@@ -115,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "tokenizer.h",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
@@ -128,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "test.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\test.c",
@@ -141,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "example.txt",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\input\\example.txt",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\input\\example.txt",
@@ -149,8 +149,7 @@
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\input\\example.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-09-29T08:41:02.711Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-29T08:41:02.711Z"
             }
           ]
         }
