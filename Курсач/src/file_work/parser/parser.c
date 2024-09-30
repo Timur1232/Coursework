@@ -1,233 +1,81 @@
 #include "parser.h"
 
-#include <string.h>
+#include "../../fec_note/fec_note.h"
+#include "../../list/list.h"
 
-static const char* const VarTokens[] = {
-	"SerialNumber",
-	"FactoryNumber",
-	"DirectorName",
-	"EngineerName",
-	"EnergyConsPlan",
-	"EnergyConsReal"
-};
-
-
-ParserHandler init_parser()
+ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes)
 {
-	ParserHandler parser;
+	ErrorHandler error = { 0, ALL_GOOD };
+	while (!empty_tokens(tokens))
+	{
+		FECNote note = init_note();
+		TokenVar* token = get_token(tokens);
 
-	parser.shouldClose = 0;
-	parser.buffSizeExceeded = 0;
-	parser.buff[0] = '\0';
-	parser.token = NONE;
-	parser.input = init_input();
-	parser.scanValue.intValue = 0;
-	parser.error.err = ALL_GOOD;
-	parser.error.line = 0;
-
-	return parser;
-}
-
-InputObserver init_input()
-{
-	InputObserver input = { 0, 0, 0, 0, 0, 0 };
-	return input;
-}
-
-
-void shift_buff(char* buff, int n)
-{
-	if (!n) return;
-	int size = 0;
-	for (int i = n, j = 0; i < BUFFER_SIZE && buff[i]; i++, j++)
-	{
-		buff[j] = buff[i];
-		size++;
-	}
-	buff[size] = '\0';
-}
-
-void ignore_white_space(char* buff)
-{
-	int count = 0;
-	for (int i = 0; i < BUFFER_SIZE && white_space(buff[i]); i++)
-	{
-		count++;
-	}
-	shift_buff(buff, count);
-}
-
-
-Token get_token(char* buff)
-{
-	ignore_white_space(buff);
-
-	int shift = 0;
-	Token returnValue = NONE;
-
-	if (buff[0] == OPEN_BRACKET)
-	{
-		shift = 1;
-		returnValue = OPEN_BRACKET;
-	}
-	else if (buff[0] == CLOSE_BRAKET)
-	{
-		shift = 1;
-		returnValue = CLOSE_BRAKET;
-	}
-	else if (buff[0] == EQUAL_SIGN)
-	{
-		shift = 1;
-		returnValue = EQUAL_SIGN;
-	}
-	else if (buff[0] == QUOTE_MARK)
-	{
-		shift = 1;
-		returnValue = QUOTE_MARK;
-	}
-	else if (buff[0] == COMMENT)
-	{
-		shift = 1;
-		returnValue = COMMENT;
-	}
-	else if (buff[0] == COMMA)
-	{
-		shift = 1;
-		returnValue = COMMA;
-	}
-	else if (buff[0] == SEMICOLON)
-	{
-		shift = 1;
-		returnValue = SEMICOLON;
-	}
-	else if (buff[0] == '\0')
-	{
-		return EMPTY_LINE;
-	}
-	else if (is_digit(buff[0]))
-	{
-		if (contain_period(buff))
+		if (token->type == OPEN_BRACKET)
 		{
-			return FLOAT_TYPE;
+			pop_token(tokens);
+			while (1)
+			{
+				token = get_token(tokens);
+				if (token->type == CLOSE_BRAKET)
+				{
+					pop_token(tokens);
+					break;
+				}
+				error.err = load_var(token, &note);
+				if (error.err != ALL_GOOD)
+				{
+					error.line = -1;
+					clear_tokens(tokens);
+					return error;
+				}
+				pop_token(tokens);
+			}
+			push_back(fecNotes, &note);
 		}
-		return INT_TYPE;
+		else
+		{
+			error.err = UNEXPECTED_ERROR;
+			error.line = -1;
+			clear_tokens(tokens);
+			return error;
+		}
 	}
-	else if (my_strcmp(VarTokens[SERIAL_NUM], buff) == 0)
-	{
-		shift = strlen(VarTokens[SERIAL_NUM]);
-		returnValue = SERIAL_NUM;
-	}
-	else if (my_strcmp(VarTokens[FACTORY_NUM], buff) == 0)
-	{
-		shift = strlen(VarTokens[FACTORY_NUM]);
-		returnValue = FACTORY_NUM;
-	}
-	else if (my_strcmp(VarTokens[DIR_NAME], buff) == 0)
-	{
-		shift = strlen(VarTokens[DIR_NAME]);
-		returnValue = DIR_NAME;
-	}
-	else if (my_strcmp(VarTokens[ENG_NAME], buff) == 0)
-	{
-		shift = strlen(VarTokens[ENG_NAME]);
-		returnValue = ENG_NAME;
-	}
-	else if (my_strcmp(VarTokens[CONS_PLAN], buff) == 0)
-	{
-		shift = strlen(VarTokens[CONS_PLAN]);
-		returnValue = CONS_PLAN;
-	}
-	else if (my_strcmp(VarTokens[CONS_REAL], buff) == 0)
-	{
-		shift = strlen(VarTokens[CONS_REAL]);
-		returnValue = CONS_REAL;
-	}
-	else
-	{
-		return NONE;
-	}
-
-	shift_buff(buff, shift);
-	return returnValue;
+	clear_tokens(tokens);
+	return error;
 }
 
-TokenType token_type(Token token)
+/*=================================[Вспомогательные функции]=================================*/
+
+TokenizerErrors load_var(TokenVar* token, FECNote* note)
 {
-	switch (token)
+	switch (token->type)
 	{
 	case SERIAL_NUM:
+		note->serialNumber = token->value.intValue;
+		break;
+
 	case FACTORY_NUM:
+		note->factoryNumber = token->value.intValue;
+		break;
+
 	case DIR_NAME:
+		strcpy(note->directorFullName, token->value.stringValue);
+		break;
+
 	case ENG_NAME:
+		strcpy(note->engineerFullName, token->value.stringValue);
+		break;
+
 	case CONS_PLAN:
+		note->energyConsPlan = token->value.floatValue;
+		break;
+
 	case CONS_REAL:
-		return VAR;
-
-	case EQUAL_SIGN:
-		return ASSIGN;
-
-	case OPEN_BRACKET:
-	case CLOSE_BRAKET:
-	case QUOTE_MARK:
-		return SCOPE;
-
-	case INT_TYPE:
-	case FLOAT_TYPE:
-	case STRING_TYPE:
-		return VALUE_TYPE;
-
-	case COMMENT:
-	case EMPTY_LINE:
-		return SPEC;
-
-	case COMMA:
-	case SEMICOLON:
-		return DIVIDER;
-
+		note->energyConsReal = token->value.floatValue;
+		break;
+	default:
+		return UNEXPECTED_ERROR;
 	}
-	return NONE_TYPE;
-}
-
-
-int eob(char* buff)
-{
-	return buff[0] == '\n' || buff[0] == '\0' || buff[0] == -1;
-}
-
-int white_space(char ch)
-{
-	return ch == ' ' || ch == '\n' || ch == '\t';
-}
-
-int divider(char ch)
-{
-	return ch == ',' || ch == ';';
-}
-
-int is_digit(char ch)
-{
-	return ch >= '0' && ch <= '9';
-}
-
-int contain_period(char* str)
-{
-	while (*str != '\0' && !divider(*str) && !white_space(*str))
-	{
-		if (*(str++) == '.')
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
-int my_strcmp(const char* str1, const char* str2)
-{
-	while (*str1 == *str2)
-	{
-		str1++;
-		str2++;
-	}
-	if (*str1 == '\0') return 0;
-	return *str1 - *str2;
+	return ALL_GOOD;
 }

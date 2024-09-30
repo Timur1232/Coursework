@@ -1,32 +1,24 @@
 {
-	SerialNumber = 123
-	FactoryNumber = 321
-	DirectorName = "dfgsdf dsfgsdfg"
-	EngineerName = ""
-	EnergyConsPlan = 0.000000
-	EnergyConsReal = 432.119995
+	serialNumber = 234;
+	factoryNumber = 321;
+	directorName = "Timur Bai";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 43.431999;
+	energyConsReal = 69.419998;
 }
 {
-	SerialNumber = 234
-	FactoryNumber = 0
-	DirectorName = "Timur Bai"
-	EngineerName = "Kirill Kv"
-	EnergyConsPlan = 43.431999
-	EnergyConsReal = 69.419998
+	serialNumber = 23;
+	factoryNumber = 54;
+	directorName = "Danil Bl";
+	engineerName = "Dima K";
+	energyConsPlan = 65.449997;
+	energyConsReal = 69.419998;
 }
 {
-	SerialNumber = 123
-	FactoryNumber = 321
-	DirectorName = "dfgsdf dsfgsdfg"
-	EngineerName = "fsghfgh adfge"
-	EnergyConsPlan = 123.431999
-	EnergyConsReal = 432.122986
-}
-{
-	SerialNumber = 123
-	FactoryNumber = 321
-	DirectorName = "dfgsdf dsfgsdfg"
-	EngineerName = "fsghfgh adfge"
-	EnergyConsPlan = 123.431999
-	EnergyConsReal = 432.122986
+	serialNumber = 87;
+	factoryNumber = 567;
+	directorName = "Someone";
+	engineerName = "Noname";
+	energyConsPlan = 254.000000;
+	energyConsReal = 69.419998;
 }

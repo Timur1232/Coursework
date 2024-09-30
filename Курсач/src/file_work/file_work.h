@@ -3,17 +3,16 @@
 
 #include "../fec_note/fec_note.h"
 #include "../list/list.h"
-#include "parser/parser.h"
+#include "parser/tokenizer.h"
 
 #include <stdio.h>
 
 // Загрузка из файла
-void scan_note(FILE* file, ParserHandler* parser, FECNote* note);
-ParserErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes);
-ParserErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes);
+ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes);
+int scan_bin_note_list(const char* fileName, ListPtr fecNotes);
 
 // Сохранение в файл
-ParserErrors save_note_list(const char* fileName, ListPtr fecNotes);
-ParserErrors save_bin_note_list(const char* fileName, ListPtr fecNotes);
+int save_note_list(const char* fileName, ListPtr fecNotes);
+int save_bin_note_list(const char* fileName, ListPtr fecNotes);
 
 #endif

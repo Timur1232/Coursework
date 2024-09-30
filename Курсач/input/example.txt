@@ -1,8 +1,8 @@
-#  омментарий
+#  омментарий записываетс€ с использованием '#'
 
 # ќдна структура определ€етс€ фигурными скобками ('{' и '}')
 
-# ѕеременные совпадают с пол€ми структуры (но имена начинаютс€ с большой буквы)
+# ѕеременные совпадают с пол€ми структуры
 # ѕерменные могут идти в любом пор€дке или отсутствовать (будут инициализироватьс€ нул€ми)
 # ѕеременные не могут повтор€тс€ (приведет к ошибке)
 # ѕосле переменной об€зателен символ присвоени€ '='
@@ -11,30 +11,30 @@
 # string определ€етс€ двойными кавычками '"'
 # string не больше 15 символов (остальные будут отбрасыватьс€)
 
-# ';' и табул€ци€ необ€зательны
+# ';', ',' и табул€ци€ необ€зательны
 
 {
-	SerialNumber = 234;				# int
-	FactoryNumber = 321;			# int
-	DirectorName = "Timur Bai";		# string
-	EngineerName = "Kirill Kv";		# string
-	EnergyConsPlan = 43.432;		# float (об€зательно значение после точки; если его нет, то запишите 0: 50.0)
-	EnergyConsReal = 69.420;		# float
+	serialNumber = 234;				# int
+	factoryNumber = 321;			# int
+	directorName = "Timur Bai";		# string
+	engineerName = "Kirill Kv";		# string
+	energyConsPlan = 43.432;		# float (об€зательно значение после точки; если его нет, то запишите 0: 50.0)
+	energyConsReal = 69.420;		# float
 }
 # » так далее:
 {
-	SerialNumber = 23;
-	FactoryNumber = 54;
-	DirectorName = "Danil Bl";
-	EngineerName = "Dima K";
-	EnergyConsPlan = 65.45;
-	EnergyConsReal = 69.420;
+	serialNumber = 23;
+	factoryNumber = 54;
+	directorName = "Danil Bl";
+	engineerName = "Dima K";
+	energyConsPlan = 65.45;
+	energyConsReal = 69.420;
 }
 {
-	SerialNumber = 87;
-	FactoryNumber = 567;
-	DirectorName = "Someone";
-	EngineerName = "Noname";
-	EnergyConsPlan = 254.0;
-	EnergyConsReal = 69.420;
+	serialNumber = 87;
+	factoryNumber = 567;
+	directorName = "Someone";
+	engineerName = "Noname";
+	energyConsPlan = 254.0;
+	energyConsReal = 69.420;
 }
