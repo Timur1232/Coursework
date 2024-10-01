@@ -13,9 +13,9 @@
 
 ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 {
-	FILE* file = fopen(fileName, "r");
-	ErrorHandler error = { 0, ALL_GOOD };
+	ErrorHandler error = init_error_handler();
 	TokenQueue tokens = init_token_queue();
+	FILE* file = fopen(fileName, "r");
 
 	if (!file)
 	{
@@ -35,7 +35,11 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 	}
 
 	error = parse_tokens(&tokens, fecNotes);
-
+	if (error.err != ALL_GOOD)
+	{
+		clear(fecNotes);
+	}
+	clear_tokens(&tokens);
 	return error;
 }
 

@@ -5,6 +5,6 @@
 #include "../../list/list.h"
 
 ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes);
-TokenizerErrors load_var(TokenVar* token, FECNote* note);		// Загрузка считанного значения в соответствующее поле структуры
+TokenizerErrors load_var(TokenQueue* tokens, FECNote* note, RepeatObserver* observer);		// Загрузка считанного значения в соответствующее поле структуры
 
 #endif

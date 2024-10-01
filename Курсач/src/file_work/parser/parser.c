@@ -5,77 +5,103 @@
 
 ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes)
 {
-	ErrorHandler error = { 0, ALL_GOOD };
+	ErrorHandler error = init_error_handler();
+	RepeatObserver observer = init_observer();
+
 	while (!empty_tokens(tokens))
 	{
 		FECNote note = init_note();
-		TokenVar* token = get_token(tokens);
 
-		if (token->type == OPEN_BRACKET)
+		if (get_token(tokens)->type == END)
 		{
 			pop_token(tokens);
-			while (1)
-			{
-				token = get_token(tokens);
-				if (token->type == CLOSE_BRAKET)
-				{
-					pop_token(tokens);
-					break;
-				}
-				error.err = load_var(token, &note);
-				if (error.err != ALL_GOOD)
-				{
-					error.line = -1;
-					clear_tokens(tokens);
-					return error;
-				}
-				pop_token(tokens);
-			}
-			push_back(fecNotes, &note);
+			break;
 		}
-		else
+		else if (get_token(tokens)->type != OPEN_BRACKET)
 		{
-			error.err = UNEXPECTED_ERROR;
-			error.line = -1;
-			clear_tokens(tokens);
+			error.err = NO_OPEN_BRACKET;
+			error.line = get_token(tokens)->line;
 			return error;
 		}
+
+		pop_token(tokens);
+		while (1)
+		{
+			if (get_token(tokens)->type == CLOSE_BRAKET)
+			{
+				pop_token(tokens);
+				observer = init_observer();
+				break;
+			}
+			else if (get_token(tokens)->type == OPEN_BRACKET || get_token(tokens)->type == END)
+			{
+				error.err = NO_CLOSE_BRACKET;
+				error.line = get_token(tokens)->line;
+				return error;
+			}
+
+			error.err = load_var(tokens, &note, &observer);
+
+			if (error.err != ALL_GOOD)
+			{
+				error.line = get_token(tokens)->line;
+				return error;
+			}
+		}
+		push_back(fecNotes, &note);
 	}
-	clear_tokens(tokens);
 	return error;
 }
 
 /*=================================[Вспомогательные функции]=================================*/
 
-TokenizerErrors load_var(TokenVar* token, FECNote* note)
+TokenizerErrors load_var(TokenQueue* tokens, FECNote* note, RepeatObserver* observer)
 {
-	switch (token->type)
+	Token varToken = get_token(tokens)->type;
+
+	if (token_type(varToken) != VAR)
+	{
+		return EXPECT_VAR;
+	}
+	if (check_repeat(observer, varToken))
+	{
+		return MULTIPLE_VARS;
+	}
+	pop_token(tokens);
+	if (get_token(tokens)->type != EQUAL_SIGN)
+	{
+		return EXPECT_ASSIGN;
+	}
+	pop_token(tokens);
+
+	switch (varToken)
 	{
 	case SERIAL_NUM:
-		note->serialNumber = token->value.intValue;
+		note->serialNumber = get_token(tokens)->value.intValue;
 		break;
 
 	case FACTORY_NUM:
-		note->factoryNumber = token->value.intValue;
+		note->factoryNumber = get_token(tokens)->value.intValue;
 		break;
 
 	case DIR_NAME:
-		strcpy(note->directorFullName, token->value.stringValue);
+		strcpy(note->directorFullName, get_token(tokens)->value.stringValue);
 		break;
 
 	case ENG_NAME:
-		strcpy(note->engineerFullName, token->value.stringValue);
+		strcpy(note->engineerFullName, get_token(tokens)->value.stringValue);
 		break;
 
 	case CONS_PLAN:
-		note->energyConsPlan = token->value.floatValue;
+		note->energyConsPlan = get_token(tokens)->value.floatValue;
 		break;
 
 	case CONS_REAL:
-		note->energyConsReal = token->value.floatValue;
+		note->energyConsReal = get_token(tokens)->value.floatValue;
 		break;
 	default:
 		return UNEXPECTED_ERROR;
 	}
+	pop_token(tokens);
 	return ALL_GOOD;
 }

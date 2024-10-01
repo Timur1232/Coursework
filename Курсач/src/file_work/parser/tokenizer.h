@@ -32,6 +32,8 @@ typedef enum Token
 	FLOAT_TYPE = 7,
 	STRING_TYPE = 8,
 
+	END,
+
 	NONE = -1
 } Token;
 
@@ -77,6 +79,7 @@ typedef enum TokenizerErrors
 	MULTIPLE_VARS,
 
 	// Ожидаемые токены
+	EXPECT_VAR,
 	EXPECT_ASSIGN,
 	EXPECT_VALUE,
 	EXPECT_INT,
@@ -96,6 +99,7 @@ typedef struct TokenVar
 		float floatValue;
 		char stringValue[MAX_STRING_SIZE];
 	} value;
+	int line;
 } TokenVar;
 
 // Список типа очередь
@@ -134,6 +138,7 @@ typedef struct ErrorHandler
 TokenQueue init_token_queue();
 TokenVar init_token();
 RepeatObserver init_observer();
+ErrorHandler init_error_handler();
 
 // Функция считывания и обработки токенов из текстового файла
 ErrorHandler tokenize(TokenQueue* tokens, FILE* file);

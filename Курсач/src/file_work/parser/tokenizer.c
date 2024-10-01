@@ -36,6 +36,12 @@ RepeatObserver init_observer()
 	return observer;
 }
 
+ErrorHandler init_error_handler()
+{
+	ErrorHandler error = { 0, ALL_GOOD };
+	return error;
+}
+
 /*=====================================[Токенайзер]=====================================*/
 
 ErrorHandler tokenize(TokenQueue* tokens, FILE* file)
@@ -45,7 +51,8 @@ ErrorHandler tokenize(TokenQueue* tokens, FILE* file)
 	char buff[BUFFER_SIZE] = { 0 };
 	int openBracket = 0;
 	RepeatObserver observer = init_observer();
-	ErrorHandler error = { 0, ALL_GOOD };
+	ErrorHandler error = init_error_handler();
+	TokenVar token = init_token();
 
 	while (fgets(buff, BUFFER_SIZE, file) != NULL)
 	{
@@ -54,17 +61,18 @@ ErrorHandler tokenize(TokenQueue* tokens, FILE* file)
 			error.err = FILE_ERROR;
 			return error;
 		}
+
+		error.line++;
+
 		if (exceded_buff(buff))
 		{
 			error.err = BUFF_SIZE_EXCEEDED;
 			return error;
 		}
 
-		error.line++;
-
 		while (!eob(buff))
 		{
-			TokenVar token = init_token();
+			token = init_token();
 			token.type = scan_token(buff);
 
 			if (token_type(token.type) == SPEC)
@@ -80,42 +88,13 @@ ErrorHandler tokenize(TokenQueue* tokens, FILE* file)
 				error.err = UNRECOGNOZABLE_TOKEN;
 				return error;
 			}
-			else if (token.type == OPEN_BRACKET)
+			else if (token_type(token.type) == VALUE_TYPE || token.type == QUOTE_MARK)
 			{
-				if (openBracket)
+				if (token.type == QUOTE_MARK)
 				{
-					error.err = NO_CLOSE_BRACKET;
-					return error;
+					token.type = STRING_TYPE;
 				}
-				openBracket = 1;
-			}
-			else if (token.type == CLOSE_BRAKET)
-			{
-				if (!openBracket)
-				{
-					error.err = NO_OPEN_BRACKET;
-					return error;
-				}
-				openBracket = 0;
-				observer = init_observer();
-			}
-			else if (token_type(token.type) == VAR)
-			{
-				if (!openBracket)
-				{
-					error.err = NO_OPEN_BRACKET;
-					return error;
-				}
-				if (check_repeat(&observer, token.type))
-				{
-					error.err = MULTIPLE_VARS;
-					return error;
-				}
-				if (token_type(scan_token(buff)) != ASSIGN)
-				{
-					error.err = EXPECT_ASSIGN;
-					return error;
-				}
+
 				error.err = get_value(buff, &token);
 				if (error.err != ALL_GOOD)
 				{
@@ -123,9 +102,15 @@ ErrorHandler tokenize(TokenQueue* tokens, FILE* file)
 				}
 			}
 
+			token.line = error.line;
 			push_token(tokens, &token);
 		}
 	}
+
+	token.type = END;
+	token.line = error.line;
+	push_token(tokens, &token);
+
 	return error;
 }
 
@@ -526,27 +511,15 @@ TokenizerErrors get_value(char* buff, TokenVar* token)
 	int count = 0;
 	ignore_white_space(buff);
 	// Считывание значения соответствующего типу токена
-	switch (var_type(token->type))
+	switch (token->type)
 	{
 	case INT_TYPE:
-		if (scan_token(buff) != INT_TYPE)
-		{
-			return EXPECT_INT;
-		}
 		count = get_int(buff, &token->value.intValue);
 		break;
 	case FLOAT_TYPE:
-		if (scan_token(buff) != FLOAT_TYPE)
-		{
-			return EXPECT_FLOAT;
-		}
 		count = get_float(buff, &token->value.floatValue);
 		break;
 	case STRING_TYPE:
-		if (scan_token(buff) != QUOTE_MARK)
-		{
-			return EXPECT_STR;
-		}
 		count = get_str(buff, token->value.stringValue);
 		break;
 	default:
@@ -554,7 +527,7 @@ TokenizerErrors get_value(char* buff, TokenVar* token)
 	}
 	if (!count)
 	{
-		switch (var_type(token->type))
+		switch (token->type)
 		{
 		case INT_TYPE:
 			return SCAN_INT_ERR;
@@ -563,7 +536,7 @@ TokenizerErrors get_value(char* buff, TokenVar* token)
 		case STRING_TYPE:
 			return SCAN_STR_ERR;
 		}
-		return EXPECT_VALUE;
+		return UNEXPECTED_ERROR;
 	}
 
 	shift_buff(buff, count);
@@ -606,6 +579,9 @@ char* proccess_error(char* buff, ErrorHandler error)
 	case MULTIPLE_VARS:
 		sprintf(buff, "Multiple variables declared; line: %d", error.line);
 		break;
+	case EXPECT_VAR:
+		sprintf(buff, "Expected variable token; line: %d", error.line);
+		break;
 	case EXPECT_ASSIGN:
 		sprintf(buff, "Expected assign token; line: %d", error.line);
 		break;
@@ -635,22 +611,22 @@ char* print_token(char* buff, TokenVar* token)
 	switch (token->type)
 	{
 	case SERIAL_NUM:
-		sprintf(buff, "SERIAL_NUM: %d", token->value.intValue);
+		sprintf(buff, "SERIAL_NUM");
 		break;
 	case FACTORY_NUM:
-		sprintf(buff, "FACTORY_NUM: %d", token->value.intValue);
+		sprintf(buff, "FACTORY_NUM");
 		break;
 	case DIR_NAME:
-		sprintf(buff, "DIR_NAME: %s", token->value.stringValue);
+		sprintf(buff, "DIR_NAME");
 		break;
 	case ENG_NAME:
-		sprintf(buff, "ENG_NAME: %s", token->value.stringValue);
+		sprintf(buff, "ENG_NAME");
 		break;
 	case CONS_PLAN:
-		sprintf(buff, "CONS_PLAN: %f", token->value.floatValue);
+		sprintf(buff, "CONS_PLAN");
 		break;
 	case CONS_REAL:
-		sprintf(buff, "CONS_REAL: %f", token->value.floatValue);
+		sprintf(buff, "CONS_REAL");
 		break;
 
 	case OPEN_BRACKET:
@@ -658,6 +634,20 @@ char* print_token(char* buff, TokenVar* token)
 		break;
 	case CLOSE_BRAKET:
 		sprintf(buff, "CLOSE_BRAKET");
+		break;
+
+	case EQUAL_SIGN:
+		sprintf(buff, "EQUAL_SIGN");
+		break;
+
+	case INT_TYPE:
+		sprintf(buff, "INT_TYPE: %d", token->value.intValue);
+		break;
+	case FLOAT_TYPE:
+		sprintf(buff, "INT_TYPE: %f", token->value.floatValue);
+		break;
+	case STRING_TYPE:
+		sprintf(buff, "INT_TYPE: %s", token->value.stringValue);
 		break;
 
 	default:

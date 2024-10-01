@@ -18,18 +18,12 @@
 	factoryNumber = 321;			# int
 	directorName = "Timur Bai";		# string
 	engineerName = "Kirill Kv";		# string
-	energyConsPlan = 43.432;		# float (обязательно значение после точки; если его нет, то запишите 0: 50.0)
+	energyConsPlan = 43.432;		# float (обязательно значение после точки; если его нет, то запишите, например: 50.0)
 	energyConsReal = 69.420;		# float
 }
-# И так далее:
-{
-	serialNumber = 23;
-	factoryNumber = 54;
-	directorName = "Danil Bl";
-	engineerName = "Dima K";
-	energyConsPlan = 65.45;
-	energyConsReal = 69.420;
-}
+
+# И так далее
+
 {
 	serialNumber = 87;
 	factoryNumber = 567;
@@ -38,3 +32,7 @@
 	energyConsPlan = 254.0;
 	energyConsReal = 69.420;
 }
+
+# Если Вы безумец, то можно записывать в одну строку через ',' или ';' (не говорите со мной)
+
+{ serialNumber = 23, factoryNumber = 54, directorName = "Danil Bl", engineerName = "Dima K", energyConsPlan = 65.45, energyConsReal = 69.420; }
