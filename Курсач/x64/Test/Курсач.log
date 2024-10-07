@@ -1,14 +1,2 @@
-﻿  file_work.c
-  parser.c
-  tokenizer.c
-D:\source\repos\Курсач\Курсач\src\file_work\parser\parser.c(88,3): warning C4013: strcpy: нет определения; предполагается "extern" с возвратом типа "int"
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(53,17): warning C4101: observer: неиспользованная локальная переменная
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(245,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(250,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(255,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(260,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(265,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c(270,11): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-  test.c
-  Создание кода...
+﻿  list.c
   Курсач.vcxproj -> D:\source\repos\Курсач\x64\Test\Курсач.exe

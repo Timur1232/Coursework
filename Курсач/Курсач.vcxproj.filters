@@ -51,6 +51,12 @@
     <ClCompile Include="src\file_work\parser\parser.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\file_work\parser\tokenizer.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\proccess_fec\procces_fec.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\list\list.h">
@@ -86,8 +92,15 @@
     <ClInclude Include="src\file_work\parser\parser.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="src\file_work\parser\tokenizer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\proccess_fec\proccess_fec.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input\example.txt" />
+    <Text Include="input\random_gen.txt" />
   </ItemGroup>
 </Project>

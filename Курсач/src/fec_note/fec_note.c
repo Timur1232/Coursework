@@ -5,6 +5,7 @@
 
 #include "../log/log.h"
 #include "../list/list.h"
+#include "../proccess_fec/proccess_fec.h"
 
 FECNote init_note()
 {
@@ -20,9 +21,10 @@ FECNote init_note()
 
 void print_note(FECNote* note)
 {
-	printf("| %-3d | %-3d | %15s | %15s | %8.2f | %8.2f |\n",
+	printf("| %-3d | %-3d | %-15s | %-15s | %-11.2f | %-11.2f | %11.2f |\n",
 		note->serialNumber, note->factoryNumber, note->directorFullName,
-		note->engineerFullName, note->energyConsPlan, note->energyConsReal);
+		note->engineerFullName, note->energyConsPlan, note->energyConsReal,
+		calc_diff_deviation(note));
 }
 
 FECNote input_note(int num)

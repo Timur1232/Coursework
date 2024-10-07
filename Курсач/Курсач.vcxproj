@@ -290,6 +290,7 @@
     <ClCompile Include="src\compare\compare.c" />
     <ClCompile Include="src\log\log.c" />
     <ClCompile Include="src\note_table\note_table.c" />
+    <ClCompile Include="src\proccess_fec\procces_fec.c" />
     <ClCompile Include="src\ref_array\ref_array.c" />
     <ClCompile Include="src\test.c" />
   </ItemGroup>
@@ -305,10 +306,12 @@
     <ClInclude Include="src\log\log.h" />
     <ClInclude Include="src\macros.h" />
     <ClInclude Include="src\note_table\note_table.h" />
+    <ClInclude Include="src\proccess_fec\proccess_fec.h" />
     <ClInclude Include="src\ref_array\ref_array.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input\example.txt" />
+    <Text Include="input\random_gen.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22,6 +22,8 @@ typedef struct FECNote
     float energyConsReal;
 } FECNote;
 
+typedef FECNote* FECNotePtr;
+
 //_____________________________[Прототипы функций]_____________________________//
 
 FECNote init_note();

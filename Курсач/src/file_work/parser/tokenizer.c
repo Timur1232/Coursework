@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "../../macros.h"
+#include "../../compare/compare.h"
 
 static const char* const VarTokens[] = {
 	"serialNumber",
@@ -395,17 +397,6 @@ int contain_period(char* str)
 		}
 	}
 	return 0;
-}
-
-int my_strcmp(const char* str1, const char* str2)
-{
-	while (*str1 == *str2)
-	{
-		str1++;
-		str2++;
-	}
-	if (*str1 == '\0') return 0;
-	return *str1 - *str2;
 }
 
 int check_repeat(RepeatObserver* observer, Token token)
