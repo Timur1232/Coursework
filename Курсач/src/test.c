@@ -1,90 +1,102 @@
 ﻿#ifdef _TEST
 
+#include <curses.h>
+
 #include <stdio.h>
 #include <string.h>
-#include <time.h>
+#include <locale.h>
+#include <wchar.h>
 
+#include "interface/interface.h"
 #include "list/list.h"
-#include "fec_note/fec_note.h"
 #include "file_work/file_work.h"
-#include "file_work/parser/tokenizer.h"
-
-const char* const names[] = {
-	"Timur Bai",
-	"Kirill Kv",
-	"Danil Bl",
-	"Dmitry K",
-	"Boris L",
-	"Maks L",
-	"Egor Letov",
-	"Serj Tankian",
-	"Daron Malakian",
-	"Chester B",
-	"Tom York",
-	"Kurt Cobain",
-	"Yuri Gagarin",
-};
-
-FECNote gen_random_note()
-{
-	static int count = 1;
-	FECNote note;
-
-	note.serialNumber = count++;
-	note.factoryNumber = rand() % 100;
-	strcpy(note.directorFullName, names[rand() % 13]);
-	strcpy(note.engineerFullName, names[rand() % 13]);
-	note.energyConsPlan = (float)(rand() % 200 + 50) + (float)(rand() % 100) * 0.01f;
-	note.energyConsReal = (float)(rand() % 200 + 50) + (float)(rand() % 100) * 0.01f;
-
-	return note;
-}
 
 #if 1
+
+void f()
+{
+    printw("Func");
+}
+
+MenuCommand commands[] = {
+    {L"Новый список", TRUE, f},
+    {L"Загрузить список", FALSE, f},
+    {L"Выход", FALSE, f}
+};
+
+Menu menu = {
+    12, 0,
+    L"Программа",
+    commands,
+    3,
+    LEFT
+};
+
 int main()
 {
-	system("chcp 65001");
-	srand(time(NULL));
+    setlocale(LC_CTYPE, "");
+
+    initscr();
+    noecho();
+    curs_set(0);
+    mouse_set(ALL_MOUSE_EVENTS);
+    keypad(stdscr, TRUE);
+    //timeout(32);
+    resize_term(40, 136);
+
+    clear();
+
+    WINDOW* win = newwin(LINES, 117, 0, 19);
+    keypad(win, TRUE);
+    refresh();
+    //box(win, 0, 0);
+    //wrefresh(win);
+
+    List list = init_list();
+    scan_note_list("intput/random_gen.txt", &list);
+
+    print_table_list(win, &list, 20, 0);
 
 
-	List list = init_list();
-	char buff[100] = { 0 };
+    //int highlight = 0;
+    /*while (1)
+    {
+        print_menu(stdscr, &menu);
+        int ch = getch();
 
-	/*for (int i = 0; i < 100; i++)
-	{
-		FECNote note = gen_random_note();
-		push_back(&list, &note);
-	}*/
+        if (ch == KEY_UP)
+        {
+            highlight--;
+            if (highlight < 0)
+                highlight = 0;
+        }
+        else if (ch == KEY_DOWN)
+        {
+            highlight++;
+            if (highlight >= menu.commandsSize)
+                highlight = menu.commandsSize - 1;
+        }
+        else if (ch == '\n')
+        {
+            menu.commands[highlight].function();
+            break;
+        }
+        highlight_on_index(&menu, highlight);
+    }*/
 
-	puts(proccess_error(buff, scan_note_list("input/random_gen.txt", &list)));
+    getch();
 
-	print_list(&list);
-
-	//save_note_list("output/random_gen.txt", &list);
-
-	clear(&list);
-
-	return 0;
+    endwin();
+    return 0;
 }
 #else
 int main()
 {
-	system("chcp 65001");
+    setlocale(LC_CTYPE, "");
 
-	FILE* file = fopen("input/example.txt", "r");
-	TokenQueue tokens = init_token_queue();
-	char buff[100] = { 0 };
 
-	puts(proccess_error(buff, tokenize(&tokens, file)));
-	fclose(file);
 
-	while (!empty_tokens(&tokens))
-	{
-		puts(print_token(buff, get_token(&tokens)));
-		pop_token(&tokens);
-	}
-
-	return 0;
+    return 0;
 }
 #endif
 

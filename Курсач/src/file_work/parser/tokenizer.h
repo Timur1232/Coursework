@@ -2,136 +2,136 @@
 #define TOKENIZER_H
 
 #include <stdio.h>
+
+#include <types.h>
 #include "../../fec_note/fec_note.h"
 
-#define BUFFER_SIZE 512
+#define MAX_BUFFER_SIZE 513
 
 // Тип токена
 typedef enum Token
 {
-	// Переменные (поля структуры)
-	SERIAL_NUM = 0,
-	FACTORY_NUM = 1,
-	DIR_NAME = 2,
-	ENG_NAME = 3,
-	CONS_PLAN = 4,
-	CONS_REAL = 5,
+    // Переменные (поля структуры)
+    SERIAL_NUM_VAR = 0,
+    FACTORY_NUM_VAR = 1,
+    DIR_NAME_VAR = 2,
+    ENG_NAME_VAR = 3,
+    CONS_PLAN_VAR = 4,
+    CONS_REAL_VAR = 5,
 
-	// Специальные символы
-	OPEN_BRACKET = '{',
-	CLOSE_BRAKET = '}',
-	EQUAL_SIGN = '=',
-	QUOTE_MARK = '\"',
-	COMMENT = '#',
-	COMMA = ',',
-	SEMICOLON = ';',
-	EMPTY_LINE,
+    // Специальные символы
+    OPEN_BRACKET = '{',
+    CLOSE_BRAKET = '}',
+    EQUAL_SIGN = '=',
+    QUOTE_MARK = '\"',
+    COMMENT = '#',
+    COMMA = ',',
+    SEMICOLON = ';',
+    EMPTY_LINE,
 
-	// Типы данных
-	INT_TYPE = 6,
-	FLOAT_TYPE = 7,
-	STRING_TYPE = 8,
+    // Типы данных
+    INT_TYPE = 6,
+    FLOAT_TYPE = 7,
+    STRING_TYPE = 8,
 
-	END,
+    END,
 
-	NONE = -1
+    NONE = -1
 } Token;
 
 // Тип типа токена
 typedef enum TokenType
 {
-	VAR,
-	ASSIGN,
-	SCOPE,
-	VALUE_TYPE,
-	SPEC,
-	DIVIDER,
+    VAR,
+    ASSIGN,
+    SCOPE,
+    VALUE_TYPE,
+    SPEC,
+    DIVIDER,
 
-	NONE_TYPE = -1
+    NONE_TYPE = -1
 } TokenType;
 
 // Возможные ошибки токенизации
 typedef enum TokenizerErrors
 {
-	// Нет ошибки
-	ALL_GOOD = 0,
+    // Нет ошибки
+    ALL_GOOD = 0,
 
-	// Неправильный токен
-	UNRECOGNOZABLE_TOKEN,
+    // Неправильный токен
+    UNRECOGNOZABLE_TOKEN,
 
-	// Ошибки с файлами
-	FILE_OPEN_ERR,
-	FILE_ERROR,
+    // Ошибки с файлами
+    FILE_OPEN_ERR,
+    FILE_ERROR,
 
-	// Переполнение буфера
-	BUFF_SIZE_EXCEEDED,
+    // Ошибки в расставлении скобок
+    NO_OPEN_BRACKET,
+    NO_CLOSE_BRACKET,
 
-	// Ошибки в расставлении скобок
-	NO_OPEN_BRACKET,
-	NO_CLOSE_BRACKET,
+    // Ошибки типов данных
+    SCAN_INT_ERR,
+    SCAN_FLOAT_ERR,
+    SCAN_STR_ERR,
 
-	// Ошибки типов данных
-	SCAN_INT_ERR,
-	SCAN_FLOAT_ERR,
-	SCAN_STR_ERR,
+    // Многоразовая запись в одну и ту же переменную
+    MULTIPLE_VARS,
 
-	// Многоразовая запись в одну и ту же переменную
-	MULTIPLE_VARS,
+    // Ожидаемые токены
+    EXPECT_VAR,
+    EXPECT_ASSIGN,
+    EXPECT_VALUE,
+    EXPECT_INT,
+    EXPECT_FLOAT,
+    EXPECT_STR,
 
-	// Ожидаемые токены
-	EXPECT_VAR,
-	EXPECT_ASSIGN,
-	EXPECT_VALUE,
-	EXPECT_INT,
-	EXPECT_FLOAT,
-	EXPECT_STR,
-
-	UNEXPECTED_ERROR
+    UNEXPECTED_ERROR,
+    ALLOCATION_FAILURE
 } TokenizerErrors;
 
 // Токен
 typedef struct TokenVar
 {
-	Token type;
-	union
-	{
-		int intValue;
-		float floatValue;
-		char stringValue[MAX_STRING_SIZE];
-	} value;
-	int line;
+    Token type;
+    union
+    {
+        uint_32 intValue;
+        float floatValue;
+        char stringValue[MAX_STRING_SIZE];
+    } value;
+    int_32 line;
 } TokenVar;
 
 // Список типа очередь
 typedef struct TokenNode
 {
-	TokenVar token;
-	struct TokenNode* next;
+    TokenVar token;
+    struct TokenNode* next;
 } TokenNode;
 
 typedef struct TokenQueue
 {
-	int size;
-	TokenNode* beg;
-	TokenNode* end;
+    int size;
+    TokenNode* beg;
+    TokenNode* end;
 } TokenQueue;
 
 // Наблюдатель за повторами
 typedef struct RepeatObserver
 {
-	char serialNumber : 1;
-	char factoryNumber : 1;
-	char directorFullName : 1;
-	char engineerFullName : 1;
-	char energyConsPlan : 1;
-	char energyConsReal : 1;
+    byte serialNumber : 1;
+    byte factoryNumber : 1;
+    byte directorFullName : 1;
+    byte engineerFullName : 1;
+    byte energyConsPlan : 1;
+    byte energyConsReal : 1;
 } RepeatObserver;
 
 // Обработчик ошибок
 typedef struct ErrorHandler
 {
-	int line;
-	TokenizerErrors err;
+    int_32 line;
+    TokenizerErrors err;
 } ErrorHandler;
 
 // Инициализаторы
@@ -156,11 +156,11 @@ TokenType token_type(Token token);
 Token var_type(Token token);
 
 // Редактирование буфера
-void shift_buff(char* buff, int n);
+void shift_buff(char* buff, uint_64 n);
 void ignore_white_space(char* buff);
+char* read_line(char* buff, FILE* file);
 
 // Вспомогательные логические функции
-int exceded_buff(char* buff);								// Проверка на переполнение буфера
 int eob(char* buff);										// Проверка на конец буфера
 int white_space(char ch);									// Проверка символа на ' ', '\t' или '\n'
 int divider(char ch);										// Проверка символа на ';' и ','
@@ -170,7 +170,7 @@ int my_strcmp(const char* str1, const char* str2);			// Собственная �
 int check_repeat(RepeatObserver* observer, Token token);	// Проверка на повторения полей
 
 // Считывание значений
-int get_int(char* buff, int* data);							// Считывание int значения из буфера
+int get_int(char* buff, uint_32* data);						// Считывание int значения из буфера
 int get_float(char* buff, float* data);						// Считывание float значения из буфера
 int get_str(char* buff, char* data);						// Считывание char* значения из буфера
 int get_value(char* buff, TokenVar* token);					// Общее считывание значения из буфера

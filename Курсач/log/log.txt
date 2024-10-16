@@ -298,3 +298,9 @@ MESSAGE:
 Unable to read formatter text, count=10
 23 54 Danil Bl Dima K 0.000000 0.000000
 
+[ 16.9.2024, 23:8:38 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+

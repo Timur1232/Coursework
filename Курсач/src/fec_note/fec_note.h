@@ -3,6 +3,8 @@
 
 #define MAX_STRING_SIZE 16
 
+#include <types.h>
+
 /**
  * порядковый номер
  * номер завода
@@ -14,8 +16,8 @@
  // Factory Electricity Consumption Note struct
 typedef struct FECNote
 {
-    int serialNumber;
-    int factoryNumber;
+    uint_32 serialNumber;
+    uint_32 factoryNumber;
     char directorFullName[MAX_STRING_SIZE];
     char engineerFullName[MAX_STRING_SIZE];
     float energyConsPlan;
@@ -30,6 +32,6 @@ FECNote init_note();
 
 // Временные функции
 void print_note(FECNote* note);
-FECNote input_note(int num);
+FECNote input_note(uint_32 num);
 
 #endif

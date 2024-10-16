@@ -1,6 +1,8 @@
 #ifndef REF_ARRAY_H
 #define REF_ARRAY_H
 
+#include <types.h>
+
 struct RefArray;
 
 typedef struct RefArray RefArray;
@@ -8,15 +10,15 @@ typedef RefArray* RefArrayPtr;
 
 struct RefArray
 {
-	void** data;
-	int size;
-	int capacity;
+    void** data;
+    uint_64 size;
+    uint_64 capacity;
 };
 
-RefArray init_ref_array(int reserve);
+RefArray init_ref_array(uint_64 reserve);
 void add_ref(RefArrayPtr array, void* ref);
 void clear_array(RefArrayPtr array);
 
-void* get_ref(RefArrayPtr array, int pos);
+void* get_ref(RefArrayPtr array, uint_64 pos);
 
 #endif // REF_ARRAY_H
