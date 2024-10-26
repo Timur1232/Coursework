@@ -304,3 +304,21 @@ FUNCTION: scan_note_list()
 MESSAGE:
 Unable to open input file
 
+[ 17.9.2024, 10:51:27 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 17.9.2024, 10:52:27 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 17.9.2024, 10:54:5 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+

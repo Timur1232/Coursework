@@ -7,4 +7,4 @@
 ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes);
 TokenizerErrors load_var(TokenQueue* tokens, FECNote* note, RepeatObserver* observer);		// Загрузка считанного значения в соответствующее поле структуры
 
-#endif
+#endif // PARSER_H

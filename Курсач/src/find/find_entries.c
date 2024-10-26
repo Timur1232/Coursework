@@ -5,7 +5,7 @@
 #include "../ref_array/ref_array.h"
 #include "../list/list.h"
 
-RefArray find_entries(ListPtr fecNotes, FECNote* required, int (*compare)(ConstValuePtr val1, ConstValuePtr val2))
+RefArray find_entries(ListPtr fecNotes, FECNotePtr required, int (*compare)(ConstValuePtr val1, ConstValuePtr val2))
 {
     RefArray entries = init_ref_array(128);
 
@@ -36,7 +36,7 @@ void print_entries(RefArrayPtr entries)
     FECNote** iter = (FECNote**)entries->data;
     for (uint_64 i = 0; i < entries->size; i++, iter++)
     {
-        print_note(*iter);
+        //print_note(*iter);
     }
     puts("-----------------------------------------------------------------------");
 }

@@ -23,7 +23,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
         error.err = FILE_OPEN_ERR;
         return error;
     }
-    clear(fecNotes);
+    clear_list(fecNotes);
 
     error = tokenize(&tokens, file);
     fclose(file);
@@ -37,7 +37,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
     error = parse_tokens(&tokens, fecNotes);
     if (error.err != ALL_GOOD)
     {
-        clear(fecNotes);
+        clear_list(fecNotes);
     }
     clear_tokens(&tokens);
     return error;
@@ -51,7 +51,7 @@ TokenizerErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
         LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
         return -1;
     }
-    clear(fecNotes);
+    clear_list(fecNotes);
 
     FECNote note = init_note();
     while (fread(&note, sizeof(FECNote), 1, file) == 1)

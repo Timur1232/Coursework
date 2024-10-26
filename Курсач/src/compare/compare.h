@@ -1,5 +1,5 @@
-#ifndef LIST_SORT_H
-#define LIST_SORT_H
+#ifndef COMPARE_H
+#define COMPARE_H
 
 #include <types.h>
 #include "..\list\list.h"
@@ -26,4 +26,4 @@ int cons_real(ConstValuePtr val1, ConstValuePtr val2);
 
 int my_strcmp(const char* str1, const char* str2);
 
-#endif // LIST_SORT_H
+#endif // COMPARE_H

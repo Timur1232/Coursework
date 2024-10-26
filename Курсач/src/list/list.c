@@ -38,7 +38,7 @@ void copy_list(ListPtr from, ListPtr to)
     if (!to) { return; }
     if (!from) { return; }
 
-    clear(to);
+    clear_list(to);
 
     for (FOR_RANGE(iter, *from))
     {
@@ -46,7 +46,7 @@ void copy_list(ListPtr from, ListPtr to)
     }
 }
 
-void clearclear_list(ListPtr list)
+void clear_list(ListPtr list)
 {
     if (!list) { return; }
 
@@ -173,7 +173,7 @@ void pop_back(ListPtr list)
     }
     else
     {
-        clear(list);
+        clear_list(list);
     }
 }
 
@@ -191,7 +191,7 @@ void pop_front(ListPtr list)
     }
     else
     {
-        clear(list);
+        clear_list(list);
     }
 }
 
@@ -251,7 +251,7 @@ void print_list(ListPtr list)
     puts("-------------------------------------------------------------------------------------------");
     for (FOR_RANGE(iter, *list))
     {
-        print_note(&iter->data);
+        //print_note(&iter->data);
     }
     puts("-------------------------------------------------------------------------------------------");
     printf("                                          Общее | %-11.2f | %-11.2f | %11.2f |\n", 
@@ -267,7 +267,7 @@ void print_list_backward(ListPtr list)
     puts("-------------------------------------------------------------------------------------------");
     for (FOR_RANGE_BACK(iter, *list))
     {
-        print_note(&iter->data);
+        //print_note(&iter->data);
     }
     puts("-------------------------------------------------------------------------------------------");
     printf("                                          Общее | %-11.2f | %-11.2f | %11.2f |\n",

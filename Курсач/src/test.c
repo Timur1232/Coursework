@@ -10,6 +10,9 @@
 #include "interface/interface.h"
 #include "list/list.h"
 #include "file_work/file_work.h"
+#include "find/find_entries.h"
+#include "ref_array/ref_array.h"
+#include "compare/compare.h"
 
 #if 1
 
@@ -25,12 +28,21 @@ MenuCommand commands[] = {
 };
 
 Menu menu = {
-    12, 0,
+    3, 0,
     L"Программа",
     commands,
     3,
     LEFT
 };
+
+static int clamp(int num, int min, int max)
+{
+    if (num < min)
+        num = min;
+    else if (num > max)
+        num = max;
+    return num;
+}
 
 int main()
 {
@@ -46,18 +58,67 @@ int main()
 
     clear();
 
-    WINDOW* win = newwin(LINES, 117, 0, 19);
-    keypad(win, TRUE);
+    WINDOW *winTable = newwin(LINES, 117, 0, 19),
+           *winMenu = newwin(LINES, 19, 0, 0),
+           *popUp = newwin(5, 15, 0, 0);
     refresh();
-    //box(win, 0, 0);
-    //wrefresh(win);
+    keypad(winTable, TRUE);
+    keypad(winMenu, TRUE);
+
+    print_menu(winMenu, &menu);
 
     List list = init_list();
-    scan_note_list("intput/random_gen.txt", &list);
+    scan_note_list("input/random_gen.txt", &list);
+    RefArray entries = init_ref_array(0);
 
-    print_table_list(win, &list, 20, 0);
+    int chunck = 0;
+    int chunckSize = 16;
+    int printList = 1;
+    while (1)
+    {
+        raw();
+        if (printList)
+            print_table_list(winTable, &list, chunck);
+        else
+            print_table_ref(winTable, &entries, chunck);
+        int ch = getch();
 
+        switch (ch)
+        {
+        case KEY_LEFT:
+            if (printList)
+                chunck = clamp(chunck - 1, 0, list.size / chunckSize);
+            else
+                chunck = clamp(chunck - 1, 0, entries.size / chunckSize);
+            break;
+        case KEY_RIGHT:
+            if (printList)
+                chunck = clamp(chunck + 1, 0, list.size / chunckSize);
+            else
+                chunck = clamp(chunck + 1, 0, entries.size / chunckSize);
+            break;
+        case '1':
+            printList = printList ? 0 : 1;
+            chunck = 0;
+            if (!printList)
+            {
+                FECNote req = { 0, 0, "Timur Bai", "", 0.0f, 0.0f };
+                entries = find_entries(&list, &req, dir_name);
+            }
+            else
+            {
+                clear_array(&entries);
+            }
+            break;
+        default:
+            break;
+        }
+    }
+    //pop_up_notification(L"Тестовое сообщение", 5, 10);
+    //wrefresh(win);
+    //refresh();
 
+    clear_list(&list);
     //int highlight = 0;
     /*while (1)
     {

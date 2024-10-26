@@ -166,7 +166,6 @@ int white_space(char ch);									// Проверка символа на ' ', '
 int divider(char ch);										// Проверка символа на ';' и ','
 int is_digit(char ch);										// Проверка если символ - цифра
 int contain_period(char* str);								// Проверка на наличие в строке '.'
-int my_strcmp(const char* str1, const char* str2);			// Собственная функция strcmp
 int check_repeat(RepeatObserver* observer, Token token);	// Проверка на повторения полей
 
 // Считывание значений
@@ -179,4 +178,4 @@ int get_value(char* buff, TokenVar* token);					// Общее считывани
 char* proccess_error(char* buff, ErrorHandler error);
 char* print_token(char* buff, TokenVar* token);
 
-#endif
+#endif // TOKENIZER_H

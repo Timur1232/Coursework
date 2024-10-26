@@ -69,6 +69,5 @@ void clear_array(RefArrayPtr array)
 
 void* get_ref(RefArrayPtr array, uint_64 pos)
 {
-    if (pos < 0 || pos >= array->size) { return NULL; }
     return &array->data[pos];
 }

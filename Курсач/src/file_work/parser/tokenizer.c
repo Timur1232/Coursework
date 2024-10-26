@@ -583,10 +583,10 @@ char* proccess_error(char* buff, ErrorHandler error)
         sprintf(buff, "All good");
         break;
     case FILE_OPEN_ERR:
-        sprintf(buff, "File open erron");
+        sprintf(buff, "File open error");
         break;
     case FILE_ERROR:
-        sprintf(buff, "File erron");
+        sprintf(buff, "File error");
         break;
     case NO_OPEN_BRACKET:
         sprintf(buff, "Expected open bracket; line: %d", error.line);

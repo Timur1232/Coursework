@@ -31,7 +31,7 @@ typedef FECNote* FECNotePtr;
 FECNote init_note();
 
 // Временные функции
-void print_note(FECNote* note);
+//void print_note(FECNote* note);
 FECNote input_note(uint_32 num);
 
-#endif
+#endif // FEC_NOTE_H
