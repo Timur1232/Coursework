@@ -7,6 +7,7 @@
 #include <locale.h>
 #include <wchar.h>
 
+#include <macros.h>
 #include "interface/interface.h"
 #include "list/list.h"
 #include "file_work/file_work.h"
@@ -35,15 +36,6 @@ Menu menu = {
     LEFT
 };
 
-static int clamp(int num, int min, int max)
-{
-    if (num < min)
-        num = min;
-    else if (num > max)
-        num = max;
-    return num;
-}
-
 int main()
 {
     setlocale(LC_CTYPE, "");
@@ -55,6 +47,7 @@ int main()
     keypad(stdscr, TRUE);
     //timeout(32);
     resize_term(40, 136);
+    start_color();
 
     clear();
 
@@ -65,56 +58,123 @@ int main()
     keypad(winTable, TRUE);
     keypad(winMenu, TRUE);
 
-    print_menu(winMenu, &menu);
 
     List list = init_list();
     scan_note_list("input/random_gen.txt", &list);
-    RefArray entries = init_ref_array(0);
+    int field = 0;
+    int noteIndex = 0;
 
-    int chunck = 0;
-    int chunckSize = 16;
-    int printList = 1;
     while (1)
     {
-        raw();
-        if (printList)
-            print_table_list(winTable, &list, chunck);
-        else
-            print_table_ref(winTable, &entries, chunck);
+        print_note_editor(winTable, get_at(&list, noteIndex), field);
         int ch = getch();
 
         switch (ch)
         {
+        case KEY_UP:
+            field = clamp(field - 1, 0, 4);
+            break;
+        case KEY_DOWN:
+            field = clamp(field + 1, 0, 4);
+            break;
         case KEY_LEFT:
-            if (printList)
-                chunck = clamp(chunck - 1, 0, list.size / chunckSize);
-            else
-                chunck = clamp(chunck - 1, 0, entries.size / chunckSize);
+            noteIndex = clamp(noteIndex - 1, 0, (int)(list.size - 1));
             break;
         case KEY_RIGHT:
-            if (printList)
-                chunck = clamp(chunck + 1, 0, list.size / chunckSize);
-            else
-                chunck = clamp(chunck + 1, 0, entries.size / chunckSize);
-            break;
-        case '1':
-            printList = printList ? 0 : 1;
-            chunck = 0;
-            if (!printList)
-            {
-                FECNote req = { 0, 0, "Timur Bai", "", 0.0f, 0.0f };
-                entries = find_entries(&list, &req, dir_name);
-            }
-            else
-            {
-                clear_array(&entries);
-            }
+            noteIndex = clamp(noteIndex + 1, 0, (int)(list.size - 1));
             break;
         default:
             break;
         }
     }
-    //pop_up_notification(L"Тестовое сообщение", 5, 10);
+
+    getch();
+
+    //RefArray entries = init_ref_array(0);
+
+    //int chunck = 0;
+    //int highlightElem = 0;
+    //int printList = 1;
+    //int x = 5, y = 10;
+    //while (1)
+    //{
+    //    print_menu(winMenu, &menu);
+    //    if (printList)
+    //        print_table_list(winTable, &list, chunck, highlightElem);
+    //    else
+    //        print_table_ref(winTable, &entries, chunck, highlightElem);
+    //    //pop_up_notification(popUp, L"Тестовое сообщение...", x, y);
+    //    int ch = getch();
+
+    //    switch (ch)
+    //    {
+    //    case KEY_LEFT:
+    //        if (printList)
+    //            chunck = clamp(chunck - 1, 0, list.size / CHUNCK_SIZE);
+    //        else
+    //            chunck = clamp(chunck - 1, 0, entries.size / CHUNCK_SIZE);
+    //        break;
+    //    case KEY_RIGHT:
+    //        if (printList)
+    //            chunck = clamp(chunck + 1, 0, list.size / CHUNCK_SIZE);
+    //        else
+    //            chunck = clamp(chunck + 1, 0, entries.size / CHUNCK_SIZE);
+    //        break;
+    //    case KEY_UP:
+    //        highlightElem = clamp(highlightElem - 1, -1, CHUNCK_SIZE);
+    //        if (highlightElem == -1)
+    //        {
+    //            highlightElem = chunck != 0 ? CHUNCK_SIZE - 1 : 0;
+    //            if (printList)
+    //                chunck = clamp(chunck - 1, 0, list.size / CHUNCK_SIZE);
+    //            else
+    //                chunck = clamp(chunck - 1, 0, entries.size / CHUNCK_SIZE);
+    //        }
+    //        break;
+    //    case KEY_DOWN:
+    //        highlightElem = clamp(highlightElem + 1, 0, CHUNCK_SIZE);
+    //        if (highlightElem == CHUNCK_SIZE)
+    //        {
+    //            if (printList)
+    //                highlightElem = (chunck == list.size / CHUNCK_SIZE) ? CHUNCK_SIZE - 1 : 0;
+    //            else
+    //                highlightElem = (chunck == entries.size / CHUNCK_SIZE) ? CHUNCK_SIZE - 1 : 0;
+    //            if (printList)
+    //                chunck = clamp(chunck + 1, 0, list.size / CHUNCK_SIZE);
+    //            else
+    //                chunck = clamp(chunck + 1, 0, entries.size / CHUNCK_SIZE);
+    //        }
+    //        break;
+    //    case 'w':
+    //        y--;
+    //        break;
+    //    case 's':
+    //        y++;
+    //        break;
+    //    case 'a':
+    //        x--;
+    //        break;
+    //    case 'd':
+    //        x++;
+    //        break;
+    //    case '1':
+    //        printList = printList ? 0 : 1;
+    //        chunck = 0;
+    //        highlightElem = 0;
+    //        if (!printList)
+    //        {
+    //            FECNote req = { 0, 0, "Timur Bai", "", 0.0f, 0.0f };
+    //            entries = find_entries(&list, &req, dir_name);
+    //        }
+    //        else
+    //        {
+    //            clear_array(&entries);
+    //        }
+    //        break;
+    //    default:
+    //        break;
+    //    }
+    //}
     //wrefresh(win);
     //refresh();
 

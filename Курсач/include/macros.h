@@ -3,6 +3,9 @@
 
 #include <stdlib.h>
 
+#define clamp(num, min, max) (((num) > (max)) ? (max) : (((num) < (min)) ? (min) : (num)))
+#define loop(num, min, max) (((num) > (max)) ? (min) : (((num) < (min)) ? (max) : (num)))
+
 //____________________________[Динамическая память]____________________________//
 
 #define NEW(type, size) (type*)malloc(sizeof(type) * size)
@@ -24,4 +27,4 @@
 #define FOR_RANGE(iter, list) Iterator iter = (list).begin; iter != NULL; INCREMENT(iter)
 #define FOR_RANGE_BACK(iter, list) Iterator iter = (list).end; iter != NULL; DECREMENT(iter)
 
-#endif
+#endif // MACROS_H

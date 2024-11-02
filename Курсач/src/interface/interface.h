@@ -10,6 +10,19 @@
 
 #define CHUNCK_SIZE 16
 
+#define SCREEN_WIDTH 136
+#define SCREEN_HEIGHT 40
+
+#define TABLE_WIN_WIDTH 117
+#define TABLE_WIN_HEIGHT SCREEN_HEIGHT
+#define TABLE_WIN_X 19
+#define TABLE_WIN_Y 0
+
+#define REDACTOR_MENU_WIN_WIDTH 19
+#define REDACTOR_MENU_WIN_HEIGHT SCREEN_HEIGHT
+#define REDACTOR_MENU_WIN_X 0
+#define REDACTOR_MENU_WIN_Y 0
+
 typedef enum Align
 {
     LEFT,
@@ -36,11 +49,12 @@ typedef struct Menu
 } Menu;
 
 void print_menu(WINDOW* win, Menu* menu);
-void print_table_list(WINDOW* win, ListPtr list, int chunck);
-void print_table_ref(WINDOW* win, RefArrayPtr entries, int chunck);
-void pop_up_notification(const wchar_t* messege, int x, int y);
+void print_table_list(WINDOW* win, ListPtr list, int chunck, int highlight);
+void print_table_ref(WINDOW* win, RefArrayPtr entries, int chunck, int highlight);
+void pop_up_notification(WINDOW* win, const wchar_t* messege, int x, int y);
+void print_note_editor(WINDOW* win, FECNotePtr note, int field);
 
-void highlight_on_index(Menu* menu, int index);
+void highlight_on_index(Menu* menu, int index, int prev);
 //void highlight_on_hover(Menu* menu);
 
 void print_main_screen();

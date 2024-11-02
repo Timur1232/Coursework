@@ -70,7 +70,7 @@ TokenizerErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
 
 TokenizerErrors save_note_list(const char* fileName, ListPtr fecNotes)
 {
-    FILE* file = fopen(fileName, "w");
+    FILE* file = fopen(fileName, "wt");
     if (!file)
     {
         LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
