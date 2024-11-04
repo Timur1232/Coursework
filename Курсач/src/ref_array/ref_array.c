@@ -38,7 +38,7 @@ void add_ref(RefArrayPtr array, void* ref)
             void** reallocBlock = (void**)realloc(array->data, sizeof(void*) * array->capacity);
             if (!reallocBlock)
             {
-                LOG(ERR, "ref_array.c", "add_ref()", "realloc() returned NULL", LOG_FILE);
+                LOG(LOG_ERR, "ref_array.c", "add_ref()", "realloc() returned NULL", LOG_FILE);
                 exit(-1);
             }
             array->data = reallocBlock;
@@ -48,7 +48,7 @@ void add_ref(RefArrayPtr array, void* ref)
             void** reallocBlock = NEW(void*, array->capacity);
             if (!reallocBlock)
             {
-                LOG(ERR, "ref_array.c", "add_ref()", "malloc() returned NULL", LOG_FILE);
+                LOG(LOG_ERR, "ref_array.c", "add_ref()", "malloc() returned NULL", LOG_FILE);
                 exit(-1);
             }
             array->data = reallocBlock;
@@ -60,14 +60,23 @@ void add_ref(RefArrayPtr array, void* ref)
 void clear_array(RefArrayPtr array)
 {
     if (!array) { return; }
+    array->size = 0;
+}
+
+void free_array(RefArrayPtr array)
+{
+    if (!array) { return; }
 
     if (array->data)
+    {
         DELETE(array->data);
+        array->data = NULL;
+    }
     array->size = 0;
     array->capacity = 0;
 }
 
-void* get_ref(RefArrayPtr array, uint_64 pos)
+void** get_ref(RefArrayPtr array, uint_64 pos)
 {
     return &array->data[pos];
 }

@@ -24,8 +24,8 @@ static void print_cur_time(FILE* logFile)
 
 static void print_log_type(FILE* logFile, int logType, const char* where, const char* function)
 {
-    if (logType == ERR) fprintf(logFile, "ERROR in file: %s\n", where);
-    if (logType == INF) fprintf(logFile, "INFORMATION in file: %s\n", where);
+    if (logType == LOG_ERR) fprintf(logFile, "ERROR in file: %s\n", where);
+    if (logType == LOG_INF) fprintf(logFile, "INFORMATION in file: %s\n", where);
     fprintf(logFile, "FUNCTION: %s\n", function);
 }
 

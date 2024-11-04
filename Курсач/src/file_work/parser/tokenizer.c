@@ -149,7 +149,7 @@ void push_token(TokenQueue* tokens, TokenVar* token)
     TokenNode* newNode = NEW(TokenNode, 1);
     if (!newNode)
     {
-        LOG(ERR, "tokenozer.c", "push_token()", "malloc() returned NULL", LOG_FILE);
+        LOG(LOG_ERR, "tokenozer.c", "push_token()", "malloc() returned NULL", LOG_FILE);
         exit(-1);
     }
     newNode->next = NULL;

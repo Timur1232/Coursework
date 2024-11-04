@@ -19,11 +19,11 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 
     if (!file)
     {
-        LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
+        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
         error.err = FILE_OPEN_ERR;
         return error;
     }
-    clear_list(fecNotes);
+    free_list(fecNotes);
 
     error = tokenize(&tokens, file);
     fclose(file);
@@ -37,7 +37,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
     error = parse_tokens(&tokens, fecNotes);
     if (error.err != ALL_GOOD)
     {
-        clear_list(fecNotes);
+        free_list(fecNotes);
     }
     clear_tokens(&tokens);
     return error;
@@ -48,10 +48,10 @@ TokenizerErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
     FILE* file = fopen(fileName, "rb");
     if (!file)
     {
-        LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
+        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
         return -1;
     }
-    clear_list(fecNotes);
+    free_list(fecNotes);
 
     FECNote note = init_note();
     while (fread(&note, sizeof(FECNote), 1, file) == 1)
@@ -73,7 +73,7 @@ TokenizerErrors save_note_list(const char* fileName, ListPtr fecNotes)
     FILE* file = fopen(fileName, "wt");
     if (!file)
     {
-        LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
+        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
         return -1;
     }
 
@@ -102,7 +102,7 @@ TokenizerErrors save_bin_note_list(const char* fileName, ListPtr fecNotes)
     FILE* file = fopen(fileName, "wb");
     if (!file)
     {
-        LOG(ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
+        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
         return FILE_OPEN_ERR;
     }
 

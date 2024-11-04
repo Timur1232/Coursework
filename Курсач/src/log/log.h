@@ -5,8 +5,8 @@
 
 enum LogType
 {
-    ERR,
-    INF
+    LOG_ERR,
+    LOG_INF
 };
 
 enum LogDestination

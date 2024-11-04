@@ -8,12 +8,14 @@
 #include <wchar.h>
 
 #include <macros.h>
+#include <types.h>
 #include "interface/interface.h"
 #include "list/list.h"
 #include "file_work/file_work.h"
 #include "find/find_entries.h"
 #include "ref_array/ref_array.h"
 #include "compare/compare.h"
+#include "log/log.h"
 
 #if 1
 
@@ -23,16 +25,16 @@ void f()
 }
 
 MenuCommand commands[] = {
-    {L"Новый список", TRUE, f},
-    {L"Загрузить список", FALSE, f},
-    {L"Выход", FALSE, f}
+    {L"Новый список", TRUE/*, f*/},
+    {L"Загрузить список", FALSE/*, f*/}
 };
 
 Menu menu = {
-    3, 0,
+    3, 0, 1, 1,
     L"Программа",
+    L"Выход",
     commands,
-    3,
+    sizeof(commands) / sizeof(MenuCommand),
     LEFT
 };
 
@@ -51,7 +53,8 @@ int main()
 
     clear();
 
-    WINDOW *winTable = newwin(LINES, 117, 0, 19),
+    WINDOW *winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
+           *winRed = newwin(15, 117, 0, 19),
            *winMenu = newwin(LINES, 19, 0, 0),
            *popUp = newwin(5, 15, 0, 0);
     refresh();
@@ -60,22 +63,29 @@ int main()
 
 
     List list = init_list();
-    scan_note_list("input/random_gen.txt", &list);
+    ErrorHandler err = scan_note_list("input/random_gen.txt", &list);
+    char buff[100] = { 0 };
+    if (err.err != ALL_GOOD)
+    {
+        LOG(ERR, "test.c", "main()", proccess_error(buff, err), LOG_FILE);
+        endwin();
+        return -1;
+    }
     int field = 0;
     int noteIndex = 0;
 
-    while (1)
+    /*while (1)
     {
-        print_note_editor(winTable, get_at(&list, noteIndex), field);
+        print_note_editor(winTable, get_at(&list, noteIndex), field, noteIndex);
         int ch = getch();
 
         switch (ch)
         {
         case KEY_UP:
-            field = clamp(field - 1, 0, 4);
+            field = clamp(field - 1, 0, 5);
             break;
         case KEY_DOWN:
-            field = clamp(field + 1, 0, 4);
+            field = clamp(field + 1, 0, 5);
             break;
         case KEY_LEFT:
             noteIndex = clamp(noteIndex - 1, 0, (int)(list.size - 1));
@@ -88,97 +98,107 @@ int main()
         }
     }
 
-    getch();
+    getch();*/
 
-    //RefArray entries = init_ref_array(0);
+    RefArray entries = init_ref_array(50);
 
-    //int chunck = 0;
-    //int highlightElem = 0;
-    //int printList = 1;
-    //int x = 5, y = 10;
-    //while (1)
-    //{
-    //    print_menu(winMenu, &menu);
-    //    if (printList)
-    //        print_table_list(winTable, &list, chunck, highlightElem);
-    //    else
-    //        print_table_ref(winTable, &entries, chunck, highlightElem);
-    //    //pop_up_notification(popUp, L"Тестовое сообщение...", x, y);
-    //    int ch = getch();
+    int selected = 0;
+    int chunckSize = CHUNCK_SIZE_FULL;
+    TableMode mode = FULL;
+    int printList = 1;
+    int x = 5, y = 10;
+    while (1)
+    {
+        print_menu(winMenu, &menu);
 
-    //    switch (ch)
-    //    {
-    //    case KEY_LEFT:
-    //        if (printList)
-    //            chunck = clamp(chunck - 1, 0, list.size / CHUNCK_SIZE);
-    //        else
-    //            chunck = clamp(chunck - 1, 0, entries.size / CHUNCK_SIZE);
-    //        break;
-    //    case KEY_RIGHT:
-    //        if (printList)
-    //            chunck = clamp(chunck + 1, 0, list.size / CHUNCK_SIZE);
-    //        else
-    //            chunck = clamp(chunck + 1, 0, entries.size / CHUNCK_SIZE);
-    //        break;
-    //    case KEY_UP:
-    //        highlightElem = clamp(highlightElem - 1, -1, CHUNCK_SIZE);
-    //        if (highlightElem == -1)
-    //        {
-    //            highlightElem = chunck != 0 ? CHUNCK_SIZE - 1 : 0;
-    //            if (printList)
-    //                chunck = clamp(chunck - 1, 0, list.size / CHUNCK_SIZE);
-    //            else
-    //                chunck = clamp(chunck - 1, 0, entries.size / CHUNCK_SIZE);
-    //        }
-    //        break;
-    //    case KEY_DOWN:
-    //        highlightElem = clamp(highlightElem + 1, 0, CHUNCK_SIZE);
-    //        if (highlightElem == CHUNCK_SIZE)
-    //        {
-    //            if (printList)
-    //                highlightElem = (chunck == list.size / CHUNCK_SIZE) ? CHUNCK_SIZE - 1 : 0;
-    //            else
-    //                highlightElem = (chunck == entries.size / CHUNCK_SIZE) ? CHUNCK_SIZE - 1 : 0;
-    //            if (printList)
-    //                chunck = clamp(chunck + 1, 0, list.size / CHUNCK_SIZE);
-    //            else
-    //                chunck = clamp(chunck + 1, 0, entries.size / CHUNCK_SIZE);
-    //        }
-    //        break;
-    //    case 'w':
-    //        y--;
-    //        break;
-    //    case 's':
-    //        y++;
-    //        break;
-    //    case 'a':
-    //        x--;
-    //        break;
-    //    case 'd':
-    //        x++;
-    //        break;
-    //    case '1':
-    //        printList = printList ? 0 : 1;
-    //        chunck = 0;
-    //        highlightElem = 0;
-    //        if (!printList)
-    //        {
-    //            FECNote req = { 0, 0, "Timur Bai", "", 0.0f, 0.0f };
-    //            entries = find_entries(&list, &req, dir_name);
-    //        }
-    //        else
-    //        {
-    //            clear_array(&entries);
-    //        }
-    //        break;
-    //    default:
-    //        break;
-    //    }
-    //}
+        if (printList)
+            print_table_list(winTable, &list, selected, mode);
+        else
+            print_table_ref(winTable, &entries, selected, mode);
+        if (mode == REDACTOR)
+        {
+            if (printList)
+                print_note_editor(winRed, get_at(&list, selected), field, selected);
+            else
+                print_note_editor(winRed, *((FECNote**)get_ref(&entries, selected)), field, selected);
+        }
+        //pop_up_notification(popUp, L"Тестовое сообщение...", x, y);
+        int ch = getch();
+
+        switch (ch)
+        {
+        case '\n':
+            if (mode == REDACTOR)
+            {
+                mode = FULL;
+                chunckSize = CHUNCK_SIZE_FULL;
+            }
+            else
+            {
+                mode = REDACTOR;
+                chunckSize = CHUNCK_SIZE_REDACTOR;
+            }
+            break;
+        case KEY_LEFT:
+            if (printList)
+                selected = clamp(selected - ((mode == FULL) ? (chunckSize) : (1)), 0, (int)list.size);
+            else
+                selected = clamp(selected - ((mode == FULL) ? (chunckSize) : (1)), 0, (int)entries.size - 1);
+            break;
+        case KEY_RIGHT:
+            if (printList)
+                selected = clamp(selected + ((mode == FULL) ? (chunckSize) : (1)), 0, (int)list.size);
+            else
+                selected = clamp(selected + ((mode == FULL) ? (chunckSize) : (1)), 0, (int)entries.size - 1);
+            break;
+        case KEY_UP:
+            if (mode == FULL)
+            {
+                if (printList)
+                    selected = clamp(selected - 1, 0, (int)list.size);
+                else
+                    selected = clamp(selected - 1, 0, (int)entries.size - 1);
+            }
+            else
+            {
+                field = clamp(field - 1, 0, 5);
+            }
+            break;
+        case KEY_DOWN:
+            if (mode == FULL)
+            {
+                if (printList)
+                    selected = clamp(selected + 1, 0, (int)list.size);
+                else
+                    selected = clamp(selected + 1, 0, (int)entries.size - 1);
+            }
+            else
+            {
+                field = clamp(field + 1, 0, 5);
+            }
+            break;
+        case '1':
+            printList = printList ? 0 : 1;
+            selected = 0;
+            if (!printList)
+            {
+                FECNote req = { 0, 0, "Timur Bai", "", 0.0f, 0.0f };
+                find_entries(&list, &entries, &req, dir_name);
+            }
+            else
+            {
+                clear_array(&entries);
+            }
+            break;
+        default:
+            break;
+        }
+    }
     //wrefresh(win);
     //refresh();
 
-    clear_list(&list);
+    free_list(&list);
+    free_array(&entries);
     //int highlight = 0;
     /*while (1)
     {

@@ -14,7 +14,7 @@ ListNodePtr new_node(ConstValuePtr data)
     ListNodePtr newNode = NEW(ListNode, 1);
     if (!newNode)
     {
-        LOG(ERR, "list.c", "new_node()", "malloc() returned NULL", LOG_FILE);
+        LOG(LOG_ERR, "list.c", "new_node()", "malloc() returned NULL", LOG_FILE);
         exit(-1);
     }
     newNode->next = NULL;
@@ -38,7 +38,7 @@ void copy_list(ListPtr from, ListPtr to)
     if (!to) { return; }
     if (!from) { return; }
 
-    clear_list(to);
+    free_list(to);
 
     for (FOR_RANGE(iter, *from))
     {
@@ -46,7 +46,7 @@ void copy_list(ListPtr from, ListPtr to)
     }
 }
 
-void clear_list(ListPtr list)
+void free_list(ListPtr list)
 {
     if (!list) { return; }
 
@@ -173,7 +173,7 @@ void pop_back(ListPtr list)
     }
     else
     {
-        clear_list(list);
+        free_list(list);
     }
 }
 
@@ -191,7 +191,7 @@ void pop_front(ListPtr list)
     }
     else
     {
-        clear_list(list);
+        free_list(list);
     }
 }
 

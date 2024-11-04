@@ -33,7 +33,7 @@ ListNodePtr new_node(ConstValuePtr data);
 
 List init_list();
 void copy_list(ListPtr from, ListPtr to);
-void clear_list(ListPtr list);
+void free_list(ListPtr list);
 
 void push_back(ListPtr list, ConstValuePtr data);
 void push_front(ListPtr list, ConstValuePtr data);
