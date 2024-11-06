@@ -281,7 +281,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);PDC_WIDE</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_RELEASE;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);PDC_WIDE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -307,6 +307,8 @@
     <ClCompile Include="src\proccess_fec\procces_fec.c" />
     <ClCompile Include="src\ref_array\ref_array.c" />
     <ClCompile Include="src\test.c" />
+    <ClCompile Include="src\undo_stack\undo_stack.c" />
+    <ClCompile Include="src\user_input\user_input.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\macros.h" />
@@ -322,6 +324,8 @@
     <ClInclude Include="src\log\log.h" />
     <ClInclude Include="src\proccess_fec\proccess_fec.h" />
     <ClInclude Include="src\ref_array\ref_array.h" />
+    <ClInclude Include="src\undo_stack\undo_stack.h" />
+    <ClInclude Include="src\user_input\user_input.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input\example.txt" />

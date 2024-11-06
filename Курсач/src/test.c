@@ -12,12 +12,14 @@
 #include "interface/interface.h"
 #include "list/list.h"
 #include "file_work/file_work.h"
-#include "find/find_entries.h"
-#include "ref_array/ref_array.h"
-#include "compare/compare.h"
-#include "log/log.h"
+//#include "find/find_entries.h"
+//#include "ref_array/ref_array.h"
+//#include "compare/compare.h"
+//#include "log/log.h"
+#include "user_input/user_input.h"
+#include "undo_stack/undo_stack.h"
 
-#if 1
+#if 0
 
 void f()
 {
@@ -67,7 +69,7 @@ int main()
     char buff[100] = { 0 };
     if (err.err != ALL_GOOD)
     {
-        LOG(ERR, "test.c", "main()", proccess_error(buff, err), LOG_FILE);
+        LOG_DEBUG(ERR, "test.c", "main()", proccess_error(buff, err), LOG_FILE);
         endwin();
         return -1;
     }
@@ -235,8 +237,64 @@ int main()
 {
     setlocale(LC_CTYPE, "");
 
+    initscr();
+    noecho();
+    curs_set(0);
+    mouse_set(ALL_MOUSE_EVENTS);
+    keypad(stdscr, TRUE);
+    //timeout(32);
+    resize_term(40, 136);
+    start_color();
 
+    /*while (1)
+    {
+        printw("%d\n", getch());
+    }*/
 
+    WINDOW* winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
+        * popUp = newwin(5, 15, 0, 0);
+
+    UndoStack stack = init_undo();
+    List list = init_list();
+
+    scan_note_list("input/random_gen.txt", &list);
+    char* str;
+    int index = 0;
+
+    while (1)
+    {
+        print_table_list(winTable, &list, 0, FULL);
+        int ch = getch();
+        switch (ch)
+        {
+        case 'd':
+            str = get_user_input(popUp, L"Номер");
+            sscanf(str, "%d", &index);
+            free(str);
+            index--;
+            push_action(&stack, UNDO_DEL, get_at(&list, index), index);
+            pop(&list, index);
+            break;
+        case 'a':
+            str = get_user_input(popUp, L"Номер");
+            sscanf(str, "%d", &index);
+            free(str);
+            index--;
+            FECNote note = init_note();
+            push_action(&stack, UNDO_ADD, &note, index);
+            insert(&list, &note, index);
+            break;
+        case MY_KEY_UNDO:
+            undo(&stack, &list);
+            break;
+        case MY_KEY_REDO:
+            redo(&stack, &list);
+            break;
+        default:
+            break;
+        }
+    }
+    endwin();
     return 0;
 }
 #endif

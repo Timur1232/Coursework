@@ -27,6 +27,11 @@
 #define REDACTOR_MENU_WIN_X 19
 #define REDACTOR_MENU_WIN_Y 0
 
+#define BUFFER_CAPASITY 50
+
+#define MY_KEY_REDO 25
+#define MY_KEY_UNDO 26
+
 
 typedef enum Align
 {
@@ -44,7 +49,7 @@ typedef struct MenuCommand
 {
     const wchar_t* text;
     Bool highlight;
-    //StructuralFunc function;
+    void (*function)();
 } MenuCommand;
 
 typedef struct Menu
@@ -60,17 +65,20 @@ typedef struct Menu
     Align align;
 } Menu;
 
-void print_menu(WINDOW* win, Menu* menu);
+void print_menu(WINDOW* win, const Menu* menu);
 void print_table_list(WINDOW* win, ListPtr list, int selected, TableMode mode);
 void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode mode);
-void pop_up_notification(WINDOW* win, const wchar_t* messege);
 void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index);
 
-void highlight_on_index(Menu* menu, int index);
+void pop_up_notification(WINDOW* win, const wchar_t* message);
+// nodiscard
+char* get_user_input(WINDOW* win, const wchar_t* message);
+
+void highlight_on_index(const Menu* menu, int index);
 //void highlight_on_hover(Menu* menu);
 
-void print_main_screen();
-void print_editor_screen();
+//void print_main_screen();
+//void print_editor_screen();
 
 
 #endif // CONSOLE_INTERFACE_H

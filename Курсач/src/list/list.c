@@ -14,7 +14,7 @@ ListNodePtr new_node(ConstValuePtr data)
     ListNodePtr newNode = NEW(ListNode, 1);
     if (!newNode)
     {
-        LOG(LOG_ERR, "list.c", "new_node()", "malloc() returned NULL", LOG_FILE);
+        LOG_DEBUG(LOG_ERR, "list.c", "new_node()", "malloc() returned NULL", LOG_FILE);
         exit(-1);
     }
     newNode->next = NULL;

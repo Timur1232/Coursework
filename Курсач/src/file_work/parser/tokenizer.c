@@ -63,8 +63,9 @@ ErrorHandler tokenize(TokenQueue* tokens, FILE* file)
     Bool openBracket = 0;
     TokenVar token = init_token();
 
-    while ((buff = read_line(buff, file)) != NULL)
+    while (!feof(file))
     {
+        buff = read_line(buff, file);
         if (ferror(file))
         {
             error.err = FILE_ERROR;
@@ -149,7 +150,7 @@ void push_token(TokenQueue* tokens, TokenVar* token)
     TokenNode* newNode = NEW(TokenNode, 1);
     if (!newNode)
     {
-        LOG(LOG_ERR, "tokenozer.c", "push_token()", "malloc() returned NULL", LOG_FILE);
+        LOG_DEBUG(LOG_ERR, "tokenozer.c", "push_token()", "malloc() returned NULL", LOG_FILE);
         exit(-1);
     }
     newNode->next = NULL;
@@ -377,11 +378,11 @@ char* read_line(char* buff, FILE* file)
     uint_64 i = 0;
     char ch = '\0';
 
-    while (1)
+    while (!feof(file))
     {
         ch = fgetc(file);
 
-        if (ch == '\n' || ch == EOF)
+        if (ch == '\n')
         {
             break;
         }
@@ -401,7 +402,7 @@ char* read_line(char* buff, FILE* file)
     }
     
     buff[i] = '\0';
-    return (ch == EOF) ? NULL : buff;
+    return buff;
 }
 
 /*=====================================[Логические функции]=====================================*/

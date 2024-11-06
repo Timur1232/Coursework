@@ -1,0 +1,57 @@
+﻿  file_work.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/file_work/file_work.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/file_work/file_work.c")
+  
+  tokenizer.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/file_work/parser/tokenizer.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/file_work/parser/tokenizer.c")
+  
+  interface.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/interface/interface.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/interface/interface.c")
+  
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(43,20): warning C4267: функция: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(114,49): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(157,52): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(167,37): warning C4267: функция: преобразование из "size_t" в "int"; возможна потеря данных
+  list.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/list/list.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/list/list.c")
+  
+  fec_note.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/fec_note/fec_note.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/fec_note/fec_note.c")
+  
+  log.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/log/log.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/log/log.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.c(32,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+D:\source\repos\Курсач\Курсач\src\log\log.c(32,6): error C2169: log: подставляемая функция, определение невозможно
+  ref_array.c
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4391: void log(int,const char *,const char *,const char *,int): неправильный возвращаемый тип для подставляемой функции; требуется "double"
+  (компиляция исходного файла "src/ref_array/ref_array.c")
+  
+D:\source\repos\Курсач\Курсач\src\log\log.h(18,6): warning C4392: void log(int,const char *,const char *,const char *,int): неправильный набор аргументов для подставляемой функции; требуется аргументов: "1"
+  (компиляция исходного файла "src/ref_array/ref_array.c")
+  
+D:\source\repos\Курсач\Курсач\src\ref_array\ref_array.c(12,19): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
+  test.c

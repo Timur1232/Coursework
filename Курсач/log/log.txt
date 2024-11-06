@@ -33,3 +33,14 @@ FUNCTION: main()
 MESSAGE:
 Multiple variables declared; line: 36
 
+[ 6.10.2024, 0:52:11 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 6.10.2024, 0:52:11 ]
+FUNCTION: main()
+MESSAGE:
+File open error
+

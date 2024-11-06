@@ -19,9 +19,9 @@ void log(int logType, const char* where, const char* function, const char* messa
 void log_list(int logType, const char* where, const char* function, ListPtr list, int destination);
 
 #ifdef _DEBUG
-    #define LOG(logType, where, function, message, destination) log(logType, where, function, message, destination);
+    #define LOG_DEBUG(logType, where, function, message, destination) log(logType, where, function, message, destination);
 #else
-    #define LOG(logType, where, function, message, destination)
+    #define LOG_DEBUG(logType, where, function, message, destination)
 #endif
 
 #ifdef _DEBUG

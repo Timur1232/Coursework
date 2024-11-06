@@ -7,6 +7,7 @@
 #include "../list/list.h"
 #include "../fec_note/fec_note.h"
 #include "../proccess_fec/proccess_fec.h"
+#include "../log/log.h"
 
 static const wchar_t* const TOP_DIVIDER =      L"┌───────┬──────────────┬──────────────┬─────────────────┬─────────────────┬─────────────┬─────────────┬─────────────┐";
 static const wchar_t* const MIDDLE_DIVIDER =   L"├───────┼──────────────┼──────────────┼─────────────────┼─────────────────┼─────────────┼─────────────┼─────────────┤";
@@ -26,8 +27,9 @@ static void print_border(WINDOW* win, int startY, int chunchSize);
 static void print_sum(WINDOW* win, FECNote sumNote);
 static void print_table_info(WINDOW* win, int chunck, int index, int size, int chunckSize);
 static void highlight_elem(WINDOW* win, int posY);
+static char* input_str(WINDOW* win, int x, int y);
 
-void print_menu(WINDOW* win, Menu* menu)
+void print_menu(WINDOW* win, const Menu* menu)
 {
     wclear(win);
     box(win, 0, 0);
@@ -37,23 +39,45 @@ void print_menu(WINDOW* win, Menu* menu)
     // Вывод заголовка
     if (menu->title)
         mvwaddwstr(win,
-            menu->commandStartY - 2,
+            menu->commandStartY + menu->titleShiftY - 1,
             startX - ((menu->align == MIDDLE) ? (wcslen(menu->title) / 2) : 0),
             menu->title);
 
     // Вывод пунктов
+    int count = 0;
     for (int i = 0; i < menu->commandsSize; i++)
     {
         if (menu->commands[i].highlight)    // Выделение активного пункта
+        {
             wattron(win, WA_REVERSE);
-
+            count++;
+        }
         mvwaddwstr(win,
             menu->commandStartY + i,
             startX + menu->commandShiftX,
-            menu->commands[i].text);
-
+            menu->commands[i].text
+        );
         if (menu->commands[i].highlight)
+        {
             wattroff(win, WA_REVERSE);
+        }
+    }
+
+    if (menu->exitText)
+    {
+        if (!count)
+        {
+            wattron(win, WA_REVERSE);
+        }
+        mvwaddwstr(win,
+            menu->commandStartY + menu->commandsSize - 1 + menu->exitTextShiftY,
+            startX + menu->commandShiftX,
+            menu->exitText
+        );
+        if (!count)
+        {
+            wattroff(win, WA_REVERSE);
+        }
     }
 
     wrefresh(win);
@@ -138,15 +162,33 @@ void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode m
 }
 
 // TODO: расчет позиции
-void pop_up_notification(WINDOW* win, const wchar_t* messege)
+void pop_up_notification(WINDOW* win, const wchar_t* message)
 {
-    wresize(win, 3, wcslen(messege) + 4);
+    wresize(win, 3, wcslen(message) + 4);
     mvwin(win, 0, 0);
     //init_pair(3, COLOR_BLUE, COLOR_WHITE);
     //wbkgd(win, COLOR_PAIR(3));
     box(win, 0, 0);
-    mvwaddwstr(win, 1, 2, messege);
+    mvwaddwstr(win, 1, 2, message);
     wrefresh(win);
+}
+
+// nodiscard
+char* get_user_input(WINDOW* win, const wchar_t* message)
+{
+    wclear(win);
+    keypad(win, TRUE);
+    wresize(win, 4, 60);
+    mvwin(win, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2 - 30);
+    box(win, 0, 0);
+    mvwaddwstr(win, 1, 2, message);
+    wrefresh(win);
+    //echo();
+    curs_set(1);
+    char* str = input_str(win, 2, 2);
+    curs_set(0);
+    //noecho();
+    return str;
 }
 
 void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index)
@@ -188,9 +230,9 @@ void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index)
     wrefresh(win);
 }
 
-void highlight_on_index(Menu* menu, int index)
+void highlight_on_index(const Menu* menu, int index)
 {
-    for (int i = 0; i < sizeof(menu->commands) / sizeof(MenuCommand); i++)
+    for (int i = 0; i < menu->commandsSize; i++)
     {
         if (i == index)
             menu->commands[i].highlight = TRUE;
@@ -267,4 +309,54 @@ static void highlight_elem(WINDOW* win, int posY)
     else
         mvwaddwstr(win, posY + 4, 0, L"├=======┼==============┼==============┼=================┼=================┼=============┼=============┼=============┤");
     wattroff(win, WA_BOLD);
+}
+
+static char* input_str(WINDOW* win, int x, int y)
+{
+    char* buff = NEW(char, BUFFER_CAPASITY);
+    if (!buff)
+    {
+        LOG_DEBUG(ERR, "user_input.c", "input_str()", "buff allocation error", LOG_FILE);
+        exit(-1);
+    }
+    memset(buff, 0, BUFFER_CAPASITY);
+    int size = 0;
+    int capasity = BUFFER_CAPASITY;
+
+    wmove(win, y, x);
+    int ch = 0;
+    while (true)
+    {
+        ch = wgetch(win);
+        if (ch == '\n')
+        {
+            break;
+        }
+        if (ch == 8)
+        {
+            size = clamp(size - 1, 0, capasity);
+            buff[size] = '\0';
+        }
+        if (size == capasity - 1)
+        {
+            capasity += BUFFER_CAPASITY;
+            char* reallocBuff = realloc(buff, capasity);
+            if (!reallocBuff)
+            {
+                free(buff);
+                LOG_DEBUG(LOG_ERR, "user_input.c", "input_str()", "buff reallocation error", LOG_FILE);
+                exit(-1);
+            }
+            buff = reallocBuff;
+        }
+        if (ch != 8)
+        {
+            buff[size++] = ch;
+            buff[size] = '\0';
+        }
+        mvwprintw(win, y, x, "                                                        ");
+        mvwprintw(win, y, x, buff);
+        wrefresh(win);
+    }
+    return buff;
 }

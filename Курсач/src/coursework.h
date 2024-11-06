@@ -5,26 +5,14 @@
 
 #include "list/list.h"
 #include "ref_array/ref_array.h"
-#include "interface/interface.h"
-
+#include "undo_stack/undo_stack.h"
 
 typedef struct ProgramInstance
 {
-    // Окна
-    WINDOW* menuWin;
-    WINDOW* browsingWin;
-    WINDOW* tableWin;
-    WINDOW* redactorWin;
-    WINDOW* popUpWin;
-
-    // Меню
-    Menu mainMenu;
-    Menu browsingMenu;
-
-    const char* const currentFilePath;
-
+    const char* currentFilePath;
     List fecNotes;
     RefArray entries;
+
 } ProgramInstance;
 
 typedef void (*StructuralFunc) (ProgramInstance* program);
@@ -35,10 +23,11 @@ int Main(int argc, char** argv);
 
 void new_list(ProgramInstance* program);
 void load_list(ProgramInstance* program);
+void list_redactor(ProgramInstance* program);
 //void settings(ProgramInstance* program);
 
 void save(ProgramInstance* program);
-void sort(ProgramInstance* program);
+void sorting(ProgramInstance* program);
 void find(ProgramInstance* program);
 void save_result(ProgramInstance* program);
 

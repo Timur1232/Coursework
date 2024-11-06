@@ -19,7 +19,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 
     if (!file)
     {
-        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
+        LOG_DEBUG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
         error.err = FILE_OPEN_ERR;
         return error;
     }
@@ -48,7 +48,7 @@ TokenizerErrors scan_bin_note_list(const char* fileName, ListPtr fecNotes)
     FILE* file = fopen(fileName, "rb");
     if (!file)
     {
-        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
+        LOG_DEBUG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to open input file", LOG_FILE);
         return -1;
     }
     free_list(fecNotes);
@@ -73,7 +73,7 @@ TokenizerErrors save_note_list(const char* fileName, ListPtr fecNotes)
     FILE* file = fopen(fileName, "wt");
     if (!file)
     {
-        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
+        LOG_DEBUG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
         return -1;
     }
 
@@ -102,7 +102,7 @@ TokenizerErrors save_bin_note_list(const char* fileName, ListPtr fecNotes)
     FILE* file = fopen(fileName, "wb");
     if (!file)
     {
-        LOG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
+        LOG_DEBUG(LOG_ERR, "fec_note.c", "scan_note_list()", "Unable to create output file", LOG_FILE);
         return FILE_OPEN_ERR;
     }
 
