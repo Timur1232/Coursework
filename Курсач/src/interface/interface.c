@@ -8,6 +8,7 @@
 #include "../fec_note/fec_note.h"
 #include "../proccess_fec/proccess_fec.h"
 #include "../log/log.h"
+#include "../user_input/user_input.h"
 
 static const wchar_t* const TOP_DIVIDER =      L"┌───────┬──────────────┬──────────────┬─────────────────┬─────────────────┬─────────────┬─────────────┬─────────────┐";
 static const wchar_t* const MIDDLE_DIVIDER =   L"├───────┼──────────────┼──────────────┼─────────────────┼─────────────────┼─────────────┼─────────────┼─────────────┤";
@@ -47,7 +48,7 @@ void print_menu(WINDOW* win, const Menu* menu)
     int count = 0;
     for (int i = 0; i < menu->commandsSize; i++)
     {
-        if (menu->commands[i].highlight)    // Выделение активного пункта
+        if (menu->selected == i)    // Выделение активного пункта
         {
             wattron(win, WA_REVERSE);
             count++;
@@ -57,7 +58,7 @@ void print_menu(WINDOW* win, const Menu* menu)
             startX + menu->commandShiftX,
             menu->commands[i].text
         );
-        if (menu->commands[i].highlight)
+        if (menu->selected == i)
         {
             wattroff(win, WA_REVERSE);
         }
@@ -162,19 +163,34 @@ void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode m
 }
 
 // TODO: расчет позиции
-void pop_up_notification(WINDOW* win, const wchar_t* message)
+void pop_up_notification_wchar(WINDOW* win, const wchar_t* message, NotificationType type, int y)
 {
-    wresize(win, 3, wcslen(message) + 4);
-    mvwin(win, 0, 0);
-    //init_pair(3, COLOR_BLUE, COLOR_WHITE);
-    //wbkgd(win, COLOR_PAIR(3));
+    int messageLength = wcslen(message);
+    wclear(win);
+    wresize(win, 3, messageLength + 4);
+    mvwin(win, y, SCREEN_WIDTH / 2 - messageLength / 2);
+    wbkgd(win, COLOR_PAIR(type));
     box(win, 0, 0);
     mvwaddwstr(win, 1, 2, message);
     wrefresh(win);
+    wbkgd(win, COLOR_PAIR(0));
+}
+
+void pop_up_notification(WINDOW* win, const char* message, NotificationType type, int y)
+{
+    int messageLength = strlen(message);
+    wclear(win);
+    wresize(win, 3, messageLength + 4);
+    mvwin(win, y, SCREEN_WIDTH / 2 - messageLength / 2);
+    wbkgd(win, COLOR_PAIR(type));
+    box(win, 0, 0);
+    mvwaddstr(win, 1, 2, message);
+    wrefresh(win);
+    wbkgd(win, COLOR_PAIR(0));
 }
 
 // nodiscard
-char* get_user_input(WINDOW* win, const wchar_t* message)
+char* get_user_input_str(WINDOW* win, const wchar_t* message)
 {
     wclear(win);
     keypad(win, TRUE);
@@ -191,13 +207,29 @@ char* get_user_input(WINDOW* win, const wchar_t* message)
     return str;
 }
 
+int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest)
+{
+    char* str = get_user_input_str(win, message);
+    int err = parse_int(str, dest);
+    free(str);
+    return err;
+}
+
+int get_user_input_float(WINDOW* win, const wchar_t* message, float* dest)
+{
+    char* str = get_user_input_str(win, message);
+    int err = parse_float(str, dest);
+    free(str);
+    return err;
+}
+
 void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index)
 {
     wclear(win);
     box(win, 0, 0);
 
-    int posX = /*TABLE_WIN_WIDTH / 2 - 15*/ 2;
-    int posY = /*TABLE_WIN_HEIGHT / 2 - 10*/ 2;
+    int posX = 2;
+    int posY = 2;
 
     mvwaddwstr(win, posY, posX, L"Запись №");
     mvwprintw(win, posY, posX + 8, "%d", index + 1);
@@ -230,16 +262,16 @@ void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index)
     wrefresh(win);
 }
 
-void highlight_on_index(const Menu* menu, int index)
-{
-    for (int i = 0; i < menu->commandsSize; i++)
-    {
-        if (i == index)
-            menu->commands[i].highlight = TRUE;
-        else
-            menu->commands[i].highlight = FALSE;
-    }
-}
+//void highlight_on_index(const Menu* menu, int index)
+//{
+//    for (int i = 0; i < menu->commandsSize; i++)
+//    {
+//        if (i == index)
+//            menu->commands[i].highlight = TRUE;
+//        else
+//            menu->commands[i].highlight = FALSE;
+//    }
+//}
 
 //__________________________________[Статические функции]__________________________________//
 
@@ -354,8 +386,18 @@ static char* input_str(WINDOW* win, int x, int y)
             buff[size++] = ch;
             buff[size] = '\0';
         }
+        char* outStr = buff;
         mvwprintw(win, y, x, "                                                        ");
-        mvwprintw(win, y, x, buff);
+        if (size > getmaxx(win) - 4)
+        {
+            outStr = &buff[size - (getmaxx(win) - 7)];
+            mvwprintw(win, y, x, "...");
+            mvwprintw(win, y, x + 3, outStr);
+        }
+        else
+        {
+            mvwprintw(win, y, x, outStr);
+        }
         wrefresh(win);
     }
     return buff;

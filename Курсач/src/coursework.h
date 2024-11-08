@@ -3,16 +3,31 @@
 
 #include <curses.h>
 
+#include <types.h>
 #include "list/list.h"
 #include "ref_array/ref_array.h"
 #include "undo_stack/undo_stack.h"
 
 typedef struct ProgramInstance
 {
-    const char* currentFilePath;
+    WINDOW* winMain;
+    WINDOW* winTable;
+    WINDOW* winRed;
+    WINDOW* winMenu;
+    WINDOW* popUp;
+
+    char* currentFilePath;
     List fecNotes;
     RefArray entries;
+    UndoStack undoStack;
+    FECNote copyNote;
 
+    int selectedNode;
+    int field;
+    int tableMode;
+    Bool findMode;
+    int chunckSize;
+    Bool copied;
 } ProgramInstance;
 
 typedef void (*StructuralFunc) (ProgramInstance* program);

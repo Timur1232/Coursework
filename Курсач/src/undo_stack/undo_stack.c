@@ -11,7 +11,7 @@ UndoStack init_undo()
     return stack;
 }
 
-UndoNode* new_undo(ActionType action, FECNote* note, int index)
+UndoNode* new_undo(ActionType action, void* state, int index)
 {
     UndoNode* newNode = NEW(UndoNode, 1);
     if (!newNode)
@@ -22,9 +22,12 @@ UndoNode* new_undo(ActionType action, FECNote* note, int index)
 
     newNode->next = NULL;
     newNode->prev = NULL;
-    newNode->state = *note;
     newNode->index = index;
     newNode->action = action;
+    if (action == UNDO_CLEAR)
+        newNode->state.list = *((ListPtr)state);
+    else
+        newNode->state.note = *((FECNote*)state);
 
     return newNode;
 }
@@ -46,10 +49,10 @@ void free_undo(UndoStack* stack)
     *stack = init_undo();
 }
 
-void push_action(UndoStack* stack, ActionType action, FECNote* state, int index)
+void push_action(UndoStack* stack, ActionType action, void* state, int index)
 {
     pop_action(stack);
-    if (stack->size == UNDO_LIMIT)
+    if (stack->size >= UNDO_LIMIT)
     {
         UndoNode* iterator = stack->top;
         while (iterator->next) INCREMENT(iterator);
@@ -69,11 +72,12 @@ void push_action(UndoStack* stack, ActionType action, FECNote* state, int index)
         stack->top = newNode;
     }
     stack->cur = newNode;
+    stack->end = false;
 }
 
 void pop_action(UndoStack* stack)
 {
-    if (stack->cur == stack->top) { return; }
+    if (stack->cur == stack->top && !stack->end) { return; }
     if (stack->size <= 1 || stack->end) { free_undo(stack); return; }
     UndoNode* iter = stack->cur->prev;
     int count = 0;
@@ -98,7 +102,6 @@ void pop_action(UndoStack* stack)
     stack->size -= count;
     stack->cur->prev = NULL;
     stack->top = stack->cur;
-    stack->end = false;
 }
 
 ActionType undo(UndoStack* stack, ListPtr list)
@@ -109,16 +112,22 @@ ActionType undo(UndoStack* stack, ListPtr list)
     switch (undoAction->action)
     {
     case UNDO_DEL:
-        insert(list, &undoAction->state, undoAction->index);
+        insert(list, &undoAction->state.note, undoAction->index);
         break;
     case UNDO_ADD:
         pop(list, undoAction->index);
         break;
     case UNDO_CHANGE:
-        *get_at(list, undoAction->index) = undoAction->state;
+    {
+        FECNote* note = get_at(list, undoAction->index);
+        FECNote temp = *note;
+        *note = undoAction->state.note;
+        undoAction->state.note = temp;
         break;
+    }
     case UNDO_CLEAR:
-        return UNDO_CLEAR;
+        *list = undoAction->state.list;
+        break;
     default:
         LOG_DEBUG(LOG_ERR, "undo_stack.c", "undo()", "Unexpected action", LOG_FILE);
         exit(-1);
@@ -155,13 +164,19 @@ ActionType redo(UndoStack* stack, ListPtr list)
         pop(list, redoAction->index);
         break;
     case UNDO_ADD:
-        insert(list, &redoAction->state, redoAction->index);
+        insert(list, &redoAction->state.note, redoAction->index);
         break;
     case UNDO_CHANGE:
-        *get_at(list, redoAction->index) = redoAction->state;
+    {
+        FECNote* note = get_at(list, redoAction->index);
+        FECNote temp = *note;
+        *note = redoAction->state.note;
+        redoAction->state.note = temp;
         break;
+    }
     case UNDO_CLEAR:
-        return UNDO_CLEAR;
+        *list = init_list();
+        break;
     default:
         LOG_DEBUG(LOG_ERR, "undo_stack.c", "redo()", "Unexpected action", LOG_FILE);
         exit(-1);

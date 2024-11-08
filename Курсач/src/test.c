@@ -12,10 +12,10 @@
 #include "interface/interface.h"
 #include "list/list.h"
 #include "file_work/file_work.h"
-//#include "find/find_entries.h"
-//#include "ref_array/ref_array.h"
-//#include "compare/compare.h"
-//#include "log/log.h"
+#include "find/find_entries.h"
+#include "ref_array/ref_array.h"
+#include "compare/compare.h"
+#include "log/log.h"
 #include "user_input/user_input.h"
 #include "undo_stack/undo_stack.h"
 
@@ -246,12 +246,12 @@ int main()
     resize_term(40, 136);
     start_color();
 
-    /*while (1)
+    while (1)
     {
         printw("%d\n", getch());
-    }*/
+    }
 
-    WINDOW* winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
+    /*WINDOW* winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
         * popUp = newwin(5, 15, 0, 0);
 
     UndoStack stack = init_undo();
@@ -264,6 +264,16 @@ int main()
     while (1)
     {
         print_table_list(winTable, &list, 0, FULL);
+        if (stack.cur)
+        {
+            mvprintw(0, 0, "end=%-5d", stack.end);
+            mvprintw(1, 0, "cur:");
+            mvprintw(2, 0, "index=%-5d", stack.cur->index);
+            mvprintw(3, 0, "action=%-5d", stack.cur->action);
+            mvprintw(4, 0, "next=%-5p", stack.cur->next);
+            mvprintw(5, 0, "prev=%-5p", stack.cur->prev);
+            refresh();
+        }
         int ch = getch();
         switch (ch)
         {
@@ -284,6 +294,10 @@ int main()
             push_action(&stack, UNDO_ADD, &note, index);
             insert(&list, &note, index);
             break;
+        case 'c':
+            push_action(&stack, UNDO_CLEAR, &list, -1);
+            list = init_list();
+            break;
         case MY_KEY_UNDO:
             undo(&stack, &list);
             break;
@@ -293,7 +307,7 @@ int main()
         default:
             break;
         }
-    }
+    }*/
     endwin();
     return 0;
 }

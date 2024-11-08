@@ -295,6 +295,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\coursework.c" />
     <ClCompile Include="src\file_work\file_work.c" />
     <ClCompile Include="src\file_work\parser\parser.c" />
     <ClCompile Include="src\file_work\parser\tokenizer.c" />
@@ -304,15 +305,16 @@
     <ClCompile Include="src\fec_note\fec_note.c" />
     <ClCompile Include="src\compare\compare.c" />
     <ClCompile Include="src\log\log.c" />
+    <ClCompile Include="src\main.c" />
     <ClCompile Include="src\proccess_fec\procces_fec.c" />
     <ClCompile Include="src\ref_array\ref_array.c" />
-    <ClCompile Include="src\test.c" />
     <ClCompile Include="src\undo_stack\undo_stack.c" />
     <ClCompile Include="src\user_input\user_input.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\macros.h" />
     <ClInclude Include="include\types.h" />
+    <ClInclude Include="src\coursework.h" />
     <ClInclude Include="src\file_work\file_work.h" />
     <ClInclude Include="src\file_work\parser\parser.h" />
     <ClInclude Include="src\file_work\parser\tokenizer.h" />

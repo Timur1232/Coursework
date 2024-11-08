@@ -110,12 +110,12 @@ int insert(ListPtr list, ConstValuePtr data, uint_64 pos)
 {
     if (!list) { return -1; }
     if (!data) { return -1; }
-    if (pos >= list->size || pos < 0)
+    if (pos > list->size || pos < 0)
         { return -1; }
 
     if (pos == 0)
         push_front(list, data);
-    else if (pos == list->size - 1)
+    else if (pos == list->size)
         push_back(list, data);
     else
     {

@@ -44,3 +44,189 @@ FUNCTION: main()
 MESSAGE:
 File open error
 
+[ 9.10.2024, 0:18:28 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 0:18:28 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 0:52:54 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 0:52:54 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 0:55:25 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 0:55:25 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 0:58:8 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 0:58:8 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 0:59:2 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 0:59:2 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:0:30 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:0:30 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:4:30 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:4:30 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:5:42 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:5:42 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:7:5 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:7:5 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:9:6 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:10:0 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:10:7 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:10:41 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:16:3 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:16:40 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:17:27 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:19:54 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:19:54 ]
+ERROR in file: test.c
+FUNCTION: main()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:26:13 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:26:13 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 1:26:35 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 1:26:35 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+File open error
+

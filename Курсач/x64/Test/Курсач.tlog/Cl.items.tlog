@@ -1,3 +1,4 @@
+D:\source\repos\Курсач\Курсач\src\coursework.c;D:\source\repos\Курсач\Курсач\x64\Test\coursework.obj
 D:\source\repos\Курсач\Курсач\src\file_work\file_work.c;D:\source\repos\Курсач\Курсач\x64\Test\file_work.obj
 D:\source\repos\Курсач\Курсач\src\file_work\parser\parser.c;D:\source\repos\Курсач\Курсач\x64\Test\parser.obj
 D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c;D:\source\repos\Курсач\Курсач\x64\Test\tokenizer.obj
@@ -7,8 +8,8 @@ D:\source\repos\Курсач\Курсач\src\list\list.c;D:\source\repos\Кур
 D:\source\repos\Курсач\Курсач\src\fec_note\fec_note.c;D:\source\repos\Курсач\Курсач\x64\Test\fec_note.obj
 D:\source\repos\Курсач\Курсач\src\compare\compare.c;D:\source\repos\Курсач\Курсач\x64\Test\compare.obj
 D:\source\repos\Курсач\Курсач\src\log\log.c;D:\source\repos\Курсач\Курсач\x64\Test\log.obj
+D:\source\repos\Курсач\Курсач\src\main.c;D:\source\repos\Курсач\Курсач\x64\Test\main.obj
 D:\source\repos\Курсач\Курсач\src\proccess_fec\procces_fec.c;D:\source\repos\Курсач\Курсач\x64\Test\procces_fec.obj
 D:\source\repos\Курсач\Курсач\src\ref_array\ref_array.c;D:\source\repos\Курсач\Курсач\x64\Test\ref_array.obj
-D:\source\repos\Курсач\Курсач\src\test.c;D:\source\repos\Курсач\Курсач\x64\Test\test.obj
 D:\source\repos\Курсач\Курсач\src\undo_stack\undo_stack.c;D:\source\repos\Курсач\Курсач\x64\Test\undo_stack.obj
 D:\source\repos\Курсач\Курсач\src\user_input\user_input.c;D:\source\repos\Курсач\Курсач\x64\Test\user_input.obj
