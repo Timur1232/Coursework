@@ -10,7 +10,7 @@ void find_entries(ListPtr fecNotes, RefArrayPtr entries, FECNotePtr required, in
     clear_array(entries);
     for (FOR_RANGE(iter, *fecNotes))
     {
-        if (compare(&iter->data, required) == 0)
+        if (compare(required, &iter->data) == 0)
         {
             add_ref(entries, &iter->data);
         }

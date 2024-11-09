@@ -28,12 +28,12 @@ int fac_num_asc(ConstValuePtr val1, ConstValuePtr val2)
 
 int dir_name_asc(ConstValuePtr val1, ConstValuePtr val2)
 {
-    return strcmp(val1->directorFullName, val2->directorFullName);
+    return my_strcmp(val1->directorFullName, val2->directorFullName);
 }
 
 int eng_name_asc(ConstValuePtr val1, ConstValuePtr val2)
 {
-    return strcmp(val1->engineerFullName, val2->engineerFullName);
+    return my_strcmp(val1->engineerFullName, val2->engineerFullName);
 }
 
 int cons_plan_asc(ConstValuePtr val1, ConstValuePtr val2)
@@ -66,12 +66,12 @@ int fac_num_desc(ConstValuePtr val1, ConstValuePtr val2)
 
 int dir_name_desc(ConstValuePtr val1, ConstValuePtr val2)
 {
-    return -strcmp(val1->directorFullName, val2->directorFullName);
+    return -my_strcmp(val1->directorFullName, val2->directorFullName);
 }
 
 int eng_name_desc(ConstValuePtr val1, ConstValuePtr val2)
 {
-    return -strcmp(val1->engineerFullName, val2->engineerFullName);
+    return -my_strcmp(val1->engineerFullName, val2->engineerFullName);
 }
 
 int cons_plan_desc(ConstValuePtr val1, ConstValuePtr val2)
