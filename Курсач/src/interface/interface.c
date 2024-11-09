@@ -28,6 +28,7 @@ static void print_border(WINDOW* win, int startY, int chunchSize);
 static void print_sum(WINDOW* win, FECNote sumNote);
 static void print_table_info(WINDOW* win, int chunck, int index, int size, int chunckSize);
 static void highlight_elem(WINDOW* win, int posY);
+// [[nodiscard]]
 static char* input_str(WINDOW* win, int x, int y);
 
 void print_menu(WINDOW* win, const Menu* menu)
@@ -66,37 +67,37 @@ void print_menu(WINDOW* win, const Menu* menu)
 
     if (menu->exitText)
     {
-        if (!count)
+        if (!count && menu->selected != -1)
         {
             wattron(win, WA_REVERSE);
         }
         mvwaddwstr(win,
-            menu->commandStartY + menu->commandsSize - 1 + menu->exitTextShiftY,
+            menu->commandStartY + menu->commandsSize + menu->exitTextShiftY,
             startX + menu->commandShiftX,
             menu->exitText
         );
-        if (!count)
+        if (!count && menu->selected != -1)
         {
             wattroff(win, WA_REVERSE);
         }
     }
-
+    wattroff(win, WA_REVERSE);
     wrefresh(win);
 }
 
-void print_table_list(WINDOW* win, ListPtr list, int selected, TableMode mode)
+void print_table_list(WINDOW* win, ListPtr list, int selected, Focus mode)
 {
     wclear(win);
 
-    int chunckSize = (mode == FULL) ? (CHUNCK_SIZE_FULL) : (CHUNCK_SIZE_REDACTOR);
+    int chunckSize = (mode != FOCUS_EDITOR) ? (CHUNCK_SIZE_FULL) : (CHUNCK_SIZE_REDACTOR);
     int chunck = selected / chunckSize;
-    int startY = (mode == FULL) ? (0) : (14);
+    int startY = (mode != FOCUS_EDITOR) ? (0) : (14);
 
     Iterator iter = get_iter(list, chunck * chunckSize);
     // Вывод блока элементов списка
     for (int i = 0; i < chunckSize && (i + chunckSize * chunck) < list->size; i++, INCREMENT(iter))
     {
-        if (i == selected % chunckSize)     // Выделение активного элемента
+        if (i == selected % chunckSize && mode != FOCUS_MENU)     // Выделение активного элемента
         {
             wattron(win, WA_REVERSE);
         }
@@ -106,7 +107,7 @@ void print_table_list(WINDOW* win, ListPtr list, int selected, TableMode mode)
             iter->data.energyConsPlan, iter->data.energyConsReal,
             calc_diff_deviation(&iter->data)
         );
-        if (i == selected % chunckSize)
+        if (i == selected % chunckSize && mode != FOCUS_MENU)
         {
             wattroff(win, WA_REVERSE);
         }
@@ -127,19 +128,19 @@ void print_table_list(WINDOW* win, ListPtr list, int selected, TableMode mode)
     wrefresh(win);
 }
 
-void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode mode)
+void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, Focus mode)
 {
     wclear(win);
 
-    int chunckSize = (mode == FULL) ? (CHUNCK_SIZE_FULL) : (CHUNCK_SIZE_REDACTOR);
+    int chunckSize = (mode != FOCUS_EDITOR) ? (CHUNCK_SIZE_FULL) : (CHUNCK_SIZE_REDACTOR);
     int chunck = selected / chunckSize;
-    int startY = (mode == FULL) ? (0) : (14);
+    int startY = (mode != FOCUS_EDITOR) ? (0) : (14);
 
     FECNote** iter = (FECNote**)get_ref(entries, chunck * chunckSize);
     // Вывод блока элементов массива ссылок
     for (int i = 0; i < chunckSize && (i + chunckSize * chunck) < entries->size; i++, iter++)
     {
-        if (i == selected % chunckSize)
+        if (i == selected % chunckSize && mode != FOCUS_MENU)
         {
             wattron(win, WA_REVERSE);
         }
@@ -149,7 +150,7 @@ void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode m
             (*iter)->energyConsPlan, (*iter)->energyConsReal,
             calc_diff_deviation((*iter))
         );
-        if (i == selected % chunckSize)
+        if (i == selected % chunckSize && mode != FOCUS_MENU)
         {
             wattroff(win, WA_REVERSE);
         }
@@ -162,14 +163,14 @@ void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode m
     wrefresh(win);
 }
 
-// TODO: расчет позиции
 void pop_up_notification_wchar(WINDOW* win, const wchar_t* message, NotificationType type, int y)
 {
     int messageLength = wcslen(message);
     wclear(win);
     wresize(win, 3, messageLength + 4);
     mvwin(win, y, SCREEN_WIDTH / 2 - messageLength / 2);
-    wbkgd(win, COLOR_PAIR(type));
+    if (has_colors())
+        wbkgd(win, COLOR_PAIR(type));
     box(win, 0, 0);
     mvwaddwstr(win, 1, 2, message);
     wrefresh(win);
@@ -182,34 +183,33 @@ void pop_up_notification(WINDOW* win, const char* message, NotificationType type
     wclear(win);
     wresize(win, 3, messageLength + 4);
     mvwin(win, y, SCREEN_WIDTH / 2 - messageLength / 2);
-    wbkgd(win, COLOR_PAIR(type));
+    if (has_colors())
+        wbkgd(win, COLOR_PAIR(type));
     box(win, 0, 0);
     mvwaddstr(win, 1, 2, message);
     wrefresh(win);
     wbkgd(win, COLOR_PAIR(0));
 }
 
-// nodiscard
-char* get_user_input_str(WINDOW* win, const wchar_t* message)
+// [[nodiscard]]
+char* get_user_input_str(WINDOW* win, const wchar_t* message, int y)
 {
     wclear(win);
     keypad(win, TRUE);
     wresize(win, 4, 60);
-    mvwin(win, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2 - 30);
+    mvwin(win, y, SCREEN_WIDTH / 2 - 30);
     box(win, 0, 0);
     mvwaddwstr(win, 1, 2, message);
     wrefresh(win);
-    //echo();
     curs_set(1);
     char* str = input_str(win, 2, 2);
     curs_set(0);
-    //noecho();
     return str;
 }
 
 int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest)
 {
-    char* str = get_user_input_str(win, message);
+    char* str = get_user_input_str(win, message, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
     int err = parse_int(str, dest);
     free(str);
     return err;
@@ -217,7 +217,7 @@ int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest)
 
 int get_user_input_float(WINDOW* win, const wchar_t* message, float* dest)
 {
-    char* str = get_user_input_str(win, message);
+    char* str = get_user_input_str(win, message, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
     int err = parse_float(str, dest);
     free(str);
     return err;
@@ -262,16 +262,57 @@ void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index)
     wrefresh(win);
 }
 
-//void highlight_on_index(const Menu* menu, int index)
-//{
-//    for (int i = 0; i < menu->commandsSize; i++)
-//    {
-//        if (i == index)
-//            menu->commands[i].highlight = TRUE;
-//        else
-//            menu->commands[i].highlight = FALSE;
-//    }
-//}
+void print_controls(WINDOW* win, Focus type)
+{
+    wclear(win);
+    box(win, 0, 0);
+    switch (type)
+    {
+    case FOCUS_BROWSING:
+        mvwaddwstr(win, 1, 2, L"Enter - редактировать");
+        mvwaddwstr(win, 2, 2, L"Ctrl+Z - отменить");
+        mvwaddwstr(win, 3, 2, L"Ctrl+Y - возвратить");
+        mvwaddwstr(win, 4, 2, L"Ctrl+A / Ins - создать");
+        mvwaddwstr(win, 5, 2, L"Ctrl+D / Del - удалить");
+        mvwaddwstr(win, 6, 2, L"Ctrl+F - поиск");
+        mvwaddwstr(win, 7, 2, L"Ctrl+G - сортировка");
+        mvwaddwstr(win, 8, 2, L"Ctrl+S - сохранить");
+        mvwaddwstr(win, 9, 2, L"Home - в начало");
+        mvwaddwstr(win, 10, 2, L"End - в конец");
+        mvwaddwstr(win, 11, 2, L"Tab - меню");
+        break;
+    case FOCUS_FIND:
+        mvwaddwstr(win, 1, 2, L"Enter - редактировать");
+        mvwaddwstr(win, 2, 2, L"Ctrl+Z - отменить");
+        mvwaddwstr(win, 3, 2, L"Ctrl+Y - возвратить");
+        mvwaddwstr(win, 4, 2, L"Ctrl+D / Del - удалить");
+        mvwaddwstr(win, 5, 2, L"Ctrl+F - выйти");
+        mvwaddwstr(win, 6, 2, L"Ctrl+S - сохранить");
+        mvwaddwstr(win, 7, 2, L"Home - в начало");
+        mvwaddwstr(win, 8, 2, L"End - в конец");
+        mvwaddwstr(win, 9, 2, L"Tab - меню");
+        break;
+    case FOCUS_EDITOR:
+        mvwaddwstr(win, 1, 2, L"Enter - ввести поле");
+        mvwaddwstr(win, 2, 2, L"Ctrl+Z - отменить");
+        mvwaddwstr(win, 3, 2, L"Ctrl+Y - возвратить");
+        mvwaddwstr(win, 4, 2, L"Ctrl+A / Ins - создать");
+        mvwaddwstr(win, 5, 2, L"Ctrl+D / Del - удалить");
+        mvwaddwstr(win, 6, 2, L"Ctrl+F - поиск");
+        mvwaddwstr(win, 7, 2, L"Ctrl+G - сортировка");
+        mvwaddwstr(win, 8, 2, L"Ctrl+S - сохранить");
+        mvwaddwstr(win, 9, 2, L"Home - в начало");
+        mvwaddwstr(win, 10, 2, L"End - в конец");
+        mvwaddwstr(win, 11, 2, L"Tab - меню");
+        break;
+    case FOCUS_MENU:
+        mvwaddwstr(win, 1, 2, L"Tab - редактирование");
+        mvwaddwstr(win, 2, 2, L"↑ / ↓ - листать меню");
+        mvwaddwstr(win, 3, 2, L"Enter - выбор");
+        break;
+    }
+    wrefresh(win);
+}
 
 //__________________________________[Статические функции]__________________________________//
 
@@ -359,16 +400,19 @@ static char* input_str(WINDOW* win, int x, int y)
     int ch = 0;
     while (true)
     {
-        ch = wgetch(win);
-        if (ch == '\n')
+        ch = wgetch(win);   // Посимвольное считывание
+        // Конец ввода
+        if (ch == '\n') 
         {
             break;
         }
-        if (ch == 8)
+        // Удаление символа
+        if (ch == MY_KEY_BACKSPACE)
         {
             size = clamp(size - 1, 0, capasity);
             buff[size] = '\0';
         }
+        // Перевыделение памяти
         if (size == capasity - 1)
         {
             capasity += BUFFER_CAPASITY;
@@ -381,11 +425,13 @@ static char* input_str(WINDOW* win, int x, int y)
             }
             buff = reallocBuff;
         }
-        if (ch != 8)
+        // Загрузка символа в строку
+        if (ch != MY_KEY_BACKSPACE)
         {
             buff[size++] = ch;
             buff[size] = '\0';
         }
+        // Вывод эха для ползователя
         char* outStr = buff;
         mvwprintw(win, y, x, "                                                        ");
         if (size > getmaxx(win) - 4)

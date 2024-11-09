@@ -15,4 +15,6 @@ int scan_bin_note_list(const char* fileName, ListPtr fecNotes);
 int save_note_list(const char* fileName, ListPtr fecNotes);
 int save_bin_note_list(const char* fileName, ListPtr fecNotes);
 
+int save_results(const char* fileName, ListPtr fecNotes);
+
 #endif // FILE_WORK_H

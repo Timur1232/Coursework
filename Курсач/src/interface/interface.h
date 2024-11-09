@@ -11,23 +11,25 @@
 #define CHUNCK_SIZE_FULL 16
 #define CHUNCK_SIZE_REDACTOR 9
 
-#define SCREEN_WIDTH 136
+#define SCREEN_WIDTH 144
 #define SCREEN_HEIGHT 40
 
-#define BROWSING_MENU_WIN_WIDTH 19
-#define BROWSING_MENU_WIN_HEIGHT SCREEN_HEIGHT
+#define CONTROLS_HEIGHT 13
+
+#define BROWSING_MENU_WIN_WIDTH 27
+#define BROWSING_MENU_WIN_HEIGHT (SCREEN_HEIGHT - CONTROLS_HEIGHT)
 
 #define TABLE_WIN_WIDTH 117
 #define TABLE_WIN_HEIGHT SCREEN_HEIGHT
-#define TABLE_WIN_X 19
+#define TABLE_WIN_X BROWSING_MENU_WIN_WIDTH
 #define TABLE_WIN_Y 0
 
 #define REDACTOR_MENU_WIN_WIDTH 117
 #define REDACTOR_MENU_WIN_HEIGHT 15
-#define REDACTOR_MENU_WIN_X 19
+#define REDACTOR_MENU_WIN_X BROWSING_MENU_WIN_WIDTH
 #define REDACTOR_MENU_WIN_Y 0
 
-#define POP_UP_Y SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4 + SCREEN_HEIGHT / 8
+#define POP_UP_Y (SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4 + SCREEN_HEIGHT / 8)
 
 #define BUFFER_CAPASITY 50
 
@@ -56,17 +58,19 @@ typedef enum Align
     MIDDLE
 } Align;
 
-typedef enum TableMode
-{
-    FULL,
-    REDACTOR
-} TableMode;
-
 typedef enum NotificationType
 {
     N_INFO = 2,
     N_ERR = 3
 } NotificationType;
+
+typedef enum Focus
+{
+    FOCUS_BROWSING,
+    FOCUS_FIND,
+    FOCUS_EDITOR,
+    FOCUS_MENU
+} Focus;
 
 typedef struct MenuCommand
 {
@@ -91,14 +95,16 @@ typedef struct Menu
 } Menu;
 
 void print_menu(WINDOW* win, const Menu* menu);
-void print_table_list(WINDOW* win, ListPtr list, int selected, TableMode mode);
-void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, TableMode mode);
+void print_table_list(WINDOW* win, ListPtr list, int selected, Focus mode);
+void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, Focus mode);
 void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index);
+
+void print_controls(WINDOW* win, Focus type);
 
 void pop_up_notification_wchar(WINDOW* win, const wchar_t* message, NotificationType type, int y);
 void pop_up_notification(WINDOW* win, const char* message, NotificationType type, int y);
-// nodiscard
-char* get_user_input_str(WINDOW* win, const wchar_t* message);
+// [[nodiscard]]
+char* get_user_input_str(WINDOW* win, const wchar_t* message, int y);
 int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest);
 int get_user_input_float(WINDOW* win, const wchar_t* message, float* dest);
 

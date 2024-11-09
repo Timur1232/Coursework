@@ -29,7 +29,7 @@ static void print_log_type(FILE* logFile, int logType, const char* where, const 
     fprintf(logFile, "FUNCTION: %s\n", function);
 }
 
-void log(int logType, const char* where, const char* function, const char* message, int destination)
+void log_debug(int logType, const char* where, const char* function, const char* message, int destination)
 {
     FILE* logFile = open_where(destination);
 

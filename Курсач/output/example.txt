@@ -1,0 +1,32 @@
+{
+	serialNumber = 234;
+	factoryNumber = 321;
+	directorName = "Timur Bai";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 43.431999;
+	energyConsReal = 69.419998;
+}
+{
+	serialNumber = 87;
+	factoryNumber = 567;
+	directorName = "Someone";
+	engineerName = "Noname";
+	energyConsPlan = 254.000000;
+	energyConsReal = 69.419998;
+}
+{
+	serialNumber = 23;
+	factoryNumber = 54;
+	directorName = "Danil Bl";
+	engineerName = "Dima K";
+	energyConsPlan = 65.449997;
+	energyConsReal = 69.419998;
+}
+{
+	serialNumber = 69;
+	factoryNumber = 420;
+	directorName = "qwerty";
+	engineerName = "asdf";
+	energyConsPlan = 345.000000;
+	energyConsReal = 456.230011;
+}

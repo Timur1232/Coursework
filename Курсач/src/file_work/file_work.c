@@ -8,6 +8,7 @@
 #include "../fec_note/fec_note.h"
 #include "parser/tokenizer.h"
 #include "parser/parser.h"
+#include "../proccess_fec/proccess_fec.h"
 
 /*=====================================[Функции]=====================================*/
 
@@ -112,4 +113,26 @@ TokenizerErrors save_bin_note_list(const char* fileName, ListPtr fecNotes)
     }
     fclose(file);
     return ALL_GOOD;
+}
+
+int save_results(const char* fileName, ListPtr fecNotes)
+{
+    FILE* file = fopen(fileName, "wt");
+    if (!file)
+    {
+        LOG_DEBUG(LOG_ERR, "fec_note.c", "save_results()", "Unable to create output file", LOG_FILE);
+        return -1;
+    }
+    fprintf(file,
+        "SerialNumber   Deviation\n\n"
+    );
+    for (FOR_RANGE(iter, *fecNotes))
+    {
+        fprintf(file,
+            "%-15d%f\n",
+            iter->data.serialNumber, calc_diff_deviation(&iter->data)
+        );
+    }
+    fclose(file);
+    return 0;
 }

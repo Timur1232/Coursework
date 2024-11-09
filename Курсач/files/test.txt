@@ -1,0 +1,48 @@
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}

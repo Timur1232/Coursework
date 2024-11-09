@@ -1,0 +1,15 @@
+D:\source\repos\Курсач\Курсач\src\coursework.c;D:\source\repos\Курсач\Курсач\x64\Release\coursework.obj
+D:\source\repos\Курсач\Курсач\src\file_work\file_work.c;D:\source\repos\Курсач\Курсач\x64\Release\file_work.obj
+D:\source\repos\Курсач\Курсач\src\file_work\parser\parser.c;D:\source\repos\Курсач\Курсач\x64\Release\parser.obj
+D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c;D:\source\repos\Курсач\Курсач\x64\Release\tokenizer.obj
+D:\source\repos\Курсач\Курсач\src\find\find_entries.c;D:\source\repos\Курсач\Курсач\x64\Release\find_entries.obj
+D:\source\repos\Курсач\Курсач\src\interface\interface.c;D:\source\repos\Курсач\Курсач\x64\Release\interface.obj
+D:\source\repos\Курсач\Курсач\src\list\list.c;D:\source\repos\Курсач\Курсач\x64\Release\list.obj
+D:\source\repos\Курсач\Курсач\src\fec_note\fec_note.c;D:\source\repos\Курсач\Курсач\x64\Release\fec_note.obj
+D:\source\repos\Курсач\Курсач\src\compare\compare.c;D:\source\repos\Курсач\Курсач\x64\Release\compare.obj
+D:\source\repos\Курсач\Курсач\src\log\log.c;D:\source\repos\Курсач\Курсач\x64\Release\log.obj
+D:\source\repos\Курсач\Курсач\src\main.c;D:\source\repos\Курсач\Курсач\x64\Release\main.obj
+D:\source\repos\Курсач\Курсач\src\proccess_fec\procces_fec.c;D:\source\repos\Курсач\Курсач\x64\Release\procces_fec.obj
+D:\source\repos\Курсач\Курсач\src\ref_array\ref_array.c;D:\source\repos\Курсач\Курсач\x64\Release\ref_array.obj
+D:\source\repos\Курсач\Курсач\src\undo_stack\undo_stack.c;D:\source\repos\Курсач\Курсач\x64\Release\undo_stack.obj
+D:\source\repos\Курсач\Курсач\src\user_input\user_input.c;D:\source\repos\Курсач\Курсач\x64\Release\user_input.obj

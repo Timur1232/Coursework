@@ -1,24 +1,40 @@
 {
-	serialNumber = 234;
-	factoryNumber = 321;
-	directorName = "Timur Bai";
-	engineerName = "Kirill Kv";
-	energyConsPlan = 43.431999;
-	energyConsReal = 69.419998;
-}
-{
-	serialNumber = 87;
+	serialNumber = 345;
 	factoryNumber = 567;
-	directorName = "Someone";
-	engineerName = "Noname";
-	energyConsPlan = 254.000000;
-	energyConsReal = 69.419998;
+	directorName = "qwerty";
+	engineerName = "sadf";
+	energyConsPlan = 345.700012;
+	energyConsReal = 23.657000;
 }
 {
-	serialNumber = 23;
-	factoryNumber = 54;
-	directorName = "Danil Bl";
-	engineerName = "Dima K";
-	energyConsPlan = 65.449997;
-	energyConsReal = 69.419998;
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
+}
+{
+	serialNumber = 0;
+	factoryNumber = 0;
+	directorName = "";
+	engineerName = "";
+	energyConsPlan = 0.000000;
+	energyConsReal = 0.000000;
 }

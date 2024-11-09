@@ -14,9 +14,11 @@ typedef struct ProgramInstance
     WINDOW* winTable;
     WINDOW* winRed;
     WINDOW* winMenu;
+    WINDOW* winField;
     WINDOW* popUp;
+    WINDOW* winControls;
 
-    char* currentFilePath;
+    char* currentFileName;
     List fecNotes;
     RefArray entries;
     UndoStack undoStack;
@@ -24,10 +26,13 @@ typedef struct ProgramInstance
 
     int selectedNode;
     int field;
-    int tableMode;
     Bool findMode;
+    int sortMode;
     int chunckSize;
     Bool copied;
+    int focus;
+    Bool shouldClose;
+    Bool saved;
 } ProgramInstance;
 
 typedef void (*StructuralFunc) (ProgramInstance* program);
@@ -44,7 +49,15 @@ void list_redactor(ProgramInstance* program);
 void save(ProgramInstance* program);
 void sorting(ProgramInstance* program);
 void find(ProgramInstance* program);
-void save_result(ProgramInstance* program);
 
+int change_serialNumber(ProgramInstance* program, FECNote* note);
+int change_factoryNumber(ProgramInstance* program, FECNote* note);
+int change_directorFullName(ProgramInstance* program, FECNote* note);
+int change_engineerFulName(ProgramInstance* program, FECNote* note);
+int change_energyConsPlan(ProgramInstance* program, FECNote* note);
+int change_energyConsReal(ProgramInstance* program, FECNote* note);
+
+void add_note(ProgramInstance* program, FECNote* note);
+void delete_note(ProgramInstance* program);
 
 #endif // COURSEWORK_H

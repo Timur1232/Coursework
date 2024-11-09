@@ -230,3 +230,87 @@ FUNCTION: load_list()
 MESSAGE:
 File open error
 
+[ 9.10.2024, 15:7:58 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 15:7:58 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 15:10:50 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 15:10:50 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 15:10:56 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 15:10:56 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 15:23:9 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to open input file
+
+[ 9.10.2024, 15:23:9 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+File open error
+
+[ 9.10.2024, 15:28:4 ]
+ERROR in file: coursework.c
+FUNCTION: load_list()
+MESSAGE:
+Unrecognizable token; line: 1
+
+[ 9.10.2024, 15:48:41 ]
+ERROR in file: fec_note.c
+FUNCTION: save_results()
+MESSAGE:
+Unable to create output file
+
+[ 9.10.2024, 16:44:15 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to create output file
+
+[ 9.10.2024, 16:44:15 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to create output file
+
+[ 9.10.2024, 16:46:10 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to create output file
+
+[ 9.10.2024, 16:46:10 ]
+ERROR in file: fec_note.c
+FUNCTION: scan_note_list()
+MESSAGE:
+Unable to create output file
+

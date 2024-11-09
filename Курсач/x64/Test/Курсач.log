@@ -1,12 +1,20 @@
 ﻿  coursework.c
-D:\source\repos\Курсач\Курсач\src\coursework.c(313,63): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\coursework.c(315,58): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\coursework.c(383,45): warning C4133: функция: несовместимые типы - из "unsigned short [31]" в "const char *"
-D:\source\repos\Курсач\Курсач\src\coursework.c(395,45): warning C4133: функция: несовместимые типы - из "unsigned short [31]" в "const char *"
-D:\source\repos\Курсач\Курсач\src\coursework.c(405,45): warning C4133: функция: несовместимые типы - из "unsigned short [49]" в "const char *"
-D:\source\repos\Курсач\Курсач\src\coursework.c(418,45): warning C4133: функция: несовместимые типы - из "unsigned short [49]" в "const char *"
-D:\source\repos\Курсач\Курсач\src\coursework.c(433,45): warning C4133: функция: несовместимые типы - из "unsigned short [38]" в "const char *"
-D:\source\repos\Курсач\Курсач\src\coursework.c(445,45): warning C4133: функция: несовместимые типы - из "unsigned short [38]" в "const char *"
+D:\source\repos\Курсач\Курсач\src\coursework.c(205,12): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(205,12): warning C4024: strcpy: различные типы для формального и фактического параметров 1
+D:\source\repos\Курсач\Курсач\src\coursework.c(207,78): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(207,78): warning C4024: construct_file_path: различные типы для формального и фактического параметров 3
+D:\source\repos\Курсач\Курсач\src\coursework.c(215,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(215,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
+D:\source\repos\Курсач\Курсач\src\coursework.c(229,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(229,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
+D:\source\repos\Курсач\Курсач\src\coursework.c(497,59): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\coursework.c(499,54): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\coursework.c(673,45): warning C4133: функция: несовместимые типы - из "unsigned short [31]" в "const char *"
+D:\source\repos\Курсач\Курсач\src\coursework.c(684,45): warning C4133: функция: несовместимые типы - из "unsigned short [31]" в "const char *"
+D:\source\repos\Курсач\Курсач\src\coursework.c(694,45): warning C4133: функция: несовместимые типы - из "unsigned short [49]" в "const char *"
+D:\source\repos\Курсач\Курсач\src\coursework.c(707,45): warning C4133: функция: несовместимые типы - из "unsigned short [49]" в "const char *"
+D:\source\repos\Курсач\Курсач\src\coursework.c(721,45): warning C4133: функция: несовместимые типы - из "unsigned short [38]" в "const char *"
+D:\source\repos\Курсач\Курсач\src\coursework.c(732,45): warning C4133: функция: несовместимые типы - из "unsigned short [38]" в "const char *"
 coursework.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/INCREMENTAL:NO"
   LINK : указан параметр /LTCG, но не требуется создание кода; удалите /LTCG из командной строки компоновки для повышения производительности компоновщика
   Курсач.vcxproj -> D:\source\repos\Курсач\x64\Test\Курсач.exe
