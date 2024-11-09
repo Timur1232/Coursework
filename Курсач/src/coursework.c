@@ -1,5 +1,3 @@
-//#ifdef _RELEASE
-
 #include "coursework.h"
 
 #include <stdio.h>
@@ -24,6 +22,11 @@ static void proccess_redacting(ProgramInstance* program, int ch);
 static int proccess_menu(ProgramInstance* program, Menu* menu, int ch);
 
 static char* construct_file_path(const char* fileName, const char* folderPath, const char* fileExtention);
+
+static void dance();
+
+static void add_note(ProgramInstance* program, FECNote* note);
+static void delete_note(ProgramInstance* program);
 
 static int (* const CHANGE_FUNC_ARRAY[6]) (ProgramInstance* program, FECNote* note) = {
     change_serialNumber, change_factoryNumber, change_directorFullName,
@@ -131,7 +134,7 @@ int Main(int argc, char** argv)
     curs_set(0);
     mouse_set(ALL_MOUSE_EVENTS);
     keypad(stdscr, TRUE);
-    //timeout(32);
+    timeout(200);
     resize_term(SCREEN_HEIGHT, SCREEN_WIDTH);
     if (has_colors())
     {
@@ -145,10 +148,11 @@ int Main(int argc, char** argv)
 
     while (!program.shouldClose)
     {
-        //highlight_on_index(&mainMenu, selected);
         print_menu(program.winMain, &mainMenu);
+        dance();
         int ch = getch();
         proccess_menu(&program, &mainMenu, ch);
+        timeout(200);
     }
 
     endwin();
@@ -157,6 +161,7 @@ int Main(int argc, char** argv)
 
 void new_list(ProgramInstance* program)
 {
+    timeout(-1);
     program->currentFileName = get_user_input_str(program->popUp, L"¬ведите название файла:", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
     if (strlen(program->currentFileName) == 0)
     {
@@ -198,6 +203,7 @@ void new_list(ProgramInstance* program)
 
 void load_list(ProgramInstance* program)
 {
+    timeout(-1);
     program->currentFileName = get_user_input_str(program->popUp, L"¬ведите путь до файла в папке files/ (с расширением):", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
     char* findExtention = strrchr(program->currentFileName, '.');
     if (!findExtention)
@@ -276,16 +282,6 @@ void list_redactor(ProgramInstance* program)
         print_menu(program->winMenu, &browsingMenu);
         print_controls(program->winControls, program->focus);
         print_table(program->winTable, program->winRed, program);
-        /*if (program->undoStack.cur)
-        {
-            mvprintw(0, 0, "end=%-5d", program->undoStack.end);
-            mvprintw(1, 0, "cur:");
-            mvprintw(2, 0, "index=%-5d", program->undoStack.cur->index);
-            mvprintw(3, 0, "action=%-5d", program->undoStack.cur->action);
-            mvprintw(4, 0, "next=%-5p", program->undoStack.cur->next);
-            mvprintw(5, 0, "prev=%-5p", program->undoStack.cur->prev);
-            refresh();
-        }*/
 
         int ch = getch();
         if (ch == '\t')
@@ -461,6 +457,8 @@ void find(ProgramInstance* program)
         }
     }
 }
+
+//__________________________________[—татические функции]__________________________________//
 
 void proccess_movement(ProgramInstance* program, int ch)
 {
@@ -658,8 +656,20 @@ char* construct_file_path(const char* fileName, const char* folderPath, const ch
     return filePath;
 }
 
-//#endif // _RELEASE
+static const wchar_t* const dance_frames[] = {
+    L"<(Х_Х )/ ",
+    L" /(Х_Х)/ ",
+    L" \\( Х_Х)>",
+    L" \\(Х_Х)\\ "
+};
 
+void dance()
+{
+    static int frame = 0;
+    for (int i = 3; i < SCREEN_WIDTH - 9; i += 10)
+        mvaddwstr(1, i, dance_frames[frame]);
+    frame = loop(frame + 1, 0, 3);
+}
 
 static void print_table(WINDOW* winTable, WINDOW* winRed, ProgramInstance* program)
 {

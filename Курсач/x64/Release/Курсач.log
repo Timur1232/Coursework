@@ -1,24 +1,18 @@
 ﻿  coursework.c
-D:\source\repos\Курсач\Курсач\src\coursework.c(213,12): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "char *[10]"
-D:\source\repos\Курсач\Курсач\src\coursework.c(213,12): warning C4024: strcpy: различные типы для формального и фактического параметров 1
-D:\source\repos\Курсач\Курсач\src\coursework.c(215,78): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
-D:\source\repos\Курсач\Курсач\src\coursework.c(215,78): warning C4024: construct_file_path: различные типы для формального и фактического параметров 3
-D:\source\repos\Курсач\Курсач\src\coursework.c(223,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
-D:\source\repos\Курсач\Курсач\src\coursework.c(223,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
-D:\source\repos\Курсач\Курсач\src\coursework.c(237,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
-D:\source\repos\Курсач\Курсач\src\coursework.c(237,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
-D:\source\repos\Курсач\Курсач\src\coursework.c(509,59): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\coursework.c(511,54): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
-  interface.c
-D:\source\repos\Курсач\Курсач\src\interface\interface.c(45,20): warning C4267: функция: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\interface\interface.c(116,49): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\interface\interface.c(159,52): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\interface\interface.c(168,25): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\source\repos\Курсач\Курсач\src\interface\interface.c(182,25): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-LINK : warning LNK4098: библиотека по умолчанию "LIBCMT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
-  Создание кода
-  14 of 125 functions (11.2%) were compiled, the rest were copied from previous compilation.
+D:\source\repos\Курсач\Курсач\src\coursework.c(219,12): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(219,12): warning C4024: strcpy: различные типы для формального и фактического параметров 1
+D:\source\repos\Курсач\Курсач\src\coursework.c(221,78): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(221,78): warning C4024: construct_file_path: различные типы для формального и фактического параметров 3
+D:\source\repos\Курсач\Курсач\src\coursework.c(229,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(229,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
+D:\source\repos\Курсач\Курсач\src\coursework.c(243,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[10]"
+D:\source\repos\Курсач\Курсач\src\coursework.c(243,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
+D:\source\repos\Курсач\Курсач\src\coursework.c(507,59): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\coursework.c(509,54): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+  0 of 126 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
+LINK : warning LNK4098: библиотека по умолчанию "LIBCMT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
+  Создание кода
   Создание кода завершено
   Курсач.vcxproj -> D:\source\repos\Курсач\x64\Release\Курсач.exe

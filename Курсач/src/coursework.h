@@ -57,7 +57,4 @@ int change_engineerFulName(ProgramInstance* program, FECNote* note);
 int change_energyConsPlan(ProgramInstance* program, FECNote* note);
 int change_energyConsReal(ProgramInstance* program, FECNote* note);
 
-void add_note(ProgramInstance* program, FECNote* note);
-void delete_note(ProgramInstance* program);
-
 #endif // COURSEWORK_H

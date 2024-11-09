@@ -1,0 +1,800 @@
+{
+	serialNumber = 1;
+	factoryNumber = 1;
+	directorName = "Serj Tankian";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 204.740005;
+	energyConsReal = 152.419998;
+}
+{
+	serialNumber = 2;
+	factoryNumber = 71;
+	directorName = "Maks L";
+	engineerName = "Danil Bl";
+	energyConsPlan = 242.149994;
+	energyConsReal = 155.860001;
+}
+{
+	serialNumber = 3;
+	factoryNumber = 34;
+	directorName = "Kirill Kv";
+	engineerName = "Serj Tankian";
+	energyConsPlan = 219.630005;
+	energyConsReal = 131.639999;
+}
+{
+	serialNumber = 4;
+	factoryNumber = 61;
+	directorName = "Dmitry K";
+	engineerName = "Boris L";
+	energyConsPlan = 188.320007;
+	energyConsReal = 209.910004;
+}
+{
+	serialNumber = 5;
+	factoryNumber = 26;
+	directorName = "Timur Bai";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 56.830002;
+	energyConsReal = 215.320007;
+}
+{
+	serialNumber = 6;
+	factoryNumber = 1;
+	directorName = "Tom York";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 117.540001;
+	energyConsReal = 68.510002;
+}
+{
+	serialNumber = 7;
+	factoryNumber = 90;
+	directorName = "Tom York";
+	engineerName = "Tom York";
+	energyConsPlan = 138.889999;
+	energyConsReal = 177.000000;
+}
+{
+	serialNumber = 8;
+	factoryNumber = 20;
+	directorName = "Kirill Kv";
+	engineerName = "Serj Tankian";
+	energyConsPlan = 207.669998;
+	energyConsReal = 143.960007;
+}
+{
+	serialNumber = 9;
+	factoryNumber = 2;
+	directorName = "Timur Bai";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 224.720001;
+	energyConsReal = 192.399994;
+}
+{
+	serialNumber = 10;
+	factoryNumber = 29;
+	directorName = "Kirill Kv";
+	engineerName = "Chester B";
+	energyConsPlan = 56.419998;
+	energyConsReal = 104.599998;
+}
+{
+	serialNumber = 11;
+	factoryNumber = 61;
+	directorName = "Kirill Kv";
+	engineerName = "Egor Letov";
+	energyConsPlan = 135.369995;
+	energyConsReal = 85.500000;
+}
+{
+	serialNumber = 12;
+	factoryNumber = 71;
+	directorName = "Serj Tankian";
+	engineerName = "Chester B";
+	energyConsPlan = 194.960007;
+	energyConsReal = 143.619995;
+}
+{
+	serialNumber = 13;
+	factoryNumber = 31;
+	directorName = "Chester B";
+	engineerName = "Danil Bl";
+	energyConsPlan = 100.639999;
+	energyConsReal = 72.199997;
+}
+{
+	serialNumber = 14;
+	factoryNumber = 41;
+	directorName = "Serj Tankian";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 147.380005;
+	energyConsReal = 127.239998;
+}
+{
+	serialNumber = 15;
+	factoryNumber = 36;
+	directorName = "Timur Bai";
+	engineerName = "Danil Bl";
+	energyConsPlan = 141.830002;
+	energyConsReal = 197.369995;
+}
+{
+	serialNumber = 16;
+	factoryNumber = 63;
+	directorName = "Kurt Cobain";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 176.789993;
+	energyConsReal = 87.540001;
+}
+{
+	serialNumber = 17;
+	factoryNumber = 81;
+	directorName = "Kurt Cobain";
+	engineerName = "Dmitry K";
+	energyConsPlan = 143.759995;
+	energyConsReal = 244.070007;
+}
+{
+	serialNumber = 18;
+	factoryNumber = 18;
+	directorName = "Timur Bai";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 183.919998;
+	energyConsReal = 232.789993;
+}
+{
+	serialNumber = 19;
+	factoryNumber = 45;
+	directorName = "Daron Malakian";
+	engineerName = "Serj Tankian";
+	energyConsPlan = 64.089996;
+	energyConsReal = 69.650002;
+}
+{
+	serialNumber = 20;
+	factoryNumber = 12;
+	directorName = "Tom York";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 175.320007;
+	energyConsReal = 106.669998;
+}
+{
+	serialNumber = 21;
+	factoryNumber = 42;
+	directorName = "Danil Bl";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 227.710007;
+	energyConsReal = 184.380005;
+}
+{
+	serialNumber = 22;
+	factoryNumber = 67;
+	directorName = "Kirill Kv";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 239.419998;
+	energyConsReal = 211.630005;
+}
+{
+	serialNumber = 23;
+	factoryNumber = 6;
+	directorName = "Maks L";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 75.629997;
+	energyConsReal = 171.990005;
+}
+{
+	serialNumber = 24;
+	factoryNumber = 26;
+	directorName = "Maks L";
+	engineerName = "Dmitry K";
+	energyConsPlan = 207.960007;
+	energyConsReal = 167.320007;
+}
+{
+	serialNumber = 25;
+	factoryNumber = 88;
+	directorName = "Egor Letov";
+	engineerName = "Maks L";
+	energyConsPlan = 75.419998;
+	energyConsReal = 226.630005;
+}
+{
+	serialNumber = 26;
+	factoryNumber = 53;
+	directorName = "Danil Bl";
+	engineerName = "Dmitry K";
+	energyConsPlan = 151.020004;
+	energyConsReal = 116.480003;
+}
+{
+	serialNumber = 27;
+	factoryNumber = 35;
+	directorName = "Serj Tankian";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 93.739998;
+	energyConsReal = 164.839996;
+}
+{
+	serialNumber = 28;
+	factoryNumber = 3;
+	directorName = "Kurt Cobain";
+	engineerName = "Tom York";
+	energyConsPlan = 237.750000;
+	energyConsReal = 123.599998;
+}
+{
+	serialNumber = 29;
+	factoryNumber = 43;
+	directorName = "Daron Malakian";
+	engineerName = "Timur Bai";
+	energyConsPlan = 217.330002;
+	energyConsReal = 124.489998;
+}
+{
+	serialNumber = 30;
+	factoryNumber = 87;
+	directorName = "Kirill Kv";
+	engineerName = "Danil Bl";
+	energyConsPlan = 148.580002;
+	energyConsReal = 210.539993;
+}
+{
+	serialNumber = 31;
+	factoryNumber = 15;
+	directorName = "Danil Bl";
+	engineerName = "Timur Bai";
+	energyConsPlan = 181.649994;
+	energyConsReal = 224.580002;
+}
+{
+	serialNumber = 32;
+	factoryNumber = 70;
+	directorName = "Dmitry K";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 151.330002;
+	energyConsReal = 152.020004;
+}
+{
+	serialNumber = 33;
+	factoryNumber = 47;
+	directorName = "Daron Malakian";
+	engineerName = "Serj Tankian";
+	energyConsPlan = 97.110001;
+	energyConsReal = 241.509995;
+}
+{
+	serialNumber = 34;
+	factoryNumber = 49;
+	directorName = "Danil Bl";
+	engineerName = "Chester B";
+	energyConsPlan = 85.580002;
+	energyConsReal = 55.110001;
+}
+{
+	serialNumber = 35;
+	factoryNumber = 7;
+	directorName = "Kurt Cobain";
+	engineerName = "Danil Bl";
+	energyConsPlan = 88.809998;
+	energyConsReal = 105.320000;
+}
+{
+	serialNumber = 36;
+	factoryNumber = 40;
+	directorName = "Kurt Cobain";
+	engineerName = "Egor Letov";
+	energyConsPlan = 65.610001;
+	energyConsReal = 238.690002;
+}
+{
+	serialNumber = 37;
+	factoryNumber = 57;
+	directorName = "Yuri Gagarin";
+	engineerName = "Dmitry K";
+	energyConsPlan = 85.690002;
+	energyConsReal = 223.220001;
+}
+{
+	serialNumber = 38;
+	factoryNumber = 57;
+	directorName = "Kurt Cobain";
+	engineerName = "Chester B";
+	energyConsPlan = 121.779999;
+	energyConsReal = 218.820007;
+}
+{
+	serialNumber = 39;
+	factoryNumber = 94;
+	directorName = "Egor Letov";
+	engineerName = "Boris L";
+	energyConsPlan = 136.740005;
+	energyConsReal = 66.849998;
+}
+{
+	serialNumber = 40;
+	factoryNumber = 76;
+	directorName = "Kurt Cobain";
+	engineerName = "Boris L";
+	energyConsPlan = 239.399994;
+	energyConsReal = 121.779999;
+}
+{
+	serialNumber = 41;
+	factoryNumber = 98;
+	directorName = "Tom York";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 202.169998;
+	energyConsReal = 246.619995;
+}
+{
+	serialNumber = 42;
+	factoryNumber = 38;
+	directorName = "Kirill Kv";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 50.959999;
+	energyConsReal = 146.770004;
+}
+{
+	serialNumber = 43;
+	factoryNumber = 27;
+	directorName = "Dmitry K";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 199.270004;
+	energyConsReal = 125.000000;
+}
+{
+	serialNumber = 44;
+	factoryNumber = 33;
+	directorName = "Kirill Kv";
+	engineerName = "Serj Tankian";
+	energyConsPlan = 221.350006;
+	energyConsReal = 100.010002;
+}
+{
+	serialNumber = 45;
+	factoryNumber = 1;
+	directorName = "Yuri Gagarin";
+	engineerName = "Danil Bl";
+	energyConsPlan = 187.320007;
+	energyConsReal = 112.949997;
+}
+{
+	serialNumber = 46;
+	factoryNumber = 68;
+	directorName = "Maks L";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 97.339996;
+	energyConsReal = 204.500000;
+}
+{
+	serialNumber = 47;
+	factoryNumber = 65;
+	directorName = "Tom York";
+	engineerName = "Serj Tankian";
+	energyConsPlan = 108.279999;
+	energyConsReal = 172.779999;
+}
+{
+	serialNumber = 48;
+	factoryNumber = 80;
+	directorName = "Chester B";
+	engineerName = "Timur Bai";
+	energyConsPlan = 229.160004;
+	energyConsReal = 157.970001;
+}
+{
+	serialNumber = 49;
+	factoryNumber = 65;
+	directorName = "Boris L";
+	engineerName = "Danil Bl";
+	energyConsPlan = 92.580002;
+	energyConsReal = 242.130005;
+}
+{
+	serialNumber = 50;
+	factoryNumber = 67;
+	directorName = "Kurt Cobain";
+	engineerName = "Egor Letov";
+	energyConsPlan = 75.230003;
+	energyConsReal = 119.809998;
+}
+{
+	serialNumber = 51;
+	factoryNumber = 71;
+	directorName = "Danil Bl";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 189.690002;
+	energyConsReal = 228.080002;
+}
+{
+	serialNumber = 52;
+	factoryNumber = 1;
+	directorName = "Tom York";
+	engineerName = "Boris L";
+	energyConsPlan = 96.540001;
+	energyConsReal = 154.759995;
+}
+{
+	serialNumber = 53;
+	factoryNumber = 58;
+	directorName = "Timur Bai";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 122.489998;
+	energyConsReal = 121.879997;
+}
+{
+	serialNumber = 54;
+	factoryNumber = 2;
+	directorName = "Kirill Kv";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 147.000000;
+	energyConsReal = 103.209999;
+}
+{
+	serialNumber = 55;
+	factoryNumber = 96;
+	directorName = "Tom York";
+	engineerName = "Maks L";
+	energyConsPlan = 133.570007;
+	energyConsReal = 135.029999;
+}
+{
+	serialNumber = 56;
+	factoryNumber = 97;
+	directorName = "Egor Letov";
+	engineerName = "Boris L";
+	energyConsPlan = 143.270004;
+	energyConsReal = 203.339996;
+}
+{
+	serialNumber = 57;
+	factoryNumber = 28;
+	directorName = "Kurt Cobain";
+	engineerName = "Danil Bl";
+	energyConsPlan = 184.199997;
+	energyConsReal = 87.010002;
+}
+{
+	serialNumber = 58;
+	factoryNumber = 71;
+	directorName = "Timur Bai";
+	engineerName = "Tom York";
+	energyConsPlan = 112.080002;
+	energyConsReal = 240.850006;
+}
+{
+	serialNumber = 59;
+	factoryNumber = 14;
+	directorName = "Timur Bai";
+	engineerName = "Boris L";
+	energyConsPlan = 191.720001;
+	energyConsReal = 209.279999;
+}
+{
+	serialNumber = 60;
+	factoryNumber = 73;
+	directorName = "Chester B";
+	engineerName = "Chester B";
+	energyConsPlan = 154.130005;
+	energyConsReal = 121.120003;
+}
+{
+	serialNumber = 61;
+	factoryNumber = 92;
+	directorName = "Kirill Kv";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 92.209999;
+	energyConsReal = 152.389999;
+}
+{
+	serialNumber = 62;
+	factoryNumber = 45;
+	directorName = "Tom York";
+	engineerName = "Boris L";
+	energyConsPlan = 234.960007;
+	energyConsReal = 172.199997;
+}
+{
+	serialNumber = 63;
+	factoryNumber = 92;
+	directorName = "Timur Bai";
+	engineerName = "Maks L";
+	energyConsPlan = 60.939999;
+	energyConsReal = 53.770000;
+}
+{
+	serialNumber = 64;
+	factoryNumber = 34;
+	directorName = "Timur Bai";
+	engineerName = "Egor Letov";
+	energyConsPlan = 106.550003;
+	energyConsReal = 191.720001;
+}
+{
+	serialNumber = 65;
+	factoryNumber = 87;
+	directorName = "Boris L";
+	engineerName = "Timur Bai";
+	energyConsPlan = 100.360001;
+	energyConsReal = 128.440002;
+}
+{
+	serialNumber = 66;
+	factoryNumber = 94;
+	directorName = "Daron Malakian";
+	engineerName = "Boris L";
+	energyConsPlan = 224.839996;
+	energyConsReal = 71.559998;
+}
+{
+	serialNumber = 67;
+	factoryNumber = 37;
+	directorName = "Serj Tankian";
+	engineerName = "Tom York";
+	energyConsPlan = 74.410004;
+	energyConsReal = 144.009995;
+}
+{
+	serialNumber = 68;
+	factoryNumber = 77;
+	directorName = "Kurt Cobain";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 179.100006;
+	energyConsReal = 142.300003;
+}
+{
+	serialNumber = 69;
+	factoryNumber = 51;
+	directorName = "Daron Malakian";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 235.259995;
+	energyConsReal = 247.029999;
+}
+{
+	serialNumber = 70;
+	factoryNumber = 66;
+	directorName = "Maks L";
+	engineerName = "Dmitry K";
+	energyConsPlan = 76.849998;
+	energyConsReal = 177.750000;
+}
+{
+	serialNumber = 71;
+	factoryNumber = 86;
+	directorName = "Kirill Kv";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 213.880005;
+	energyConsReal = 78.059998;
+}
+{
+	serialNumber = 72;
+	factoryNumber = 16;
+	directorName = "Timur Bai";
+	engineerName = "Danil Bl";
+	energyConsPlan = 149.029999;
+	energyConsReal = 246.500000;
+}
+{
+	serialNumber = 73;
+	factoryNumber = 92;
+	directorName = "Maks L";
+	engineerName = "Danil Bl";
+	energyConsPlan = 88.820000;
+	energyConsReal = 96.809998;
+}
+{
+	serialNumber = 74;
+	factoryNumber = 99;
+	directorName = "Maks L";
+	engineerName = "Danil Bl";
+	energyConsPlan = 194.800003;
+	energyConsReal = 197.520004;
+}
+{
+	serialNumber = 75;
+	factoryNumber = 9;
+	directorName = "Danil Bl";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 146.720001;
+	energyConsReal = 227.089996;
+}
+{
+	serialNumber = 76;
+	factoryNumber = 94;
+	directorName = "Egor Letov";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 180.350006;
+	energyConsReal = 186.240005;
+}
+{
+	serialNumber = 77;
+	factoryNumber = 91;
+	directorName = "Boris L";
+	engineerName = "Boris L";
+	energyConsPlan = 136.100006;
+	energyConsReal = 174.779999;
+}
+{
+	serialNumber = 78;
+	factoryNumber = 58;
+	directorName = "Kurt Cobain";
+	engineerName = "Timur Bai";
+	energyConsPlan = 61.939999;
+	energyConsReal = 209.759995;
+}
+{
+	serialNumber = 79;
+	factoryNumber = 16;
+	directorName = "Serj Tankian";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 232.149994;
+	energyConsReal = 205.529999;
+}
+{
+	serialNumber = 80;
+	factoryNumber = 71;
+	directorName = "Kurt Cobain";
+	engineerName = "Maks L";
+	energyConsPlan = 68.290001;
+	energyConsReal = 156.240005;
+}
+{
+	serialNumber = 81;
+	factoryNumber = 62;
+	directorName = "Kurt Cobain";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 218.770004;
+	energyConsReal = 224.509995;
+}
+{
+	serialNumber = 82;
+	factoryNumber = 98;
+	directorName = "Timur Bai";
+	engineerName = "Danil Bl";
+	energyConsPlan = 243.380005;
+	energyConsReal = 213.990005;
+}
+{
+	serialNumber = 83;
+	factoryNumber = 87;
+	directorName = "Tom York";
+	engineerName = "Maks L";
+	energyConsPlan = 82.349998;
+	energyConsReal = 168.240005;
+}
+{
+	serialNumber = 84;
+	factoryNumber = 72;
+	directorName = "Tom York";
+	engineerName = "Danil Bl";
+	energyConsPlan = 226.509995;
+	energyConsReal = 226.229996;
+}
+{
+	serialNumber = 85;
+	factoryNumber = 92;
+	directorName = "Daron Malakian";
+	engineerName = "Tom York";
+	energyConsPlan = 52.389999;
+	energyConsReal = 222.369995;
+}
+{
+	serialNumber = 86;
+	factoryNumber = 71;
+	directorName = "Maks L";
+	engineerName = "Maks L";
+	energyConsPlan = 75.760002;
+	energyConsReal = 120.370003;
+}
+{
+	serialNumber = 87;
+	factoryNumber = 41;
+	directorName = "Tom York";
+	engineerName = "Danil Bl";
+	energyConsPlan = 203.500000;
+	energyConsReal = 66.669998;
+}
+{
+	serialNumber = 88;
+	factoryNumber = 49;
+	directorName = "Boris L";
+	engineerName = "Egor Letov";
+	energyConsPlan = 88.870003;
+	energyConsReal = 55.299999;
+}
+{
+	serialNumber = 89;
+	factoryNumber = 38;
+	directorName = "Chester B";
+	engineerName = "Egor Letov";
+	energyConsPlan = 52.810001;
+	energyConsReal = 116.769997;
+}
+{
+	serialNumber = 90;
+	factoryNumber = 25;
+	directorName = "Egor Letov";
+	engineerName = "Yuri Gagarin";
+	energyConsPlan = 173.029999;
+	energyConsReal = 176.720001;
+}
+{
+	serialNumber = 91;
+	factoryNumber = 91;
+	directorName = "Serj Tankian";
+	engineerName = "Egor Letov";
+	energyConsPlan = 160.509995;
+	energyConsReal = 176.479996;
+}
+{
+	serialNumber = 92;
+	factoryNumber = 7;
+	directorName = "Tom York";
+	engineerName = "Kirill Kv";
+	energyConsPlan = 80.800003;
+	energyConsReal = 158.250000;
+}
+{
+	serialNumber = 93;
+	factoryNumber = 25;
+	directorName = "Serj Tankian";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 122.620003;
+	energyConsReal = 246.690002;
+}
+{
+	serialNumber = 94;
+	factoryNumber = 46;
+	directorName = "Kirill Kv";
+	engineerName = "Dmitry K";
+	energyConsPlan = 105.889999;
+	energyConsReal = 241.880005;
+}
+{
+	serialNumber = 95;
+	factoryNumber = 79;
+	directorName = "Yuri Gagarin";
+	engineerName = "Boris L";
+	energyConsPlan = 204.979996;
+	energyConsReal = 184.169998;
+}
+{
+	serialNumber = 96;
+	factoryNumber = 84;
+	directorName = "Yuri Gagarin";
+	engineerName = "Daron Malakian";
+	energyConsPlan = 140.169998;
+	energyConsReal = 51.779999;
+}
+{
+	serialNumber = 97;
+	factoryNumber = 2;
+	directorName = "Kurt Cobain";
+	engineerName = "Timur Bai";
+	energyConsPlan = 99.230003;
+	energyConsReal = 245.330002;
+}
+{
+	serialNumber = 98;
+	factoryNumber = 69;
+	directorName = "Timur Bai";
+	engineerName = "Kurt Cobain";
+	energyConsPlan = 59.049999;
+	energyConsReal = 81.209999;
+}
+{
+	serialNumber = 99;
+	factoryNumber = 61;
+	directorName = "Yuri Gagarin";
+	engineerName = "Maks L";
+	energyConsPlan = 136.350006;
+	energyConsReal = 216.020004;
+}
+{
+	serialNumber = 100;
+	factoryNumber = 87;
+	directorName = "Kirill Kv";
+	engineerName = "Dmitry K";
+	energyConsPlan = 91.720001;
+	energyConsReal = 243.139999;
+}
