@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\find\\find_entries.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\find\\find_entries.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\compare\\compare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\compare\\compare.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\interface\\interface.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -87,13 +87,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "coursework.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c",
               "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c",
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework.c",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAAAFsCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEABAAAAAAAAAAAAAFsBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-11-08T20:56:56.368Z",
               "IsPinned": true,
@@ -141,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "compare.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\compare\\compare.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\compare\\compare.c",
@@ -149,18 +149,17 @@
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\compare\\compare.c",
               "ViewState": "AgIAAD8AAAAAAAAAAAAAAFoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-11-09T15:08:02.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T15:08:02.87Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "find_entries.c",
               "DocumentMoniker": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\find\\find_entries.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\find\\find_entries.c",
               "ToolTip": "D:\\source\\repos\\\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\find\\find_entries.c",
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\find\\find_entries.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-11-09T14:00:05.808Z",
               "EditorCaption": ""

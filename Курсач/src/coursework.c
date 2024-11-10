@@ -342,6 +342,7 @@ void list_redactor(ProgramInstance* program)
     program->chunckSize = CHUNCK_SIZE_FULL;
     program->focus = FOCUS_BROWSING;
     program->shouldClose = false;
+    program->saved = true;
 
     browsingMenu.selected = 0;
 
