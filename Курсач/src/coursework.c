@@ -15,28 +15,42 @@
 #include "undo_stack/undo_stack.h"
 #include "find/find_entries.h"
 
+// Вывод таблицы
 static void print_table(WINDOW* winTable, WINDOW* winRed, ProgramInstance* program);
 
+// Обработка ввода пользавателя
 static void proccess_movement(ProgramInstance* program, int ch);
 static void proccess_redacting(ProgramInstance* program, int ch);
 static int proccess_menu(ProgramInstance* program, Menu* menu, int ch);
 
+// Канкатинация строк
 static char* construct_file_path(const char* fileName, const char* folderPath, const char* fileExtention);
 
+// Анимация в главном меню
 static void dance();
 
+// Функции добавления элемента в список и удаления элемента из списка
 static void add_note(ProgramInstance* program, FECNote* note);
 static void delete_note(ProgramInstance* program);
 
+// Функции изменения соответствующих полей структуры
+static int change_serialNumber(ProgramInstance* program, FECNote* note);
+static int change_factoryNumber(ProgramInstance* program, FECNote* note);
+static int change_directorFullName(ProgramInstance* program, FECNote* note);
+static int change_engineerFulName(ProgramInstance* program, FECNote* note);
+static int change_energyConsPlan(ProgramInstance* program, FECNote* note);
+static int change_energyConsReal(ProgramInstance* program, FECNote* note);
+
+// Массив функций изменения
 static int (* const CHANGE_FUNC_ARRAY[6]) (ProgramInstance* program, FECNote* note) = {
     change_serialNumber, change_factoryNumber, change_directorFullName,
     change_engineerFulName, change_energyConsPlan, change_energyConsReal
 };
 
+// Конфигурация меню для главного меню
 static MenuCommand mainCom[] = {
     {L" Новый список     ", new_list},
     {L" Загрузить список ", load_list},
-    //{L"Настройки", settings}
 };
 
 static Menu mainMenu = {
@@ -49,6 +63,7 @@ static Menu mainMenu = {
     MIDDLE
 };
 
+// Конфигурация меню для просмотра и редактирования списка
 static MenuCommand browsingCom[] = {
     {L" Сохранить  ", save},
     {L" Сортировка ", sorting},
@@ -65,10 +80,12 @@ static Menu browsingMenu = {
     LEFT
 };
 
+// Пустая функция заполнитель
 static void blanc(ProgramInstance* program)
 {
 }
 
+// Конфигурация меню для выбора поля для сортировки или поиска
 static MenuCommand fieldCom[] = {
     {L" Серийный номер ", blanc},
     {L" Номер фабрики  ", blanc},
@@ -93,13 +110,11 @@ ProgramInstance init_program()
 {
     ProgramInstance program;
 
-    // Список и массив вхождений
+    // Список, массив вхождений, список действий
     program.fecNotes = init_list();
     program.entries = init_ref_array(0);
     program.currentFileName = "";
     program.undoStack = init_undo();
-    program.copyNote = init_note();
-    program.copied = false;
 
     // Работа со списком
     program.selectedNode = 0;
@@ -110,7 +125,10 @@ ProgramInstance init_program()
     program.shouldClose = false;
     program.saved = true;
     program.sortMode = 1;
+    program.copyNote = init_note();
+    program.copied = false;
 
+    // Окна для интерфейса
     program.popUp = newwin(5, 15, 0, 0);
     program.winMain = stdscr;
     program.winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
@@ -146,6 +164,7 @@ int Main(int argc, char** argv)
 
     ProgramInstance program = init_program();
 
+    // Основной цикл
     while (!program.shouldClose)
     {
         print_menu(program.winMain, &mainMenu);
@@ -174,6 +193,7 @@ void new_list(ProgramInstance* program)
     char* filePath = construct_file_path(program->currentFileName, "files/", ".txt");
     FILE* f = fopen(filePath, "rt");
     DELETE(filePath);
+    // Если файл существует
     if (f)
     {
         fclose(f);
@@ -266,10 +286,11 @@ void list_redactor(ProgramInstance* program)
     keypad(program->winMenu, TRUE);
     refresh();    
 
-    sort(&program->fecNotes, COMPARE_FUNC_ARRAY_ASC[0]);
+    sort_asc(&program->fecNotes, COMPARE_FUNC_ARRAY[0]);
     browsingMenu.selected = -1;
-    while (1)
+    while (true)
     {
+        // Отметка сохранить
         if (!program->saved)
         {
             browsingMenu.commands[0].text = L" *Сохранить ";
@@ -286,6 +307,7 @@ void list_redactor(ProgramInstance* program)
         int ch = getch();
         if (ch == '\t')
         {
+            // Переключение фокуса между меню и таблицей
             if (program->focus == FOCUS_MENU)
             {
                 program->focus = FOCUS_BROWSING;
@@ -300,14 +322,18 @@ void list_redactor(ProgramInstance* program)
         }
         if (program->focus != FOCUS_MENU)
         {
+            // Обработка таблицы
             proccess_movement(program, ch);
             proccess_redacting(program, ch);
         }
         else
         {
+            // Обработка меню
             proccess_menu(program, &browsingMenu, ch);
+            // Выход в главное меню
             if (program->shouldClose)
             {
+                // Проверка на сохранение
                 if (program->saved)
                 {
                     break;
@@ -336,6 +362,7 @@ void list_redactor(ProgramInstance* program)
             }
         }
     }
+    // Сброс значений
     program->selectedNode = 0;
     program->field = 0;
     program->findMode = false;
@@ -354,6 +381,7 @@ void save(ProgramInstance* program)
 {
     if (!program->saved)
     {
+        // Сохранение списка в текстовом и бинарном виде
         char* filePathText = construct_file_path(program->currentFileName, "files/", ".txt");
         char* filePathBin = construct_file_path(program->currentFileName, "files/", ".fec");
         save_note_list(filePathText, &program->fecNotes);
@@ -363,6 +391,7 @@ void save(ProgramInstance* program)
     }
     if (program->fecNotes.size)
     {
+        // Сохранение результатов
         char* resultsName = NEW(char, strlen(program->currentFileName) + 6);
         if (!resultsName)
         {
@@ -395,6 +424,7 @@ void sorting(ProgramInstance* program)
         mvwaddch(program->winField, 3 + abs(program->sortMode) - 1, 1, (program->sortMode < 0) ? '<' : '>');
         wrefresh(program->winField);
         int ch = getch();
+        // Выбор поля для сортировки
         int res = proccess_menu(program, &fieldChooseMenu, ch);
         if (program->shouldClose)
         {
@@ -403,14 +433,18 @@ void sorting(ProgramInstance* program)
         }
         if (res >= 0)
         {
+            // Сортировка по убаванию
             if (res == (abs(program->sortMode) - 1) && program->sortMode > 0)
             {
-                sort(&program->fecNotes, COMPARE_FUNC_ARRAY_DESC[res]);
+                sort_desc(&program->fecNotes, COMPARE_FUNC_ARRAY[res]);
                 program->sortMode *= -1;
-                return;
             }
-            program->sortMode = res + 1;
-            sort(&program->fecNotes, COMPARE_FUNC_ARRAY_ASC[res]);
+            // Сортировка по возрастанию
+            else
+            {
+                program->sortMode = res + 1;
+                sort_asc(&program->fecNotes, COMPARE_FUNC_ARRAY[res]);
+            }
             return;
         }
     }
@@ -420,6 +454,7 @@ void find(ProgramInstance* program)
 {
     if (program->findMode)
     {
+        // Выход из режима поиска
         clear_array(&program->entries);
         program->findMode = false;
         program->focus = FOCUS_BROWSING;
@@ -429,6 +464,7 @@ void find(ProgramInstance* program)
     {
         print_menu(program->winField, &fieldChooseMenu);
         int ch = getch();
+        // Выбор поля для поиска
         int res = proccess_menu(program, &fieldChooseMenu, ch);
         if (program->shouldClose)
         {
@@ -437,18 +473,21 @@ void find(ProgramInstance* program)
         }
         if (res >= 0)
         {
+            // Ввод выбранного поля
             FECNote note = init_note();
             int err = CHANGE_FUNC_ARRAY[res](program, &note);
             if (err)
             {
                 return;
             }
-            find_entries(&program->fecNotes, &program->entries, &note, COMPARE_FUNC_ARRAY_ASC[res]);
+            find_entries(&program->fecNotes, &program->entries, &note, COMPARE_FUNC_ARRAY[res]);
+            // Ничего не найдено
             if (program->entries.size == 0)
             {
                 pop_up_notification_wchar(program->popUp, L"Вхождений не надено.", N_INFO, POP_UP_Y);
                 getch();
             }
+            // Найдено
             else
             {
                 program->findMode = true;
@@ -720,8 +759,9 @@ int change_directorFullName(ProgramInstance* program, FECNote* note)
     {
         pop_up_notification_wchar(program->popUp, L"Длина больше 15 символов. Строка будет обрезана.", N_INFO, POP_UP_Y);
         str[15] = '\0';
+        strcpy(note->directorFullName, str);
         getch();
-        return -1;
+        return 0;
     }
     strcpy(note->directorFullName, str);
     free(str);
@@ -735,8 +775,9 @@ int change_engineerFulName(ProgramInstance* program, FECNote* note)
     {
         pop_up_notification_wchar(program->popUp, L"Длина больше 15 символов. Строка будет обрезана.", N_INFO, POP_UP_Y);
         str[15] = '\0';
+        strcpy(note->engineerFullName, str);
         getch();
-        return -1;
+        return 0;
     }
     strcpy(note->engineerFullName, str);
     free(str);

@@ -33,6 +33,7 @@
 
 #define BUFFER_CAPASITY 50
 
+// Коды клавиш на клавиатуре
 #define MY_KEY_CTRL_A 1
 #define MY_KEY_CTRL_C 3
 #define MY_KEY_CTRL_D 4
@@ -52,67 +53,23 @@
 #define MY_KEY_PGUP 339
 #define MY_KEY_END 358
 
-typedef enum Align
-{
-    LEFT,
-    MIDDLE
-} Align;
-
-typedef enum NotificationType
-{
-    N_INFO = 2,
-    N_ERR = 3
-} NotificationType;
-
-typedef enum Focus
-{
-    FOCUS_BROWSING,
-    FOCUS_FIND,
-    FOCUS_EDITOR,
-    FOCUS_MENU
-} Focus;
-
-typedef struct MenuCommand
-{
-    const wchar_t* text;
-    StructuralFunc function;
-} MenuCommand;
-
-
-typedef struct Menu
-{
-    int selected;
-
-    int commandStartY;
-    int commandShiftX;
-    int titleShiftY;
-    int exitTextShiftY;
-    const wchar_t* title;
-    const wchar_t* exitText;
-    MenuCommand* commands;
-    int commandsSize;
-    Align align;
-} Menu;
-
+// Элементы интерфейса
 void print_menu(WINDOW* win, const Menu* menu);
 void print_table_list(WINDOW* win, ListPtr list, int selected, Focus mode);
 void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, Focus mode);
 void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index);
-
 void print_controls(WINDOW* win, Focus type);
 
+// Всплывающее уведомление
 void pop_up_notification_wchar(WINDOW* win, const wchar_t* message, NotificationType type, int y);
 void pop_up_notification(WINDOW* win, const char* message, NotificationType type, int y);
+
+/**
+* Получение пользовательского ввода с клавиатуры
+*/
 // [[nodiscard]]
 char* get_user_input_str(WINDOW* win, const wchar_t* message, int y);
 int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest);
 int get_user_input_float(WINDOW* win, const wchar_t* message, float* dest);
-
-//void highlight_on_index(const Menu* menu, int index);
-//void highlight_on_hover(Menu* menu);
-
-//void print_main_screen();
-//void print_editor_screen();
-
 
 #endif // CONSOLE_INTERFACE_H

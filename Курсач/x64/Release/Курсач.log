@@ -9,10 +9,17 @@ D:\source\repos\Курсач\Курсач\src\coursework.c(243,21): warning C404
 D:\source\repos\Курсач\Курсач\src\coursework.c(243,21): warning C4024: strcmp: различные типы для формального и фактического параметров 1
 D:\source\repos\Курсач\Курсач\src\coursework.c(508,59): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
 D:\source\repos\Курсач\Курсач\src\coursework.c(510,54): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+  interface.c
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(45,20): warning C4267: функция: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(117,49): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(160,52): warning C4244: функция: преобразование "uint_64" в "int", возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(169,25): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\source\repos\Курсач\Курсач\src\interface\interface.c(183,25): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  main.c
 LINK : warning LNK4098: библиотека по умолчанию "LIBCMT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
   Создание кода
-  1 of 126 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+  3 of 121 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   Курсач.vcxproj -> D:\source\repos\Курсач\x64\Release\Курсач.exe

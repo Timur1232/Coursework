@@ -65,6 +65,7 @@ void print_menu(WINDOW* win, const Menu* menu)
         }
     }
 
+    // Вывод пункта выхода
     if (menu->exitText)
     {
         if (!count && menu->selected != -1)

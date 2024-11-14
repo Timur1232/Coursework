@@ -16,7 +16,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
 {
     ErrorHandler error = init_error_handler();
     TokenQueue tokens = init_token_queue();
-    FILE* file = fopen(fileName, "r");
+    FILE* file = fopen(fileName, "rt");
 
     if (!file)
     {
@@ -26,6 +26,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
     }
     free_list(fecNotes);
 
+    // Получения списка токенов из файла
     error = tokenize(&tokens, file);
     fclose(file);
 
@@ -35,6 +36,7 @@ ErrorHandler scan_note_list(const char* fileName, ListPtr fecNotes)
         return error;
     }
 
+    // Обработка токенов и конструирование списка
     error = parse_tokens(&tokens, fecNotes);
     if (error.err != ALL_GOOD)
     {

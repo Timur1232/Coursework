@@ -217,7 +217,7 @@ int pop(ListPtr list, uint_64 pos)
     return 0;
 }
 
-void sort(ListPtr list, int (*compare)(ConstValuePtr val1, ConstValuePtr val2))
+void sort_asc(ListPtr list, int (*compare)(ConstValuePtr val1, ConstValuePtr val2))
 {
     if (!list) { return; }
     for (FOR_RANGE(i, *list))
@@ -225,6 +225,21 @@ void sort(ListPtr list, int (*compare)(ConstValuePtr val1, ConstValuePtr val2))
         for (Iterator j = list->end; j != i; DECREMENT(j))
         {
             if (compare(&j->data, &j->prev->data) < 0)
+            {
+                SWAP(j->prev, j);
+            }
+        }
+    }
+}
+
+void sort_desc(ListPtr list, int(*compare)(ConstValuePtr val1, ConstValuePtr val2))
+{
+    if (!list) { return; }
+    for (FOR_RANGE(i, *list))
+    {
+        for (Iterator j = list->end; j != i; DECREMENT(j))
+        {
+            if (compare(&j->data, &j->prev->data) > 0)
             {
                 SWAP(j->prev, j);
             }
@@ -241,36 +256,4 @@ void swap(ListPtr list, uint_64 pos1, uint_64 pos2)
     ListNodePtr node1 = get_iter(list, pos1),
                 node2 = get_iter(list, pos2);
     SWAP(node1, node2);
-}
-
-void print_list(ListPtr list)
-{
-    FECNote sumNote = calc_energy_sum(list);
-    puts("-------------------------------------------------------------------------------------------");
-    puts("| #   | #Зв | ФИО директора   | ФИО инженера    | План        | Расход      | Отклоненине |");
-    puts("-------------------------------------------------------------------------------------------");
-    for (FOR_RANGE(iter, *list))
-    {
-        //print_note(&iter->data);
-    }
-    puts("-------------------------------------------------------------------------------------------");
-    printf("                                          Общее | %-11.2f | %-11.2f | %11.2f |\n", 
-        sumNote.energyConsPlan, sumNote.energyConsReal, calc_diff_deviation(&sumNote));
-    puts("                                                -------------------------------------------");
-}
-
-void print_list_backward(ListPtr list)
-{
-    FECNote sumNote = calc_energy_sum(list);
-    puts("-------------------------------------------------------------------------------------------");
-    puts("| #   | #Зв | ФИО директора   | ФИО инженера    | План        | Расход      | Отклоненине |");
-    puts("-------------------------------------------------------------------------------------------");
-    for (FOR_RANGE_BACK(iter, *list))
-    {
-        //print_note(&iter->data);
-    }
-    puts("-------------------------------------------------------------------------------------------");
-    printf("                                          Общее | %-11.2f | %-11.2f | %11.2f |\n",
-        sumNote.energyConsPlan, sumNote.energyConsReal, calc_diff_deviation(&sumNote));
-    puts("                                                -------------------------------------------");
 }

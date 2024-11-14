@@ -5,6 +5,9 @@
 #include "../../fec_note/fec_note.h"
 #include "../../list/list.h"
 
+// Загрузка считанного значения в соответствующее поле структуры
+static TokenizerErrors load_var(TokenQueue* tokens, FECNote* note, RepeatObserver* observer);
+
 ErrorHandler parse_tokens(TokenQueue* tokens, ListPtr fecNotes)
 {
     ErrorHandler error = init_error_handler();

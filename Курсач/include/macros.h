@@ -9,7 +9,7 @@
 //____________________________[Динамическая память]____________________________//
 
 #define NEW(type, size) (type*)malloc(sizeof(type) * size)
-#define DELETE(node) free(node)
+#define DELETE(mem) free(mem)
 
 //__________________________________[Список]__________________________________//
 

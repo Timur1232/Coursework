@@ -5,6 +5,5 @@
 #include "../list/list.h"
 
 void find_entries(ListPtr fecNotes, RefArrayPtr entries, FECNotePtr required, int (*compare)(ConstValuePtr val1, ConstValuePtr val2));
-void print_entries(RefArrayPtr entries);
 
 #endif // FIND_ENTRIES_H

@@ -16,23 +16,3 @@ void find_entries(ListPtr fecNotes, RefArrayPtr entries, FECNotePtr required, in
         }
     }
 }
-
-void print_entries(RefArrayPtr entries)
-{
-    if (!entries->size)
-    {
-        puts("Вхождений не найдено");
-        return;
-    }
-
-    puts("-----------------------------------------------------------------------");
-    puts("| #   | #Зв | ФИО директора   | ФИО инженера    | План     | Расход   |");
-    puts("-----------------------------------------------------------------------");
-
-    FECNote** iter = (FECNote**)entries->data;
-    for (uint_64 i = 0; i < entries->size; i++, iter++)
-    {
-        //print_note(*iter);
-    }
-    puts("-----------------------------------------------------------------------");
-}

@@ -8,6 +8,10 @@ struct RefArray;
 typedef struct RefArray RefArray;
 typedef RefArray* RefArrayPtr;
 
+/**
+* Динамический массив ссылок
+* 
+*/
 struct RefArray
 {
     void** data;
