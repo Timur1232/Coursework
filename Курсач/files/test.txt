@@ -7,7 +7,7 @@
 	energyConsReal = 0.000000;
 }
 {
-	serialNumber = 0;
+	serialNumber = 345;
 	factoryNumber = 0;
 	directorName = "";
 	engineerName = "";

@@ -286,12 +286,13 @@ void print_controls(WINDOW* win, Focus type)
         mvwaddwstr(win, 1, 2, L"Enter - редактировать");
         mvwaddwstr(win, 2, 2, L"Ctrl+Z - отменить");
         mvwaddwstr(win, 3, 2, L"Ctrl+Y - возвратить");
-        mvwaddwstr(win, 4, 2, L"Ctrl+D / Del - удалить");
-        mvwaddwstr(win, 5, 2, L"Ctrl+F - выйти");
-        mvwaddwstr(win, 6, 2, L"Ctrl+S - сохранить");
-        mvwaddwstr(win, 7, 2, L"Home - в начало");
-        mvwaddwstr(win, 8, 2, L"End - в конец");
-        mvwaddwstr(win, 9, 2, L"Tab - меню");
+        mvwaddwstr(win, 4, 2, L"Ctrl+F - выйти");
+        mvwaddwstr(win, 5, 2, L"Ctrl+D / Del - удалить");
+        mvwaddwstr(win, 6, 2, L"(выход из поиска)");
+        mvwaddwstr(win, 7, 2, L"Ctrl+S - сохранить");
+        mvwaddwstr(win, 8, 2, L"Home - в начало");
+        mvwaddwstr(win, 9, 2, L"End - в конец");
+        mvwaddwstr(win, 10, 2, L"Tab - меню");
         break;
     case FOCUS_EDITOR:
         mvwaddwstr(win, 1, 2, L"Enter - ввести поле");

@@ -235,8 +235,8 @@ void load_list(ProgramInstance* program)
         getch();
         return;
     }
-    char* fileExtention[10] = { 0 };
-    strcpy(fileExtention, findExtention);
+    char fileExtention[5] = { 0 };
+    strncpy(fileExtention, findExtention, 4);
     *findExtention = '\0';
     char* filePath = construct_file_path(program->currentFileName, "files/", fileExtention);
     if (!filePath)
@@ -246,7 +246,7 @@ void load_list(ProgramInstance* program)
         getch();
         return;
     }
-    else if (strcmp(fileExtention, ".txt") == 0)
+    if (strcmp(fileExtention, ".txt") == 0)
     {
         ErrorHandler err = scan_note_list(filePath, &program->fecNotes);
         if (err.err != ALL_GOOD)
@@ -272,6 +272,15 @@ void load_list(ProgramInstance* program)
             getch();
             return;
         }
+    }
+    else
+    {
+        print_menu(program->winMain, &mainMenu);
+        pop_up_notification_wchar(program->popUp, L"Неправильное расширение.", N_ERR, POP_UP_Y);
+        DELETE(program->currentFileName);
+        program->currentFileName = "";
+        getch();
+        return;
     }
     DELETE(filePath);
     list_redactor(program);
@@ -301,7 +310,10 @@ void list_redactor(ProgramInstance* program)
         }
 
         print_menu(program->winMenu, &browsingMenu);
-        print_controls(program->winControls, program->focus);
+        if (program->findMode)
+            print_controls(program->winControls, FOCUS_FIND);
+        else
+            print_controls(program->winControls, program->focus);
         print_table(program->winTable, program->winRed, program);
 
         int ch = getch();
@@ -595,14 +607,14 @@ void proccess_redacting(ProgramInstance* program, int ch)
         }
         break;
     case MY_KEY_CTRL_C:
-        if (program->fecNotes.size)
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode && program->fecNotes.size)
         {
             program->copyNote = *get_at(&program->fecNotes, program->selectedNode);
             program->copied = true;
         }
         break;
     case MY_KEY_CTRL_V:
-        if (program->copied && program->fecNotes.size)
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode && program->copied && program->fecNotes.size)
         {
             add_note(program, &program->copyNote);
             program->saved = false;
@@ -610,36 +622,55 @@ void proccess_redacting(ProgramInstance* program, int ch)
         break;
     case MY_KEY_CTRL_D:
     case MY_KEY_DEL:
-        if (program->fecNotes.size)
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode && program->fecNotes.size)
         {
             delete_note(program);
             program->saved = false;
         }
+        else
+        {
+            int nodeIndex = 0;
+            for (FOR_RANGE(i, program->fecNotes))
+            {
+                if ((void*)(&i->data) == program->entries.data[program->selectedNode]) break;
+                nodeIndex++;
+            }
+            push_action(&program->undoStack, UNDO_DEL, get_at(&program->fecNotes, nodeIndex), nodeIndex);
+            pop(&program->fecNotes, nodeIndex);
+            find(program);
+        }
         break;
     case MY_KEY_CTRL_A:
     case MY_KEY_INS:
-    {
-        FECNote note = init_note();
-        add_note(program, &note);
-        program->focus = FOCUS_EDITOR;
-        program->saved = false;
-        break;
-    }
-    case MY_KEY_UNDO:
-        if (undo(&program->undoStack, &program->fecNotes) != UNDO_EMPTY)
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode)
+        {
+            FECNote note = init_note();
+            add_note(program, &note);
+            program->focus = FOCUS_EDITOR;
             program->saved = false;
-        if (program->findMode)
-            program->selectedNode = clamp(program->selectedNode, 0, (int)program->entries.size - 1);
-        else
-            program->selectedNode = clamp(program->selectedNode, 0, (int)program->fecNotes.size);
+        }
+        break;
+    case MY_KEY_UNDO:
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode)
+        {
+            if (undo(&program->undoStack, &program->fecNotes) != UNDO_EMPTY)
+                program->saved = false;
+            if (program->findMode)
+                program->selectedNode = clamp(program->selectedNode, 0, (int)program->entries.size - 1);
+            else
+                program->selectedNode = clamp(program->selectedNode, 0, (int)program->fecNotes.size);
+        }
         break;
     case MY_KEY_REDO:
-        if (redo(&program->undoStack, &program->fecNotes) != UNDO_EMPTY)
-            program->saved = false;
-        if (program->findMode)
-            program->selectedNode = clamp(program->selectedNode, 0, (int)program->entries.size - 1);
-        else
-            program->selectedNode = clamp(program->selectedNode, 0, (int)program->fecNotes.size);
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode)
+        {
+            if (redo(&program->undoStack, &program->fecNotes) != UNDO_EMPTY)
+                program->saved = false;
+            if (program->findMode)
+                program->selectedNode = clamp(program->selectedNode, 0, (int)program->entries.size - 1);
+            else
+                program->selectedNode = clamp(program->selectedNode, 0, (int)program->fecNotes.size);
+        }
         break;
     case MY_KEY_SAVE:
         save(program);
@@ -648,7 +679,8 @@ void proccess_redacting(ProgramInstance* program, int ch)
         find(program);
         break;
     case MY_KEY_CTRL_G:
-        sorting(program);
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode)
+            sorting(program);
         break;
     default:
         break;
