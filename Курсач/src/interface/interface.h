@@ -1,4 +1,4 @@
-#ifndef CONSOLE_INTERFACE_H
+п»ї#ifndef CONSOLE_INTERFACE_H
 #define CONSOLE_INTERFACE_H
 
 #include <curses.h>
@@ -33,7 +33,7 @@
 
 #define BUFFER_CAPASITY 50
 
-// Коды клавиш на клавиатуре
+// РљРѕРґС‹ РєР»Р°РІРёС€ РЅР° РєР»Р°РІРёР°С‚СѓСЂРµ
 #define MY_KEY_CTRL_A 1
 #define MY_KEY_CTRL_C 3
 #define MY_KEY_CTRL_D 4
@@ -53,22 +53,27 @@
 #define MY_KEY_PGUP 339
 #define MY_KEY_END 358
 
-// Элементы интерфейса
+// Р­Р»РµРјРµРЅС‚С‹ РёРЅС‚РµСЂС„РµР№СЃР°
 void print_menu(WINDOW* win, const Menu* menu);
 void print_table_list(WINDOW* win, ListPtr list, int selected, Focus mode);
 void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, Focus mode);
 void print_note_editor(WINDOW* win, FECNotePtr note, int field, int index);
 void print_controls(WINDOW* win, Focus type);
 
-// Всплывающее уведомление
+// Р’СЃРїР»С‹РІР°СЋС‰РµРµ СѓРІРµРґРѕРјР»РµРЅРёРµ
 void pop_up_notification_wchar(WINDOW* win, const wchar_t* message, NotificationType type, int y);
 void pop_up_notification(WINDOW* win, const char* message, NotificationType type, int y);
 
 /**
-* Получение пользовательского ввода с клавиатуры
+* РџРѕР»СѓС‡РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
 */
+typedef enum InputType
+{
+    INPUT_STRING,
+    INPUT_NUMBER
+} InputType;
 // [[nodiscard]]
-char* get_user_input_str(WINDOW* win, const wchar_t* message, int y);
+char* get_user_input_str(WINDOW* win, const wchar_t* message, int y, InputType type);
 int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest);
 int get_user_input_float(WINDOW* win, const wchar_t* message, float* dest);
 

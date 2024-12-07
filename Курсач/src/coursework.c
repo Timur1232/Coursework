@@ -1,4 +1,4 @@
-#include "coursework.h"
+﻿#include "coursework.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -15,25 +15,25 @@
 #include "undo_stack/undo_stack.h"
 #include "find/find_entries.h"
 
-// Âûâîä òàáëèöû
+// Вывод таблицы на экран
 static void print_table(WINDOW* winTable, WINDOW* winRed, ProgramInstance* program);
 
-// Îáðàáîòêà ââîäà ïîëüçàâàòåëÿ
+// Обработка управления программой
 static void proccess_movement(ProgramInstance* program, int ch);
 static void proccess_redacting(ProgramInstance* program, int ch);
 static int proccess_menu(ProgramInstance* program, Menu* menu, int ch);
 
-// Êàíêàòèíàöèÿ ñòðîê
+// Канкатинация строк в путь
 static char* construct_file_path(const char* fileName, const char* folderPath, const char* fileExtention);
 
-// Àíèìàöèÿ â ãëàâíîì ìåíþ
+// Переключение следующего кадра анимации
 static void dance();
 
-// Ôóíêöèè äîáàâëåíèÿ ýëåìåíòà â ñïèñîê è óäàëåíèÿ ýëåìåíòà èç ñïèñêà
+// Вспомогательные функции добавления элемента в список и удаления элемента с сохранением действия
 static void add_note(ProgramInstance* program, FECNote* note);
 static void delete_note(ProgramInstance* program);
 
-// Ôóíêöèè èçìåíåíèÿ ñîîòâåòñòâóþùèõ ïîëåé ñòðóêòóðû
+// Функции для ввода определенного поля структуры
 static int change_serialNumber(ProgramInstance* program, FECNote* note);
 static int change_factoryNumber(ProgramInstance* program, FECNote* note);
 static int change_directorFullName(ProgramInstance* program, FECNote* note);
@@ -41,65 +41,65 @@ static int change_engineerFulName(ProgramInstance* program, FECNote* note);
 static int change_energyConsPlan(ProgramInstance* program, FECNote* note);
 static int change_energyConsReal(ProgramInstance* program, FECNote* note);
 
-// Ìàññèâ ôóíêöèé èçìåíåíèÿ
+// Массив функций ввода полей структуры
 static int (* const CHANGE_FUNC_ARRAY[6]) (ProgramInstance* program, FECNote* note) = {
     change_serialNumber, change_factoryNumber, change_directorFullName,
     change_engineerFulName, change_energyConsPlan, change_energyConsReal
 };
 
-// Êîíôèãóðàöèÿ ìåíþ äëÿ ãëàâíîãî ìåíþ
+// Массив комманд главного меню
 static MenuCommand mainCom[] = {
-    {L" Íîâûé ñïèñîê     ", new_list},
-    {L" Çàãðóçèòü ñïèñîê ", load_list},
+    {L" Новый список     ", new_list},
+    {L" Загрузить список ", load_list},
 };
 
 static Menu mainMenu = {
     0,
     (SCREEN_HEIGHT / 2 - 5), -7, -1, 0,
-    L" Ïðîãðàììà ",
-    L" Âûõîä     ",
+    L" Программа  ",
+    L" Выход            ",
     mainCom,
     sizeof(mainCom) / sizeof(MenuCommand),
     MIDDLE
 };
 
-// Êîíôèãóðàöèÿ ìåíþ äëÿ ïðîñìîòðà è ðåäàêòèðîâàíèÿ ñïèñêà
+// Массив команд меню просмотра списка
 static MenuCommand browsingCom[] = {
-    {L" Ñîõðàíèòü  ", save},
-    {L" Ñîðòèðîâêà ", sorting},
-    {L" Íàéòè      ", find},
+    {L" Сохранить   ", save},
+    {L" Сортировка  ", sorting},
+    {L" Поиск       ", find},
 };
 
 static Menu browsingMenu = {
     0,
     3, 0, -1, 0,
-    L" Ðåäàêòîð ",
-    L" Âûõîä    ",
+    L" Редактор ",
+    L" Выход       ",
     browsingCom,
     sizeof(browsingCom) / sizeof(MenuCommand),
     LEFT
 };
 
-// Ïóñòàÿ ôóíêöèÿ çàïîëíèòåëü
+// Пустая функция
 static void blanc(ProgramInstance* program)
 {
 }
 
-// Êîíôèãóðàöèÿ ìåíþ äëÿ âûáîðà ïîëÿ äëÿ ñîðòèðîâêè èëè ïîèñêà
+// Меню для выбора поля структуры
 static MenuCommand fieldCom[] = {
-    {L" Ñåðèéíûé íîìåð ", blanc},
-    {L" Íîìåð ôàáðèêè  ", blanc},
-    {L" ÔÈÎ äèðåêòîðà  ", blanc},
-    {L" ÔÈÎ èíæåíåðà   ", blanc},
-    {L" Ïëàí           ", blanc},
-    {L" Ðàñõîä         ", blanc},
+    {L" Серийный номер ", blanc},
+    {L" Номер фабрики  ", blanc},
+    {L" ФИО директора  ", blanc},
+    {L" ФИО инженера   ", blanc},
+    {L" План           ", blanc},
+    {L" Расход         ", blanc},
 };
 
 static Menu fieldChooseMenu = {
     0,
     3, 0, -1, 1,
-    L" Âûáåðåòå ïîëå:",
-    L" Îòìåíà          ",
+    L" Выберете поле:",
+    L" Отмена         ",
     fieldCom,
     sizeof(fieldCom) / sizeof(MenuCommand),
     LEFT
@@ -110,13 +110,13 @@ ProgramInstance init_program()
 {
     ProgramInstance program;
 
-    // Ñïèñîê, ìàññèâ âõîæäåíèé, ñïèñîê äåéñòâèé
+    // Инициализация программы
     program.fecNotes = init_list();
     program.entries = init_ref_array(0);
     program.currentFileName = "";
     program.undoStack = init_undo();
 
-    // Ðàáîòà ñî ñïèñêîì
+    // Вспомогательные переменные для управления программой
     program.selectedNode = 0;
     program.field = 0;
     program.findMode = false;
@@ -128,7 +128,7 @@ ProgramInstance init_program()
     program.copyNote = init_note();
     program.copied = false;
 
-    // Îêíà äëÿ èíòåðôåéñà
+    // Инициализация окон PDCurses
     program.popUp = newwin(5, 15, 0, 0);
     program.winMain = stdscr;
     program.winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
@@ -146,7 +146,7 @@ int Main(int argc, char** argv)
     setlocale(LC_CTYPE, "");
     system("mkdir files && mkdir files\\results");
 
-    // Èíèöèàëèçàöèÿ PDCurses
+    // Инициализация PDCurses
     initscr();
     noecho();
     curs_set(0);
@@ -164,7 +164,7 @@ int Main(int argc, char** argv)
 
     ProgramInstance program = init_program();
 
-    // Îñíîâíîé öèêë
+    // Основной цикл
     while (!program.shouldClose)
     {
         print_menu(program.winMain, &mainMenu);
@@ -181,24 +181,24 @@ int Main(int argc, char** argv)
 void new_list(ProgramInstance* program)
 {
     timeout(-1);
-    program->currentFileName = get_user_input_str(program->popUp, L"Ââåäèòå íàçâàíèå ôàéëà:", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+    program->currentFileName = get_user_input_str(program->popUp, L"Введите название файла:", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_STRING);
     if (strlen(program->currentFileName) == 0)
     {
         DELETE(program->currentFileName);
         program->currentFileName = "";
-        pop_up_notification_wchar(program->popUp, L"Ïóñòàÿ ñòðîêà.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Ошибка ввода.", N_ERR, POP_UP_Y);
         getch();
         return;
     }
     char* filePath = construct_file_path(program->currentFileName, "files/", ".txt");
     FILE* f = fopen(filePath, "rt");
     DELETE(filePath);
-    // Åñëè ôàéë ñóùåñòâóåò
+    // Если файл существует
     if (f)
     {
         fclose(f);
-        pop_up_notification_wchar(program->popUp, L"Ôàéë óæå ñóùåñòâóåò.", N_INFO, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
-        char* ans = get_user_input_str(program->popUp, L"Çàìåíèòü? (Y/N)", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4 + 4);
+        pop_up_notification_wchar(program->popUp, L"Файл существует.", N_INFO, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+        char* ans = get_user_input_str(program->popUp, L"Заменить? (Y/N)", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4 + 4, INPUT_STRING);
         if (ans[0] == 'Y' || ans[0] == 'y')
         {
             DELETE(ans);
@@ -211,7 +211,7 @@ void new_list(ProgramInstance* program)
         else
         {
             DELETE(ans);
-            pop_up_notification_wchar(program->popUp, L"Íåïðàâèëüíûé ââîä.", N_ERR, POP_UP_Y);
+            pop_up_notification_wchar(program->popUp, L"Неправильный ввод.", N_ERR, POP_UP_Y);
             getch();
             return;
         }
@@ -224,41 +224,39 @@ void new_list(ProgramInstance* program)
 void load_list(ProgramInstance* program)
 {
     timeout(-1);
-    program->currentFileName = get_user_input_str(program->popUp, L"Ââåäèòå ïóòü äî ôàéëà â ïàïêå files/ (ñ ðàñøèðåíèåì):", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+    program->currentFileName = get_user_input_str(program->popUp, L"Введите путь до файла в папке files/ (с расширением):", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_STRING);
+    // Поиск расширения
     char* findExtention = strrchr(program->currentFileName, '.');
     if (!findExtention)
     {
         print_menu(program->winMain, &mainMenu);
-        pop_up_notification_wchar(program->popUp, L"Íå íàéäåíî ðàñøèðåíèå.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Расширение не найдено.", N_ERR, POP_UP_Y);
         DELETE(program->currentFileName);
         program->currentFileName = "";
         getch();
         return;
     }
-<<<<<<< HEAD
+    // Формирование пути
     char fileExtention[5] = { 0 };
     strncpy(fileExtention, findExtention, 4);
-=======
-    char fileExtention[10] = { 0 };
-    strcpy(fileExtention, findExtention);
->>>>>>> 892e0419269a0b9aa5b13decc4b73673e78e355c
     *findExtention = '\0';
     char* filePath = construct_file_path(program->currentFileName, "files/", fileExtention);
     if (!filePath)
     {
         LOG_DEBUG(LOG_ERR, "coursework.c", "load_list()", "malloc() returned NULL", LOG_FILE);
-        pop_up_notification_wchar(program->popUp, L"Ôóíêöèÿ malloc() âåðíóëà NULL.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Функция malloc() вернула  NULL.", N_ERR, POP_UP_Y);
         getch();
         return;
     }
     if (strcmp(fileExtention, ".txt") == 0)
     {
+        // Текстовый файл
         ErrorHandler err = scan_note_list(filePath, &program->fecNotes);
         if (err.err != ALL_GOOD)
         {
             char buff[100] = { 0 };
             print_menu(program->winMain, &mainMenu);
-            pop_up_notification_wchar(program->popUp, L"Îøèáêà ÷òåíèÿ ôàéëà.", N_ERR, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+            pop_up_notification_wchar(program->popUp, L"Ошибка чтения или обработки файла.", N_ERR, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
             pop_up_notification(program->popUp, proccess_error(buff, err), N_ERR, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4 + 3);
             DELETE(filePath);
             getch();
@@ -267,10 +265,11 @@ void load_list(ProgramInstance* program)
     }
     else if (strcmp(fileExtention, ".fec") == 0)
     {
+        // Бинарный файл
         if (scan_bin_note_list(filePath, &program->fecNotes))
         {
             print_menu(program->winMain, &mainMenu);
-            pop_up_notification_wchar(program->popUp, L"Îøèáêà ÷òåíèÿ ôàéëà.", N_ERR, POP_UP_Y);
+            pop_up_notification_wchar(program->popUp, L"Ошибка чтения или обработки файла.", N_ERR, POP_UP_Y);
             DELETE(program->currentFileName);
             DELETE(filePath);
             program->currentFileName = "";
@@ -281,7 +280,7 @@ void load_list(ProgramInstance* program)
     else
     {
         print_menu(program->winMain, &mainMenu);
-        pop_up_notification_wchar(program->popUp, L"������������ ����������.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Неправильное расширение.", N_ERR, POP_UP_Y);
         DELETE(program->currentFileName);
         program->currentFileName = "";
         getch();
@@ -304,14 +303,13 @@ void list_redactor(ProgramInstance* program)
     browsingMenu.selected = -1;
     while (true)
     {
-        // Îòìåòêà ñîõðàíèòü
         if (!program->saved)
         {
-            browsingMenu.commands[0].text = L" *Ñîõðàíèòü ";
+            browsingMenu.commands[0].text = L" *Сохранить ";
         }
         else
         {
-            browsingMenu.commands[0].text = L" Ñîõðàíèòü  ";
+            browsingMenu.commands[0].text = L" Сохранить  ";
         }
 
         print_menu(program->winMenu, &browsingMenu);
@@ -324,14 +322,16 @@ void list_redactor(ProgramInstance* program)
         int ch = getch();
         if (ch == '\t')
         {
-            // Ïåðåêëþ÷åíèå ôîêóñà ìåæäó ìåíþ è òàáëèöåé
+            // Переключение фокуса
             if (program->focus == FOCUS_MENU)
             {
+                // С меню на таблицу
                 program->focus = FOCUS_BROWSING;
                 browsingMenu.selected = -1;
             }
             else
             {
+                // С таблицы на меню
                 program->focus = FOCUS_MENU;
                 browsingMenu.selected = 0;
             }
@@ -339,25 +339,25 @@ void list_redactor(ProgramInstance* program)
         }
         if (program->focus != FOCUS_MENU)
         {
-            // Îáðàáîòêà òàáëèöû
+            // Обработка таблицы
             proccess_movement(program, ch);
             proccess_redacting(program, ch);
         }
         else
         {
-            // Îáðàáîòêà ìåíþ
+            // Обработка меню
             proccess_menu(program, &browsingMenu, ch);
-            // Âûõîä â ãëàâíîå ìåíþ
+            // Если пользователь выбрал пункт выхода
             if (program->shouldClose)
             {
-                // Ïðîâåðêà íà ñîõðàíåíèå
+                // Проверка на сохранение
                 if (program->saved)
                 {
                     break;
                 }
                 else
                 {
-                    char* str = get_user_input_str(program->popUp, L"Ñîõðàíèòü èçìåíåíèÿ? (Y/N):", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+                    char* str = get_user_input_str(program->popUp, L"Сохранить изменения? (Y/N):", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_STRING);
                     if (str[0] == 'Y' || str[0] == 'y')
                     {
                         save(program);
@@ -372,14 +372,14 @@ void list_redactor(ProgramInstance* program)
                     else
                     {
                         DELETE(str);
-                        pop_up_notification_wchar(program->popUp, L"Íåïðàâèëüíûé ââîä.", N_ERR, POP_UP_Y);
+                        pop_up_notification_wchar(program->popUp, L"Неправильный ввод.", N_ERR, POP_UP_Y);
                         getch();
                     }
                 }
             }
         }
     }
-    // Ñáðîñ çíà÷åíèé
+    // Сброс значений и очистка памяти
     program->selectedNode = 0;
     program->field = 0;
     program->findMode = false;
@@ -398,7 +398,7 @@ void save(ProgramInstance* program)
 {
     if (!program->saved)
     {
-        // Ñîõðàíåíèå ñïèñêà â òåêñòîâîì è áèíàðíîì âèäå
+        // Сохранение в текстовый и бинарный файлы
         char* filePathText = construct_file_path(program->currentFileName, "files/", ".txt");
         char* filePathBin = construct_file_path(program->currentFileName, "files/", ".fec");
         save_note_list(filePathText, &program->fecNotes);
@@ -408,7 +408,7 @@ void save(ProgramInstance* program)
     }
     if (program->fecNotes.size)
     {
-        // Ñîõðàíåíèå ðåçóëüòàòîâ
+        // Сохранение результатов обработки структур
         char* resultsName = NEW(char, strlen(program->currentFileName) + 6);
         if (!resultsName)
         {
@@ -422,7 +422,7 @@ void save(ProgramInstance* program)
         {
             DELETE(resultsName);
             LOG_DEBUG(LOG_ERR, "coursework.c", "save()", "malloc() returned NULL", LOG_FILE);
-            pop_up_notification_wchar(program->popUp, L"Ôóíêöèÿ malloc() âåðíóëà NULL.", N_ERR, POP_UP_Y);
+            pop_up_notification_wchar(program->popUp, L"Функция malloc() вернула  NULL.", N_ERR, POP_UP_Y);
             getch();
             return;
         }
@@ -441,7 +441,7 @@ void sorting(ProgramInstance* program)
         mvwaddch(program->winField, 3 + abs(program->sortMode) - 1, 1, (program->sortMode < 0) ? '<' : '>');
         wrefresh(program->winField);
         int ch = getch();
-        // Âûáîð ïîëÿ äëÿ ñîðòèðîâêè
+        // Выбор поля сортировки
         int res = proccess_menu(program, &fieldChooseMenu, ch);
         if (program->shouldClose)
         {
@@ -450,13 +450,13 @@ void sorting(ProgramInstance* program)
         }
         if (res >= 0)
         {
-            // Ñîðòèðîâêà ïî óáàâàíèþ
+            // Сортировка по убыванию
             if (res == (abs(program->sortMode) - 1) && program->sortMode > 0)
             {
                 sort_desc(&program->fecNotes, COMPARE_FUNC_ARRAY[res]);
                 program->sortMode *= -1;
             }
-            // Ñîðòèðîâêà ïî âîçðàñòàíèþ
+            // По возрастанию
             else
             {
                 program->sortMode = res + 1;
@@ -471,7 +471,7 @@ void find(ProgramInstance* program)
 {
     if (program->findMode)
     {
-        // Âûõîä èç ðåæèìà ïîèñêà
+        // Выход из режима поиска
         clear_array(&program->entries);
         program->findMode = false;
         program->focus = FOCUS_BROWSING;
@@ -481,7 +481,7 @@ void find(ProgramInstance* program)
     {
         print_menu(program->winField, &fieldChooseMenu);
         int ch = getch();
-        // Âûáîð ïîëÿ äëÿ ïîèñêà
+        // Выбор поля для поиска
         int res = proccess_menu(program, &fieldChooseMenu, ch);
         if (program->shouldClose)
         {
@@ -490,7 +490,7 @@ void find(ProgramInstance* program)
         }
         if (res >= 0)
         {
-            // Ââîä âûáðàííîãî ïîëÿ
+            // Ввод поля для поиска
             FECNote note = init_note();
             int err = CHANGE_FUNC_ARRAY[res](program, &note);
             if (err)
@@ -498,13 +498,12 @@ void find(ProgramInstance* program)
                 return;
             }
             find_entries(&program->fecNotes, &program->entries, &note, COMPARE_FUNC_ARRAY[res]);
-            // Íè÷åãî íå íàéäåíî
             if (program->entries.size == 0)
             {
-                pop_up_notification_wchar(program->popUp, L"Âõîæäåíèé íå íàäåíî.", N_INFO, POP_UP_Y);
+                // Ничего не найдено
+                pop_up_notification_wchar(program->popUp, L"Ничего не найдено.", N_INFO, POP_UP_Y);
                 getch();
             }
-            // Íàéäåíî
             else
             {
                 program->findMode = true;
@@ -515,7 +514,7 @@ void find(ProgramInstance* program)
     }
 }
 
-//__________________________________[Ñòàòè÷åñêèå ôóíêöèè]__________________________________//
+//__________________________________[Статичекие функции]__________________________________//
 
 void proccess_movement(ProgramInstance* program, int ch)
 {
@@ -734,10 +733,10 @@ char* construct_file_path(const char* fileName, const char* folderPath, const ch
 }
 
 static const wchar_t* const dance_frames[] = {
-    L"<(_ )/ ",
-    L" /(_)/ ",
-    L" \\( _)>",
-    L" \\(_)\\ "
+    L"<(•_• )/ ",
+    L" /(•_•)/ ",
+    L" \\( •_•)>",
+    L" \\(•_•)\\ "
 };
 
 void dance()
@@ -766,10 +765,10 @@ static void print_table(WINDOW* winTable, WINDOW* winRed, ProgramInstance* progr
 int change_serialNumber(ProgramInstance* program, FECNote* note)
 {
     int initialValue = note->serialNumber;
-    if (get_user_input_int(program->popUp, L"Ñåðèéíûé íîìåð", &note->serialNumber))
+    if (get_user_input_int(program->popUp, L"Cерийный номер", &note->serialNumber))
     {
         note->serialNumber = initialValue;
-        pop_up_notification_wchar(program->popUp, L"Îøèáêà ïðè ââîäå öåëîãî ÷èñëà.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Ошибка при вводе целого числа.", N_ERR, POP_UP_Y);
         getch();
         return -1;
     }
@@ -779,10 +778,10 @@ int change_serialNumber(ProgramInstance* program, FECNote* note)
 int change_factoryNumber(ProgramInstance* program, FECNote* note)
 {
     int initialValue = note->factoryNumber;
-    if (get_user_input_int(program->popUp, L"Íîìåð ôàáðèêè", &note->factoryNumber))
+    if (get_user_input_int(program->popUp, L"Номер фабрики", &note->factoryNumber))
     {
         note->factoryNumber = initialValue;
-        pop_up_notification_wchar(program->popUp, L"Îøèáêà ïðè ââîäå öåëîãî ÷èñëà.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Ошибка при вводе целого числа.", N_ERR, POP_UP_Y);
         getch();
         return -1;
     }
@@ -791,10 +790,10 @@ int change_factoryNumber(ProgramInstance* program, FECNote* note)
 
 int change_directorFullName(ProgramInstance* program, FECNote* note)
 {
-    char* str = get_user_input_str(program->popUp, L"ÔÈÎ äèðåêòîðà (15 ñèìâîëîâ)", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+    char* str = get_user_input_str(program->popUp, L"ФИО директора  (15 символов)", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_STRING);
     if (strlen(str) > 15)
     {
-        pop_up_notification_wchar(program->popUp, L"Äëèíà áîëüøå 15 ñèìâîëîâ. Ñòðîêà áóäåò îáðåçàíà.", N_INFO, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Строка больше 15 символов. Строка будет обрезана.", N_INFO, POP_UP_Y);
         str[15] = '\0';
         strcpy(note->directorFullName, str);
         getch();
@@ -807,10 +806,10 @@ int change_directorFullName(ProgramInstance* program, FECNote* note)
 
 int change_engineerFulName(ProgramInstance* program, FECNote* note)
 {
-    char* str = get_user_input_str(program->popUp, L"ÔÈÎ èíæåíåðà (15 ñèìâîëîâ)", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+    char* str = get_user_input_str(program->popUp, L"ФИО инженера(15 символов)", SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_STRING);
     if (strlen(str) > 15)
     {
-        pop_up_notification_wchar(program->popUp, L"Äëèíà áîëüøå 15 ñèìâîëîâ. Ñòðîêà áóäåò îáðåçàíà.", N_INFO, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Строка больше 15 символов. Строка будет обрезана.", N_INFO, POP_UP_Y);
         str[15] = '\0';
         strcpy(note->engineerFullName, str);
         getch();
@@ -824,10 +823,10 @@ int change_engineerFulName(ProgramInstance* program, FECNote* note)
 int change_energyConsPlan(ProgramInstance* program, FECNote* note)
 {
     float initialValue = note->energyConsPlan;
-    if (get_user_input_float(program->popUp, L"Ïëàí ðàñõîäà ýíåðãèè", &note->energyConsPlan))
+    if (get_user_input_float(program->popUp, L"План расхода энергии", &note->energyConsPlan))
     {
         note->energyConsPlan = initialValue;
-        pop_up_notification_wchar(program->popUp, L"Îøèáêà ïðè ââîäå âåùåñòâåííîãî ÷èñëà.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Ошибка при вводе вещественнго числа.", N_ERR, POP_UP_Y);
         getch();
         return -1;
     }
@@ -837,10 +836,10 @@ int change_energyConsPlan(ProgramInstance* program, FECNote* note)
 int change_energyConsReal(ProgramInstance* program, FECNote* note)
 {
     float initialValue = note->energyConsReal;
-    if (get_user_input_float(program->popUp, L"Ôàêòèñåñêèé ðàñõîä ýíåðãèè", &note->energyConsReal))
+    if (get_user_input_float(program->popUp, L"Фактический расход энергии", &note->energyConsReal))
     {
         note->energyConsReal = initialValue;
-        pop_up_notification_wchar(program->popUp, L"Îøèáêà ïðè ââîäå âåùåñòâåííîãî ÷èñëà.", N_ERR, POP_UP_Y);
+        pop_up_notification_wchar(program->popUp, L"Ошибка при вводе вещественнго числа.", N_ERR, POP_UP_Y);
         getch();
         return -1;
     }

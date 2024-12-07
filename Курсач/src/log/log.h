@@ -1,4 +1,4 @@
-#ifndef DEBUG_LOG_H
+﻿#ifndef DEBUG_LOG_H
 #define DEBUG_LOG_H
 
 #include "..\list\list.h"

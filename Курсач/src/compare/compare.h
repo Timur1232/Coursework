@@ -1,10 +1,10 @@
-#ifndef COMPARE_H
+п»ї#ifndef COMPARE_H
 #define COMPARE_H
 
 #include <types.h>
 #include "../fec_note/fec_note.h"
 
-// Массив функций сравнения
+// РњР°СЃСЃРёРІ С„СѓРЅРєС†РёР№ СЃСЂР°РІРЅРµРЅРёСЏ
 extern int (* const COMPARE_FUNC_ARRAY[6]) (const FECNote* val1, const FECNote* val2);
 
 typedef enum Compare
@@ -17,7 +17,7 @@ typedef enum Compare
     CONS_REAL = 5
 } Compare;
 
-// Функции сравнения структур по их полям
+// Р¤СѓРЅРєС†РёРё СЃСЂР°РІРЅРµРЅРёСЏ СЃС‚СЂСѓРєС‚СѓСЂ РїРѕ РёС… РїРѕР»СЏРј
 int ser_num(const FECNote* val1, const FECNote* val2);
 int fac_num(const FECNote* val1, const FECNote* val2);
 int dir_name(const FECNote* val1, const FECNote* val2);

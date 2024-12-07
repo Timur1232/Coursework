@@ -1,4 +1,4 @@
-#ifndef REF_ARRAY_H
+п»ї#ifndef REF_ARRAY_H
 #define REF_ARRAY_H
 
 #include <types.h>
@@ -9,7 +9,7 @@ typedef struct RefArray RefArray;
 typedef RefArray* RefArrayPtr;
 
 /**
-* Динамический массив ссылок
+* Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ СЃСЃС‹Р»РѕРє
 * 
 */
 struct RefArray

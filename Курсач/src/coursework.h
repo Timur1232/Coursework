@@ -1,4 +1,4 @@
-#ifndef COURSEWORK_H
+﻿#ifndef COURSEWORK_H
 #define COURSEWORK_H
 
 #include <curses.h>

@@ -29,7 +29,7 @@ static void print_sum(WINDOW* win, FECNote sumNote);
 static void print_table_info(WINDOW* win, int chunck, int index, int size, int chunckSize);
 static void highlight_elem(WINDOW* win, int posY);
 // [[nodiscard]]
-static char* input_str(WINDOW* win, int x, int y);
+static char* input_str(WINDOW* win, int x, int y, InputType type);
 
 void print_menu(WINDOW* win, const Menu* menu)
 {
@@ -193,7 +193,7 @@ void pop_up_notification(WINDOW* win, const char* message, NotificationType type
 }
 
 // [[nodiscard]]
-char* get_user_input_str(WINDOW* win, const wchar_t* message, int y)
+char* get_user_input_str(WINDOW* win, const wchar_t* message, int y, InputType type)
 {
     wclear(win);
     keypad(win, TRUE);
@@ -203,14 +203,14 @@ char* get_user_input_str(WINDOW* win, const wchar_t* message, int y)
     mvwaddwstr(win, 1, 2, message);
     wrefresh(win);
     curs_set(1);
-    char* str = input_str(win, 2, 2);
+    char* str = input_str(win, 2, 2, type);
     curs_set(0);
     return str;
 }
 
 int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest)
 {
-    char* str = get_user_input_str(win, message, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+    char* str = get_user_input_str(win, message, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_NUMBER);
     int err = parse_int(str, dest);
     free(str);
     return err;
@@ -218,7 +218,7 @@ int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest)
 
 int get_user_input_float(WINDOW* win, const wchar_t* message, float* dest)
 {
-    char* str = get_user_input_str(win, message, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+    char* str = get_user_input_str(win, message, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, INPUT_NUMBER);
     int err = parse_float(str, dest);
     free(str);
     return err;
@@ -386,7 +386,7 @@ static void highlight_elem(WINDOW* win, int posY)
     wattroff(win, WA_BOLD);
 }
 
-static char* input_str(WINDOW* win, int x, int y)
+static char* input_str(WINDOW* win, int x, int y, InputType type)
 {
     char* buff = NEW(char, BUFFER_CAPASITY);
     if (!buff)
@@ -428,12 +428,12 @@ static char* input_str(WINDOW* win, int x, int y)
             buff = reallocBuff;
         }
         // Загрузка символа в строку
-        if (ch != MY_KEY_BACKSPACE)
+        if ((type == INPUT_STRING && ch >= 32 && ch <= 126) || (type == INPUT_NUMBER && (ch >= '0' && ch <= '9') || ch == '-' || ch == '.'))
         {
             buff[size++] = ch;
             buff[size] = '\0';
         }
-        // Вывод эха для ползователя
+        // Вывод эха для пользователя
         char* outStr = buff;
         mvwprintw(win, y, x, "                                                        ");
         if (size > getmaxx(win) - 4)

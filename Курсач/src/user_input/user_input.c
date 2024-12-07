@@ -1,7 +1,8 @@
-#include "user_input.h"
+п»ї#include "user_input.h"
 
 #include <curses.h>
 #include <string.h>
+#include <limits.h>
 
 #include <macros.h>
 #include <types.h>
@@ -11,12 +12,12 @@ int parse_int(const char* str, int* dest)
 {
 	*dest = 0;
 	int strLen = strlen(str);
-	// Основной цикл ввода
+	// РћСЃРЅРѕРІРЅРѕР№ С†РёРєР» РІРІРѕРґР°
 	Bool negative = false;
 	for (int i = 0; i < strLen; i++)
 	{
 		int digitChar = str[i];
-		// Условие выхода
+		// РЈСЃР»РѕРІРёРµ РІС‹С…РѕРґР°
 		if (digitChar == '\n' || digitChar == ' ')
 		{
 			if (*dest != 0)
@@ -34,9 +35,14 @@ int parse_int(const char* str, int* dest)
 			negative = true;
 			continue;
 		}
-		digitChar -= '0';	// Получение цифры из введенного символа
+		digitChar -= '0';	// РџРѕР»СѓС‡РµРЅРёРµ С†РёС„СЂС‹ РёР· РІРІРµРґРµРЅРЅРѕРіРѕ СЃРёРјРІРѕР»Р°
 		if (digitChar >= 0 && digitChar <= 9)
 		{
+			if (*dest * 10 <= *dest && *dest != 0)
+			{
+				*dest = INT_MAX;
+				break;
+			}
 			*dest *= 10;
 			*dest += digitChar;
 		}
@@ -45,7 +51,11 @@ int parse_int(const char* str, int* dest)
 			return -1;
 		}
 	}
-	if (negative) *dest *= -1;
+	if (negative)
+	{
+		*dest *= -1;
+		if (*dest == -INT_MAX) (*dest)--;
+	}
 
 	return 0;
 }
@@ -58,7 +68,7 @@ int parse_float(const char* str, float* dest)
 	Bool negative = false;
 	Bool period = false;
 	int strLen = strlen(str);
-	// Основной цикл ввода
+	// РћСЃРЅРѕРІРЅРѕР№ С†РёРєР» РІРІРѕРґР°
 	for (int i = 0; i < strLen; i++)
 	{
 		int digitChar = str[i];
@@ -91,13 +101,13 @@ int parse_float(const char* str, float* dest)
 		digitChar -= '0';
 		if (digitChar >= 0 && digitChar <= 9)
 		{
-			// Дробная часть
+			// Р”СЂРѕР±РЅР°СЏ С‡Р°СЃС‚СЊ
 			if (period)	
 			{
 				*dest += (float)digitChar * decimalMult;
 				decimalMult *= 0.1f;
 			}
-			// Целая часть
+			// Р¦РµР»Р°СЏ С‡Р°СЃС‚СЊ
 			else
 			{
 				*dest *= 10.0f;

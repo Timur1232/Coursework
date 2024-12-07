@@ -1,4 +1,4 @@
-# яКомментарий записывается с использованием '#'
+# Комментарий записывается с использованием '#'
 
 # Одна структура определяется фигурными скобками ('{' и '}')
 
@@ -14,7 +14,7 @@
 # ';', ',' и табуляция необязательны
 
 {
-	serialNumber = 234;				# int
+	serialNumber = 234;			# int
 	factoryNumber = 321;			# int
 	directorName = "Timur Bai";		# string
 	engineerName = "Kirill Kv";		# string

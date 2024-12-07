@@ -1,4 +1,4 @@
-#ifndef FIND_ENTRIES_H
+﻿#ifndef FIND_ENTRIES_H
 #define FIND_ENTRIES_H
 
 #include "../ref_array/ref_array.h"

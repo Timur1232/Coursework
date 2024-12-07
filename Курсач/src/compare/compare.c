@@ -1,4 +1,4 @@
-#include "compare.h"
+﻿#include "compare.h"
 
 #include <string.h>
 

@@ -1,4 +1,4 @@
-#ifndef USER_INPUT_H
+﻿#ifndef USER_INPUT_H
 #define USER_INPUT_H
 
 #include <curses.h>
