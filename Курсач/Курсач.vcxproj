@@ -295,7 +295,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\coursework.c" />
+    <ClCompile Include="src\application\coursework.c" />
     <ClCompile Include="src\file_work\file_work.c" />
     <ClCompile Include="src\file_work\parser\parser.c" />
     <ClCompile Include="src\file_work\parser\tokenizer.c" />
@@ -309,12 +309,12 @@
     <ClCompile Include="src\proccess_fec\procces_fec.c" />
     <ClCompile Include="src\ref_array\ref_array.c" />
     <ClCompile Include="src\undo_stack\undo_stack.c" />
-    <ClCompile Include="src\user_input\user_input.c" />
+    <ClCompile Include="src\interface\user_input\user_input.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\macros.h" />
     <ClInclude Include="include\types.h" />
-    <ClInclude Include="src\coursework.h" />
+    <ClInclude Include="src\application\coursework.h" />
     <ClInclude Include="src\file_work\file_work.h" />
     <ClInclude Include="src\file_work\parser\parser.h" />
     <ClInclude Include="src\file_work\parser\tokenizer.h" />
@@ -327,7 +327,7 @@
     <ClInclude Include="src\proccess_fec\proccess_fec.h" />
     <ClInclude Include="src\ref_array\ref_array.h" />
     <ClInclude Include="src\undo_stack\undo_stack.h" />
-    <ClInclude Include="src\user_input\user_input.h" />
+    <ClInclude Include="src\interface\user_input\user_input.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input\example.txt" />

@@ -1,4 +1,4 @@
-D:\source\repos\Курсач\Курсач\src\coursework.c;D:\source\repos\Курсач\Курсач\x64\Release\coursework.obj
+D:\source\repos\Курсач\Курсач\src\application\coursework.c;D:\source\repos\Курсач\Курсач\x64\Release\coursework.obj
 D:\source\repos\Курсач\Курсач\src\file_work\file_work.c;D:\source\repos\Курсач\Курсач\x64\Release\file_work.obj
 D:\source\repos\Курсач\Курсач\src\file_work\parser\parser.c;D:\source\repos\Курсач\Курсач\x64\Release\parser.obj
 D:\source\repos\Курсач\Курсач\src\file_work\parser\tokenizer.c;D:\source\repos\Курсач\Курсач\x64\Release\tokenizer.obj
@@ -12,4 +12,4 @@ D:\source\repos\Курсач\Курсач\src\main.c;D:\source\repos\Курса�
 D:\source\repos\Курсач\Курсач\src\proccess_fec\procces_fec.c;D:\source\repos\Курсач\Курсач\x64\Release\procces_fec.obj
 D:\source\repos\Курсач\Курсач\src\ref_array\ref_array.c;D:\source\repos\Курсач\Курсач\x64\Release\ref_array.obj
 D:\source\repos\Курсач\Курсач\src\undo_stack\undo_stack.c;D:\source\repos\Курсач\Курсач\x64\Release\undo_stack.obj
-D:\source\repos\Курсач\Курсач\src\user_input\user_input.c;D:\source\repos\Курсач\Курсач\x64\Release\user_input.obj
+D:\source\repos\Курсач\Курсач\src\interface\user_input\user_input.c;D:\source\repos\Курсач\Курсач\x64\Release\user_input.obj

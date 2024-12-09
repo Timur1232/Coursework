@@ -8,7 +8,7 @@
 #include "../fec_note/fec_note.h"
 #include "../proccess_fec/proccess_fec.h"
 #include "../log/log.h"
-#include "../user_input/user_input.h"
+#include "user_input/user_input.h"
 
 static const wchar_t* const TOP_DIVIDER =      L"┌───────┬──────────────┬──────────────┬─────────────────┬─────────────────┬─────────────┬─────────────┬─────────────┐";
 static const wchar_t* const MIDDLE_DIVIDER =   L"├───────┼──────────────┼──────────────┼─────────────────┼─────────────────┼─────────────┼─────────────┼─────────────┤";
@@ -102,12 +102,25 @@ void print_table_list(WINDOW* win, ListPtr list, int selected, Focus mode)
         {
             wattron(win, WA_REVERSE);
         }
-        mvwprintw(win, i * 2 + 3 + startY, 0, "  %-5d   %-12d   %-12d   %-15s   %-15s   %-11.2f   %-11.2f   %11.2f  ",
+        mvwprintw(win, i * 2 + 3 + startY, 0, "  %-5d   %-12d   %-12d   %-15s   %-15s   ",
             i + chunck * chunckSize + 1, iter->data.serialNumber, iter->data.factoryNumber,
-            iter->data.directorFullName, iter->data.engineerFullName,
-            iter->data.energyConsPlan, iter->data.energyConsReal,
-            calc_diff_deviation(&iter->data)
+            iter->data.directorFullName, iter->data.engineerFullName
         );
+        mvwprintw(win, i * 2 + 3 + startY, 76, "%-11.2f", iter->data.energyConsPlan);
+        if (iter->data.energyConsPlan > 10000000.0f || iter->data.energyConsPlan < -1000000.0f)
+        {
+            mvwprintw(win, i * 2 + 3 + startY, 84, "...                          ");
+        }
+        mvwprintw(win, i * 2 + 3 + startY, 90, "%-11.2f", iter->data.energyConsReal);
+        if (iter->data.energyConsReal > 10000000.0f || iter->data.energyConsReal < -1000000.0f)
+        {
+            mvwprintw(win, i * 2 + 3 + startY, 98, "...            ");
+        }
+        mvwprintw(win, i * 2 + 3 + startY, 104, "%-11.2f", calc_diff_deviation(&iter->data));
+        if (calc_diff_deviation(&iter->data) > 10000000.0f || calc_diff_deviation(&iter->data) < -1000000.0f)
+        {
+            mvwprintw(win, i * 2 + 3 + startY, 112, "... ");
+        }
         if (i == selected % chunckSize && mode != FOCUS_MENU)
         {
             wattroff(win, WA_REVERSE);
@@ -145,12 +158,25 @@ void print_table_ref(WINDOW* win, RefArrayPtr entries, int selected, Focus mode)
         {
             wattron(win, WA_REVERSE);
         }
-        mvwprintw(win, i * 2 + 3 + startY, 0, "  %-5d   %-12d   %-12d   %-15s   %-15s   %-11.2f   %-11.2f   %11.2f  ",
+        mvwprintw(win, i * 2 + 3 + startY, 0, "  %-5d   %-12d   %-12d   %-15s   %-15s   ",
             i + chunck * chunckSize + 1, (*iter)->serialNumber, (*iter)->factoryNumber,
-            (*iter)->directorFullName, (*iter)->engineerFullName,
-            (*iter)->energyConsPlan, (*iter)->energyConsReal,
-            calc_diff_deviation((*iter))
+            (*iter)->directorFullName, (*iter)->engineerFullName
         );
+        mvwprintw(win, i * 2 + 3 + startY, 76, "%-11.2f   ", (*iter)->energyConsPlan);
+        if ((*iter)->energyConsPlan > 10000000.0f || (*iter)->energyConsPlan < -1000000.0f)
+        {
+            mvwprintw(win, i * 2 + 3 + startY, 84, "...                          ");
+        }
+        mvwprintw(win, i * 2 + 3 + startY, 90, "%-11.2f   ", (*iter)->energyConsReal);
+        if ((*iter)->energyConsReal > 10000000.0f || (*iter)->energyConsReal < -1000000.0f)
+        {
+            mvwprintw(win, i * 2 + 3 + startY, 98, "...            ");
+        }
+        mvwprintw(win, i * 2 + 3 + startY, 104, "%-11.2f ", calc_diff_deviation(*iter));
+        if (calc_diff_deviation(*iter) > 10000000.0f || calc_diff_deviation(*iter) < -1000000.0f)
+        {
+            mvwprintw(win, i * 2 + 3 + startY, 112, "... ");
+        }
         if (i == selected % chunckSize && mode != FOCUS_MENU)
         {
             wattroff(win, WA_REVERSE);
@@ -349,9 +375,24 @@ static void print_sum(WINDOW* win, FECNote sumNote)
     const wchar_t* ch = L"│";
     int posY = 36;
     mvwaddwstr(win, posY - 1, 56, L"┌─────────────────┬─────────────┬─────────────┬─────────────┐");
-    mvwprintw(win, posY, 74, "  %-11.2f   %-11.2f   %11.2f  ",
+    /*mvwprintw(win, posY, 74, "  %-11.2f   %-11.2f   %11.2f  ",
         sumNote.energyConsPlan, sumNote.energyConsReal, calc_diff_deviation(&sumNote)
-    );
+    );*/
+    mvwprintw(win, posY, 76, "%-11.2f   ", sumNote.energyConsPlan);
+    if (sumNote.energyConsPlan > 10000000.0f || sumNote.energyConsPlan < -1000000.0f)
+    {
+        mvwprintw(win, posY, 84, "...                          ");
+    }
+    mvwprintw(win, posY, 90, "%-11.2f   ", sumNote.energyConsReal);
+    if (sumNote.energyConsReal > 10000000.0f || sumNote.energyConsReal < -1000000.0f)
+    {
+        mvwprintw(win, posY, 98, "...            ");
+    }
+    mvwprintw(win, posY, 104, "%-11.2f ", calc_diff_deviation(&sumNote));
+    if (calc_diff_deviation(&sumNote) > 10000000.0f || calc_diff_deviation(&sumNote) < -1000000.0f)
+    {
+        mvwprintw(win, posY, 112, "... ");
+    }
     mvwaddwstr(win, posY, 56, L"│      Сумма      │");
     mvwaddwstr(win, posY, 88, ch);
     mvwaddwstr(win, posY, 102, ch);
@@ -368,8 +409,8 @@ static void print_table_info(WINDOW* win, int chunck, int index, int size, int c
     mvwaddwstr(win, posY, 23, L"Элемент:");
     mvwprintw(win, posY, 32, "%d/%d", index + 1, size);
 
-    mvwaddwstr(win, posY + 2, 2, L"Листать: ← →");
-    mvwaddwstr(win, posY + 2, 23, L"Выбор: ↑ ↓");
+    mvwaddwstr(win, posY + 2, 0, L"  Листать: ← →         Выбор: ↑ ↓                      ");
+    //mvwaddwstr(win, posY + 2, 23, L"");
 
 }
 

@@ -6,14 +6,14 @@
 
 #include <types.h>
 #include <macros.h>
-#include "list/list.h"
-#include "ref_array/ref_array.h"
-#include "interface/interface.h"
-#include "compare/compare.h"
-#include "file_work/file_work.h"
-#include "log/log.h"
-#include "undo_stack/undo_stack.h"
-#include "find/find_entries.h"
+#include "../list/list.h"
+#include "../ref_array/ref_array.h"
+#include "../interface/interface.h"
+#include "../compare/compare.h"
+#include "../file_work/file_work.h"
+#include "../log/log.h"
+#include "../undo_stack/undo_stack.h"
+#include "../find/find_entries.h"
 
 // Вывод таблицы на экран
 static void print_table(WINDOW* winTable, WINDOW* winRed, ProgramInstance* program);
@@ -508,6 +508,7 @@ void find(ProgramInstance* program)
             {
                 program->findMode = true;
                 program->focus = FOCUS_FIND;
+                program->selectedNode = clamp(program->selectedNode, 0, program->entries.size - 1);
             }
             return;
         }

@@ -4,9 +4,9 @@
 #include <curses.h>
 
 #include <types.h>
-#include "list/list.h"
-#include "ref_array/ref_array.h"
-#include "undo_stack/undo_stack.h"
+#include "../list/list.h"
+#include "../ref_array/ref_array.h"
+#include "../undo_stack/undo_stack.h"
 
 typedef enum Focus
 {

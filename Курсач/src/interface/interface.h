@@ -6,7 +6,7 @@
 #include <types.h>
 #include "../list/list.h"
 #include "../ref_array/ref_array.h"
-#include "../coursework.h"
+#include "../application/coursework.h"
 
 #define CHUNCK_SIZE_FULL 16
 #define CHUNCK_SIZE_REDACTOR 9
@@ -64,14 +64,15 @@ void print_controls(WINDOW* win, Focus type);
 void pop_up_notification_wchar(WINDOW* win, const wchar_t* message, NotificationType type, int y);
 void pop_up_notification(WINDOW* win, const char* message, NotificationType type, int y);
 
-/**
-* Получение пользовательского ввода с клавиатуры
-*/
 typedef enum InputType
 {
     INPUT_STRING,
     INPUT_NUMBER
 } InputType;
+
+/**
+* Получение пользовательского ввода с клавиатуры
+*/
 // [[nodiscard]]
 char* get_user_input_str(WINDOW* win, const wchar_t* message, int y, InputType type);
 int get_user_input_int(WINDOW* win, const wchar_t* message, int* dest);
