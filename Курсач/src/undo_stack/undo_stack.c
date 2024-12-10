@@ -106,7 +106,7 @@ void pop_action(UndoStack* stack)
 
 ActionType undo(UndoStack* stack, ListPtr list)
 {
-    if (stack->cur == stack->end || stack->end) { return UNDO_EMPTY; }
+    if (!stack->cur || stack->end) { return UNDO_EMPTY; }
 
     UndoNode* undoAction = stack->cur;
     switch (undoAction->action)

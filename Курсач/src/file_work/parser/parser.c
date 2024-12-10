@@ -2,6 +2,7 @@
 
 #include <string.h>
 
+#include "tokenizer.h"
 #include "../../fec_note/fec_note.h"
 #include "../../list/list.h"
 

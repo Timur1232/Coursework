@@ -1,12 +1,12 @@
-﻿#ifndef COURSEWORK_H
-#define COURSEWORK_H
+﻿#ifndef APPLICATION_H
+#define APPLICATION_H
 
 #include <curses.h>
 
 #include <types.h>
-#include "../list/list.h"
-#include "../ref_array/ref_array.h"
-#include "../undo_stack/undo_stack.h"
+#include "../../list/list.h"
+#include "../../ref_array/ref_array.h"
+#include "../../undo_stack/undo_stack.h"
 
 typedef enum Focus
 {
@@ -91,4 +91,4 @@ void save(ProgramInstance* program);
 void sorting(ProgramInstance* program);
 void find(ProgramInstance* program);
 
-#endif // COURSEWORK_H
+#endif // APPLICATION_H

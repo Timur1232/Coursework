@@ -7,11 +7,7 @@
 
 //_____________________________[Предопределения типов]_____________________________//
 
-#ifdef _LIST_DEBUG
-    typedef int value_t;
-#else
-    typedef FECNote value_t;
-#endif
+typedef struct FECNote value_t;
 
 typedef value_t* ValuePtr;
 typedef const value_t* ConstValuePtr;

@@ -4,9 +4,9 @@
 #include <curses.h>
 
 #include <types.h>
-#include "../list/list.h"
-#include "../ref_array/ref_array.h"
-#include "../application/coursework.h"
+#include "../../list/list.h"
+#include "../../ref_array/ref_array.h"
+#include "../application/application.h"
 
 #define CHUNCK_SIZE_FULL 16
 #define CHUNCK_SIZE_REDACTOR 9

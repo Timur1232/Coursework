@@ -6,7 +6,6 @@
 
 #include <macros.h>
 #include <types.h>
-#include "../../compare/compare.h"
 #include "../../log/log.h"
 
 static const char* const VarTokens[] = {

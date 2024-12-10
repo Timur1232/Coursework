@@ -5,7 +5,6 @@
 #include <macros.h>
 #include <types.h>
 #include "..\log\log.h"
-#include "..\list\list.h"
 
 RefArray init_ref_array(uint_64 reserve)
 {

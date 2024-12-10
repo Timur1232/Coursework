@@ -4,10 +4,10 @@
 #include <curses.h>
 
 #include <macros.h>
-#include "../list/list.h"
-#include "../fec_note/fec_note.h"
-#include "../proccess_fec/proccess_fec.h"
-#include "../log/log.h"
+#include "../../list/list.h"
+#include "../../fec_note/fec_note.h"
+#include "../../proccess_fec/proccess_fec.h"
+#include "../../log/log.h"
 #include "user_input/user_input.h"
 
 static const wchar_t* const TOP_DIVIDER =      L"┌───────┬──────────────┬──────────────┬─────────────────┬─────────────────┬─────────────┬─────────────┬─────────────┐";

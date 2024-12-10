@@ -1,4 +1,4 @@
-#include "application/coursework.h"
+#include "coursework/coursework.h"
 
 int main(int argc, char** argv)
 {

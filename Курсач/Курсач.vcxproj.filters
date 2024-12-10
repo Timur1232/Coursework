@@ -30,9 +30,6 @@
     <ClCompile Include="src\file_work\file_work.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\compare\compare.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="src\find\find_entries.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -48,13 +45,13 @@
     <ClCompile Include="src\undo_stack\undo_stack.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\interface\user_input\user_input.c">
+    <ClCompile Include="src\coursework\interface\user_input\user_input.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\interface\interface.c">
+    <ClCompile Include="src\coursework\interface\interface.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\application\coursework.c">
+    <ClCompile Include="src\coursework\application\application.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\main.c">
@@ -75,9 +72,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\file_work\file_work.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\compare\compare.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\find\find_entries.h">
@@ -101,13 +95,16 @@
     <ClInclude Include="src\undo_stack\undo_stack.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\interface\user_input\user_input.h">
+    <ClInclude Include="src\coursework\interface\user_input\user_input.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\interface\interface.h">
+    <ClInclude Include="src\coursework\interface\interface.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\application\coursework.h">
+    <ClInclude Include="src\coursework\application\application.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\coursework\coursework.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
