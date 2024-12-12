@@ -6,7 +6,7 @@
 
 #include <macros.h>
 #include <types.h>
-#include "../../log/log.h"
+#include "../../../log/log.h"
 
 int parse_int(const char* str, int* dest)
 {

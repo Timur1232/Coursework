@@ -74,9 +74,8 @@ void push_back(ListPtr list, ConstValuePtr data)
     if (!data) { return; }
 
     ListNodePtr newNode = new_node(data);
-    list->size++;
 
-    if (list->end)
+    if (list->size)
     {
         CONNECT_NODES(list->end, newNode);
         INCREMENT(list->end);
@@ -85,6 +84,7 @@ void push_back(ListPtr list, ConstValuePtr data)
     {
         list->begin = list->end = newNode;
     }
+    list->size++;
 }
 
 void push_front(ListPtr list, ConstValuePtr data)
@@ -113,10 +113,10 @@ int insert(ListPtr list, ConstValuePtr data, uint_64 pos)
     if (pos > list->size || pos < 0)
         { return -1; }
 
-    if (pos == 0)
-        push_front(list, data);
-    else if (pos == list->size)
+    if (pos == list->size)
         push_back(list, data);
+    else if (pos == 0)
+        push_front(list, data);
     else
     {
         ListNodePtr newNode = new_node(data);

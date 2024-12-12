@@ -12,17 +12,13 @@ typedef enum ActionType
     UNDO_DEL,
     UNDO_ADD,
     UNDO_CHANGE,
-    UNDO_CLEAR,
 
     UNDO_EMPTY
 } ActionType;
 
 typedef struct UndoNode
 {
-    union {
-        FECNote note;
-        List list;
-    } state;
+    FECNote state;
     int index;
     ActionType action;
     struct UndoNode* next;
@@ -38,14 +34,14 @@ typedef struct UndoStack
 } UndoStack;
 
 UndoStack init_undo();
-UndoNode* new_undo(ActionType action, void* note, int index);
+UndoNode* new_undo(ActionType action, FECNote* state, int index);
 void free_undo(UndoStack* stack);
 
 /* *
    * Очищает все действия выше cur
    * Вставляет действие после действия на который указывает cur
 */
-void push_action(UndoStack* stack, ActionType action, void* state, int index);
+void push_action(UndoStack* stack, ActionType action, FECNote* state, int index);
 
 // * Очищает все действия выше cur
 void pop_action(UndoStack* stack);

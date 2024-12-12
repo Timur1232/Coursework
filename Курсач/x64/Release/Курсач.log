@@ -1,8 +1,8 @@
-﻿  undo_stack.c
+﻿  list.c
 LINK : warning LNK4098: библиотека по умолчанию "LIBCMT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
   Создание кода
-  2 of 121 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
+  6 of 121 functions ( 5.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  Курсач.vcxproj -> D:\source\repos\Курсач\x64\Release\Курсач.exe
+  Курсач.vcxproj -> C:\dev\Coursework\x64\Release\Курсач.exe

@@ -67,6 +67,7 @@ static MenuCommand browsingCom[] = {
     {L" Сохранить   ", save},
     {L" Сортировка  ", sorting},
     {L" Поиск       ", find},
+    //{L" Очистить    ", clear_list},
 };
 
 static Menu browsingMenu = {
@@ -291,6 +292,15 @@ void load_list(ProgramInstance* program)
     program->currentFileName = "";
 }
 
+//void debug(ProgramInstance* program)
+//{
+//    WINDOW* debg = newwin(10, 30, 0, 0);
+//    mvwprintw(stdscr, 0,0,"undoStack\ncur: %p\ntop: %p\nend: %d\nsize: %d",
+//        program->undoStack.cur, program->undoStack.top, program->undoStack.end, program->undoStack.size);
+//    wrefresh(debg);
+//    delwin(debg);
+//}
+
 void list_redactor(ProgramInstance* program)
 {
     clear();
@@ -317,6 +327,7 @@ void list_redactor(ProgramInstance* program)
         else
             print_controls(program->winControls, program->focus);
         print_table(program->winTable, program->winRed, program);
+        //debug(program);
 
         int ch = getch();
         if (ch == '\t')
@@ -474,6 +485,7 @@ void find(ProgramInstance* program)
         clear_array(&program->entries);
         program->findMode = false;
         program->focus = FOCUS_BROWSING;
+        program->chunckSize = CHUNCK_SIZE_FULL;
         return;
     }
     while (true)
@@ -513,6 +525,15 @@ void find(ProgramInstance* program)
         }
     }
 }
+
+//void clear_list(ProgramInstance* program)
+//{
+//    if (program->fecNotes.size)
+//    {
+//        push_action(&program->undoStack, UNDO_CLEAR, &program->fecNotes, 0);
+//        program->fecNotes = init_list();
+//    }
+//}
 
 //__________________________________[Статичекие функции]__________________________________//
 
@@ -626,12 +647,13 @@ void proccess_redacting(ProgramInstance* program, int ch)
         break;
     case MY_KEY_CTRL_D:
     case MY_KEY_DEL:
-        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode && program->fecNotes.size)
+        if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode && program->selectedNode != program->fecNotes.size)
         {
+            if (program->selectedNode == program->fecNotes.size) break;
             delete_note(program);
             program->saved = false;
         }
-        else
+        else if (program->focus == FOCUS_FIND && program->entries.size)
         {
             int nodeIndex = 0;
             for (FOR_RANGE(i, program->fecNotes))
@@ -642,6 +664,7 @@ void proccess_redacting(ProgramInstance* program, int ch)
             push_action(&program->undoStack, UNDO_DEL, get_at(&program->fecNotes, nodeIndex), nodeIndex);
             pop(&program->fecNotes, nodeIndex);
             find(program);
+            program->saved = false;
         }
         break;
     case MY_KEY_CTRL_A:

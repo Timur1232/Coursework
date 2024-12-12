@@ -106,17 +106,17 @@ void print_table_list(WINDOW* win, ListPtr list, int selected, Focus mode)
             i + chunck * chunckSize + 1, iter->data.serialNumber, iter->data.factoryNumber,
             iter->data.directorFullName, iter->data.engineerFullName
         );
-        mvwprintw(win, i * 2 + 3 + startY, 76, "%-11.2f", iter->data.energyConsPlan);
+        mvwprintw(win, i * 2 + 3 + startY, 76, "%-11.2f ", iter->data.energyConsPlan);
         if (iter->data.energyConsPlan > 10000000.0f || iter->data.energyConsPlan < -1000000.0f)
         {
             mvwprintw(win, i * 2 + 3 + startY, 84, "...                          ");
         }
-        mvwprintw(win, i * 2 + 3 + startY, 90, "%-11.2f", iter->data.energyConsReal);
+        mvwprintw(win, i * 2 + 3 + startY, 89, " %-11.2f ", iter->data.energyConsReal);
         if (iter->data.energyConsReal > 10000000.0f || iter->data.energyConsReal < -1000000.0f)
         {
             mvwprintw(win, i * 2 + 3 + startY, 98, "...            ");
         }
-        mvwprintw(win, i * 2 + 3 + startY, 104, "%-11.2f", calc_diff_deviation(&iter->data));
+        mvwprintw(win, i * 2 + 3 + startY, 103, " %-11.2f ", calc_diff_deviation(&iter->data));
         if (calc_diff_deviation(&iter->data) > 10000000.0f || calc_diff_deviation(&iter->data) < -1000000.0f)
         {
             mvwprintw(win, i * 2 + 3 + startY, 112, "... ");

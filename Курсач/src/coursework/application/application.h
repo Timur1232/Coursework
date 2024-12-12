@@ -90,5 +90,6 @@ void list_redactor(ProgramInstance* program);
 void save(ProgramInstance* program);
 void sorting(ProgramInstance* program);
 void find(ProgramInstance* program);
+//void clear_list(ProgramInstance* program);
 
 #endif // APPLICATION_H
