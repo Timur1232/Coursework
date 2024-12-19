@@ -155,24 +155,8 @@ Token scan_token(char* buff);
 TokenType token_type(Token token);
 Token var_type(Token token);
 
-// Редактирование буфера
-void shift_buff(char* buff, uint_64 n);
-void ignore_white_space(char* buff);
-char* read_line(char* buff, FILE* file);
-
-// Вспомогательные логические функции
-int eob(char* buff);										// Проверка на конец буфера
-int white_space(char ch);									// Проверка символа на ' ', '\t' или '\n'
-int divider(char ch);										// Проверка символа на ';' и ','
-int is_digit(char ch);										// Проверка если символ - цифра
-int contain_period(char* str);								// Проверка на наличие в строке '.'
-int check_repeat(RepeatObserver* observer, Token token);	// Проверка на повторения полей
-
-// Считывание значений
-int get_int(char* buff, uint_32* data);						// Считывание int значения из буфера
-int get_float(char* buff, float* data);						// Считывание float значения из буфера
-int get_str(char* buff, char* data);						// Считывание char* значения из буфера
-int get_value(char* buff, TokenVar* token);					// Общее считывание значения из буфера
+// Проверка на повторения полей
+int check_repeat(RepeatObserver* observer, Token token);	
 
 // Обработка ошибок
 char* proccess_error(char* buff, ErrorHandler error);

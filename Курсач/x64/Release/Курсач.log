@@ -1,8 +1,11 @@
-﻿  list.c
+﻿  application.c
+D:\01dev\Coursework\Курсач\src\coursework\application\application.c(523,41): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+D:\01dev\Coursework\Курсач\src\coursework\application\application.c(576,59): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
+D:\01dev\Coursework\Курсач\src\coursework\application\application.c(578,54): warning C4244: =: преобразование "uint_64" в "int", возможна потеря данных
 LINK : warning LNK4098: библиотека по умолчанию "LIBCMT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
   Создание кода
-  6 of 121 functions ( 5.0%) were compiled, the rest were copied from previous compilation.
+  2 of 127 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  Курсач.vcxproj -> C:\dev\Coursework\x64\Release\Курсач.exe
+  Курсач.vcxproj -> D:\01dev\Coursework\x64\Release\Курсач.exe

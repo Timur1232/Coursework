@@ -79,17 +79,25 @@ typedef struct Menu
     Align align;
 } Menu;
 
-ProgramInstance init_program();
+ProgramInstance* init_program();
 
 int Main(int argc, char** argv);
 
+// Структурные функции
 void new_list(ProgramInstance* program);
 void load_list(ProgramInstance* program);
 void list_redactor(ProgramInstance* program);
-
 void save(ProgramInstance* program);
 void sorting(ProgramInstance* program);
 void find(ProgramInstance* program);
-//void clear_list(ProgramInstance* program);
+
+// Добавление и удаление элемента списка с сохранением действия в стеке действий
+void add_note(ProgramInstance* program, FECNote* note);
+void delete_note(ProgramInstance* program);
+
+// Обработка управления программой
+void proccess_movement(ProgramInstance* program, int ch);
+void proccess_redacting(ProgramInstance* program, int ch);
+int proccess_menu(ProgramInstance* program, Menu* menu, int ch);
 
 #endif // APPLICATION_H

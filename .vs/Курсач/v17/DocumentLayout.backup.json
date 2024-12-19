@@ -1,78 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\dev\\Coursework\\",
+  "WorkspaceRootPath": "D:\\01dev\\Coursework\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\proccess_fec.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\proccess_fec.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\procces_fec.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\procces_fec.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\user_input\\user_input.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\user_input\\user_input.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\coursework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\coursework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\ref_array\\ref_array.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\ref_array\\ref_array.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FF4127D2-6FCF-4461-B4B8-93F19FA98F7B}|\u041A\u0443\u0440\u0441\u0430\u0447\\\u041A\u0443\u0440\u0441\u0430\u0447.vcxproj|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\include\\curses.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:\u041A\u0443\u0440\u0441\u0430\u0447\\include\\curses.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,229 +50,133 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "undo_stack.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
-              "ViewState": "AgIAAB0AAABAMzMzMzMrwCgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-11T14:19:32.229Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "tokenizer.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-10T20:14:59.749Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "list.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
-              "ViewState": "AgIAABgAAAAAAAAAAAAwPQUAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-10T20:13:09.677Z"
+              "Title": "tokenizer.c",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.c",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-19T11:22:54.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ref_array.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\ref_array\\ref_array.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\ref_array\\ref_array.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\ref_array\\ref_array.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\ref_array\\ref_array.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-10T20:12:10.054Z"
+              "DocumentIndex": 4,
+              "Title": "application.h",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAjwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-19T10:59:24.184Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "list.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAIAAAAAAAAAA==",
+              "Title": "application.c",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
+              "ViewState": "AgIAACsBAAAAAAAAAAAmwDQBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-10T20:10:51.204Z",
+              "WhenOpened": "2024-12-19T10:52:54.839Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "fec_note.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "parser.c",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-10T20:10:05.724Z"
+              "WhenOpened": "2024-12-19T10:46:01.144Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "undo_stack.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.c",
-              "ViewState": "AgIAACcAAAAAAAAAAABQPTIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "tokenizer.h",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAjwBoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-19T10:45:47.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "undo_stack.h",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\undo_stack\\undo_stack.h",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAjwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-19T10:45:20.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "procces_fec.c",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\procces_fec.c",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\procces_fec.c",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\procces_fec.c",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\procces_fec.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-07T22:45:15.549Z",
+              "WhenOpened": "2024-12-19T10:45:09.822Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "application.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.c",
-              "ViewState": "AgIAAJYAAAAAAAAAAAB4vecBAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-07T21:03:21.569Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "application.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\application\\application.h",
-              "ViewState": "AgIAACEAAACAmZmZmZkuwFwAAAACAAAAAAAAAA==",
+              "Title": "proccess_fec.h",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\proccess_fec.h",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\proccess_fec.h",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\proccess_fec.h",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\proccess_fec\\proccess_fec.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-07T21:03:14.314Z",
+              "WhenOpened": "2024-12-19T10:45:02.163Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "interface.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c",
               "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c",
               "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.c",
-              "ViewState": "AgIAANcBAAAAcGZmZmYkwKQAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAmwCEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-07T21:05:20.031Z",
+              "WhenOpened": "2024-12-19T10:44:42.832Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "coursework.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\coursework.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\coursework.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\coursework.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\coursework.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "list.h",
+              "DocumentMoniker": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
+              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
+              "ToolTip": "D:\\01dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
+              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\list\\list.h",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAADEAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-10T20:28:27.986Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "curses.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\include\\curses.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\include\\curses.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\include\\curses.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\include\\curses.h",
-              "ViewState": "AgIAAMkDAAAAAAAAAAAcwNcDAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-11T11:57:02.684Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "user_input.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\user_input\\user_input.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\user_input\\user_input.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\user_input\\user_input.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\user_input\\user_input.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-07T22:08:44.144Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "tokenizer.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\tokenizer.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-10T20:15:27.776Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "parser.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\file_work\\parser\\parser.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-10T20:16:37.063Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "fec_note.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\fec_note\\fec_note.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-10T20:20:14.653Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "main.c",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\main.c",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\main.c",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\main.c",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\main.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-07T21:40:55.736Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "interface.h",
-              "DocumentMoniker": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.h",
-              "RelativeDocumentMoniker": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.h",
-              "ToolTip": "C:\\dev\\Coursework\\\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.h",
-              "RelativeToolTip": "\u041A\u0443\u0440\u0441\u0430\u0447\\src\\coursework\\interface\\interface.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-07T21:05:24.189Z"
+              "WhenOpened": "2024-12-19T10:44:21.5Z",
+              "EditorCaption": ""
             }
           ]
         }

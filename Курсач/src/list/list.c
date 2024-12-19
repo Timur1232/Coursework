@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 
-//#include "..\fec_note\fec_note.h"
 #include "../log/log.h"
 
 //__________________________________[Node]__________________________________//

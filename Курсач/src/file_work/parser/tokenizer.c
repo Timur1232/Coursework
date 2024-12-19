@@ -19,6 +19,24 @@ static const char* const VarTokens[] = {
 
 /*=====================================[Функции]=====================================*/
 
+// Редактирование буфера
+static void shift_buff(char* buff, uint_64 n);
+static void ignore_white_space(char* buff);
+static char* read_line(char* buff, FILE* file);
+
+// Вспомогательные логические функции
+static int eob(char* buff);										// Проверка на конец буфера
+static int white_space(char ch);									// Проверка символа на ' ', '\t' или '\n'
+static int divider(char ch);										// Проверка символа на ';' и ','
+static int is_digit(char ch);										// Проверка если символ - цифра
+static int contain_period(char* str);								// Проверка на наличие в строке '.'
+
+// Считывание значений
+static int get_int(char* buff, uint_32* data);						// Считывание int значения из буфера
+static int get_float(char* buff, float* data);						// Считывание float значения из буфера
+static int get_str(char* buff, char* data);						// Считывание char* значения из буфера
+static int get_value(char* buff, TokenVar* token);					// Общее считывание значения из буфера
+
 /*=====================================[Инициализаторы]=====================================*/
 
 TokenQueue init_token_queue()

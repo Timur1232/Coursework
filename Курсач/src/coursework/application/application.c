@@ -17,20 +17,11 @@
 // Вывод таблицы на экран
 static void print_table(WINDOW* winTable, WINDOW* winRed, ProgramInstance* program);
 
-// Обработка управления программой
-static void proccess_movement(ProgramInstance* program, int ch);
-static void proccess_redacting(ProgramInstance* program, int ch);
-static int proccess_menu(ProgramInstance* program, Menu* menu, int ch);
-
 // Канкатинация строк в путь
 static char* construct_file_path(const char* fileName, const char* folderPath, const char* fileExtention);
 
 // Переключение следующего кадра анимации
 static void dance();
-
-// Вспомогательные функции добавления элемента в список и удаления элемента с сохранением действия
-static void add_note(ProgramInstance* program, FECNote* note);
-static void delete_note(ProgramInstance* program);
 
 // Функции для ввода определенного поля структуры
 static int change_serialNumber(ProgramInstance* program, FECNote* note);
@@ -106,36 +97,41 @@ static Menu fieldChooseMenu = {
 };
 
 
-ProgramInstance init_program()
+ProgramInstance* init_program()
 {
-    ProgramInstance program;
+    ProgramInstance* program = NEW(ProgramInstance, 1);
+    if (!program)
+    {
+        LOG_RELEASE(LOG_ERR, "application.c", "init_program()", "Can\'t create program. malloc() return NULL", LOG_FILE);
+        exit(-1);
+    }
 
     // Инициализация программы
-    program.fecNotes = init_list();
-    program.entries = init_ref_array(0);
-    program.currentFileName = "";
-    program.undoStack = init_undo();
+    program->fecNotes = init_list();
+    program->entries = init_ref_array(0);
+    program->currentFileName = "";
+    program->undoStack = init_undo();
 
     // Вспомогательные переменные для управления программой
-    program.selectedNode = 0;
-    program.field = 0;
-    program.findMode = false;
-    program.chunckSize = CHUNCK_SIZE_FULL;
-    program.focus = FOCUS_BROWSING;
-    program.shouldClose = false;
-    program.saved = true;
-    program.sortMode = 1;
-    program.copyNote = init_note();
-    program.copied = false;
+    program->selectedNode = 0;
+    program->field = 0;
+    program->findMode = false;
+    program->chunckSize = CHUNCK_SIZE_FULL;
+    program->focus = FOCUS_BROWSING;
+    program->shouldClose = false;
+    program->saved = true;
+    program->sortMode = 0;
+    program->copyNote = init_note();
+    program->copied = false;
 
     // Инициализация окон PDCurses
-    program.popUp = newwin(5, 15, 0, 0);
-    program.winMain = stdscr;
-    program.winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
-    program.winRed = newwin(REDACTOR_MENU_WIN_HEIGHT, REDACTOR_MENU_WIN_WIDTH, REDACTOR_MENU_WIN_Y, REDACTOR_MENU_WIN_X),
-    program.winMenu = newwin(BROWSING_MENU_WIN_HEIGHT, BROWSING_MENU_WIN_WIDTH, 0, 0);
-    program.winControls = newwin(CONTROLS_HEIGHT, BROWSING_MENU_WIN_WIDTH, BROWSING_MENU_WIN_HEIGHT, 0);
-    program.winField = newwin(12, 21, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 8, SCREEN_WIDTH / 2 - 10);
+    program->popUp = newwin(5, 15, 0, 0);
+    program->winMain = stdscr;
+    program->winTable = newwin(TABLE_WIN_HEIGHT, TABLE_WIN_WIDTH, TABLE_WIN_Y, TABLE_WIN_X),
+    program->winRed = newwin(REDACTOR_MENU_WIN_HEIGHT, REDACTOR_MENU_WIN_WIDTH, REDACTOR_MENU_WIN_Y, REDACTOR_MENU_WIN_X),
+    program->winMenu = newwin(BROWSING_MENU_WIN_HEIGHT, BROWSING_MENU_WIN_WIDTH, 0, 0);
+    program->winControls = newwin(CONTROLS_HEIGHT, BROWSING_MENU_WIN_WIDTH, BROWSING_MENU_WIN_HEIGHT, 0);
+    program->winField = newwin(12, 21, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 8, SCREEN_WIDTH / 2 - 10);
     refresh();
 
     return program;
@@ -162,18 +158,19 @@ int Main(int argc, char** argv)
         init_pair(N_ERR, COLOR_WHITE, COLOR_RED);
     }
 
-    ProgramInstance program = init_program();
+    ProgramInstance* program = init_program();
 
     // Основной цикл
-    while (!program.shouldClose)
+    while (!program->shouldClose)
     {
-        print_menu(program.winMain, &mainMenu);
+        print_menu(program->winMain, &mainMenu);
         dance();
         int ch = getch();
-        proccess_menu(&program, &mainMenu, ch);
+        proccess_menu(program, &mainMenu, ch);
         timeout(200);
     }
 
+    DELETE(program);
     endwin();
     return 0;
 }
@@ -192,7 +189,6 @@ void new_list(ProgramInstance* program)
     }
     char* filePath = construct_file_path(program->currentFileName, "files/", ".txt");
     FILE* f = fopen(filePath, "rt");
-    DELETE(filePath);
     // Если файл существует
     if (f)
     {
@@ -216,6 +212,18 @@ void new_list(ProgramInstance* program)
             return;
         }
     }
+    else
+    {
+        f = fopen(filePath, "wt");
+        if (!f)
+        {
+            pop_up_notification_wchar(program->popUp, L"Невозможное имя файла.", N_ERR, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4);
+            DELETE(filePath);
+            getch();
+            return;
+        }
+    }
+    DELETE(filePath);
     list_redactor(program);
     DELETE(program->currentFileName);
     program->currentFileName = "";
@@ -292,15 +300,6 @@ void load_list(ProgramInstance* program)
     program->currentFileName = "";
 }
 
-//void debug(ProgramInstance* program)
-//{
-//    WINDOW* debg = newwin(10, 30, 0, 0);
-//    mvwprintw(stdscr, 0,0,"undoStack\ncur: %p\ntop: %p\nend: %d\nsize: %d",
-//        program->undoStack.cur, program->undoStack.top, program->undoStack.end, program->undoStack.size);
-//    wrefresh(debg);
-//    delwin(debg);
-//}
-
 void list_redactor(ProgramInstance* program)
 {
     clear();
@@ -308,7 +307,6 @@ void list_redactor(ProgramInstance* program)
     keypad(program->winMenu, TRUE);
     refresh();    
 
-    sort_asc(&program->fecNotes, COMPARE_FUNC_ARRAY[0]);
     browsingMenu.selected = -1;
     while (true)
     {
@@ -327,7 +325,6 @@ void list_redactor(ProgramInstance* program)
         else
             print_controls(program->winControls, program->focus);
         print_table(program->winTable, program->winRed, program);
-        //debug(program);
 
         int ch = getch();
         if (ch == '\t')
@@ -448,7 +445,8 @@ void sorting(ProgramInstance* program)
     while (true)
     {
         print_menu(program->winField, &fieldChooseMenu);
-        mvwaddch(program->winField, 3 + abs(program->sortMode) - 1, 1, (program->sortMode < 0) ? '<' : '>');
+        if (program->sortMode)
+            mvwaddch(program->winField, 3 + abs(program->sortMode) - 1, 1, (program->sortMode < 0) ? '<' : '>');
         wrefresh(program->winField);
         int ch = getch();
         // Выбор поля сортировки
@@ -486,6 +484,8 @@ void find(ProgramInstance* program)
         program->findMode = false;
         program->focus = FOCUS_BROWSING;
         program->chunckSize = CHUNCK_SIZE_FULL;
+        program->sortMode = 0;
+
         return;
     }
     while (true)
@@ -525,15 +525,6 @@ void find(ProgramInstance* program)
         }
     }
 }
-
-//void clear_list(ProgramInstance* program)
-//{
-//    if (program->fecNotes.size)
-//    {
-//        push_action(&program->undoStack, UNDO_CLEAR, &program->fecNotes, 0);
-//        program->fecNotes = init_list();
-//    }
-//}
 
 //__________________________________[Статичекие функции]__________________________________//
 
@@ -617,6 +608,7 @@ void proccess_redacting(ProgramInstance* program, int ch)
             push_action(&program->undoStack, UNDO_CHANGE, note, program->selectedNode);
             CHANGE_FUNC_ARRAY[program->field](program, note);
             program->saved = false;
+            program->sortMode = 0;
         }
         else if (program->focus == FOCUS_BROWSING || program->focus == FOCUS_FIND)
         {
@@ -629,6 +621,7 @@ void proccess_redacting(ProgramInstance* program, int ch)
             add_note(program, &note);
             program->focus = FOCUS_EDITOR;
             program->saved = false;
+            program->sortMode = 0;
         }
         break;
     case MY_KEY_CTRL_C:
@@ -643,6 +636,7 @@ void proccess_redacting(ProgramInstance* program, int ch)
         {
             add_note(program, &program->copyNote);
             program->saved = false;
+            program->sortMode = 0;
         }
         break;
     case MY_KEY_CTRL_D:
@@ -652,6 +646,7 @@ void proccess_redacting(ProgramInstance* program, int ch)
             if (program->selectedNode == program->fecNotes.size) break;
             delete_note(program);
             program->saved = false;
+            program->sortMode = 0;
         }
         else if (program->focus == FOCUS_FIND && program->entries.size)
         {
@@ -665,6 +660,7 @@ void proccess_redacting(ProgramInstance* program, int ch)
             pop(&program->fecNotes, nodeIndex);
             find(program);
             program->saved = false;
+            program->sortMode = 0;
         }
         break;
     case MY_KEY_CTRL_A:
@@ -675,13 +671,17 @@ void proccess_redacting(ProgramInstance* program, int ch)
             add_note(program, &note);
             program->focus = FOCUS_EDITOR;
             program->saved = false;
+            program->sortMode = 0;
         }
         break;
     case MY_KEY_UNDO:
         if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode)
         {
             if (undo(&program->undoStack, &program->fecNotes) != UNDO_EMPTY)
+            {
                 program->saved = false;
+                program->sortMode = 0;
+            }
             if (program->findMode)
                 program->selectedNode = clamp(program->selectedNode, 0, (int)program->entries.size - 1);
             else
@@ -692,7 +692,10 @@ void proccess_redacting(ProgramInstance* program, int ch)
         if ((program->focus == FOCUS_BROWSING || program->focus == FOCUS_EDITOR) && !program->findMode)
         {
             if (redo(&program->undoStack, &program->fecNotes) != UNDO_EMPTY)
+            {
                 program->saved = false;
+                program->sortMode = 0;
+            }
             if (program->findMode)
                 program->selectedNode = clamp(program->selectedNode, 0, (int)program->entries.size - 1);
             else
